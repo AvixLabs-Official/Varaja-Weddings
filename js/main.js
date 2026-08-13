@@ -232,29 +232,67 @@ function preselectService(serviceTitle) {
   }
 }
 
+let activePortfolioCategory = 'All Celebrations';
+
 /* --------------------------------------------------------------------------
-   5. RENDER PORTFOLIO & CASE STUDY MODAL
+   5. RENDER PORTFOLIO GRID WITH CATEGORY TABS
    -------------------------------------------------------------------------- */
 function renderPortfolioGrid() {
   const container = document.getElementById('portfolio-grid-container');
+  const tabsContainer = document.getElementById('portfolio-category-tabs');
   if (!container || !VARAJA_DATA?.projects) return;
 
-  container.innerHTML = VARAJA_DATA.projects.map((project, idx) => `
+  const categories = VARAJA_DATA.portfolioCategories || ['All Celebrations'];
+
+  if (tabsContainer) {
+    tabsContainer.innerHTML = categories.map(cat => `
+      <button class="portfolio-cat-btn ${cat === activePortfolioCategory ? 'active' : ''}" onclick="filterPortfolio('${cat}')">
+        ${cat}
+      </button>
+    `).join('');
+  }
+
+  const filtered = activePortfolioCategory === 'All Celebrations'
+    ? VARAJA_DATA.projects
+    : VARAJA_DATA.projects.filter(p => p.category === activePortfolioCategory);
+
+  container.innerHTML = filtered.map((project, idx) => `
     <article class="project-card-item reveal-scale stagger-delay-${(idx % 3) + 1}" onclick="openCaseStudyModal('${project.id}')">
       <div class="project-thumb-wrap">
         <img src="${project.coverImage}" alt="${project.title}" loading="lazy">
-        <div class="project-overlay-content">
-          <span class="royal-badge" style="background:rgba(33,28,24,0.6); color:#FFF; border-color:rgba(255,255,255,0.3); margin-bottom:8px; align-self:flex-start;">
-            ${project.eventType}
+        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.78); color:var(--color-gold-light); border-color:var(--color-gold);">
+          ${project.eventType}
+        </span>
+      </div>
+      <div class="project-card-body">
+        <span class="project-card-tag">📍 ${project.location}</span>
+        <h3 class="project-couple-name">${project.title}</h3>
+        <div class="project-card-sub">${project.subtitle}</div>
+
+        <div class="project-card-quote-box">
+          "${project.testimonialQuote}"
+        </div>
+
+        <div class="project-card-footer-meta">
+          <span style="display:inline-flex; align-items:center; gap:6px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            <span>${project.guestCount}</span>
           </span>
-          <h3 class="project-couple-name">${project.title}</h3>
-          <span class="project-sub-location">${project.location}</span>
+          <span style="color:var(--color-gold-dark); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
+            <span>Explore Case Study</span>
+            <span>→</span>
+          </span>
         </div>
       </div>
     </article>
   `).join('');
 
   initScrollAnimations();
+}
+
+function filterPortfolio(cat) {
+  activePortfolioCategory = cat;
+  renderPortfolioGrid();
 }
 
 /* --------------------------------------------------------------------------

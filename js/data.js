@@ -1,6 +1,6 @@
 /**
  * BLUE ROSE PRODUCTION - Master Data Store
- * Includes Categorized Services, Venues, FAQs, and Budget Estimator Data
+ * Includes Categorized Services, Portfolio Projects, Venues, FAQs, and Budget Estimator Data
  */
 
 const VARAJA_DATA = {
@@ -28,6 +28,14 @@ const VARAJA_DATA = {
     "Decor & Scenography",
     "Hospitality & Concierge",
     "Destination & Galas"
+  ],
+
+  portfolioCategories: [
+    "All Celebrations",
+    "Royal Palace Weddings",
+    "Beachfront Ceremonies",
+    "Heritage Havelis",
+    "Cultural Traditions"
   ],
 
   services: [
@@ -153,6 +161,156 @@ const VARAJA_DATA = {
     }
   ],
 
+  projects: [
+    {
+      id: "ananya-arjun",
+      title: "Ananya & Arjun",
+      subtitle: "Zamindari Rajbari Heritage Wedding",
+      location: "Kolkata, West Bengal",
+      category: "Cultural Traditions",
+      eventType: "Bengali Heritage Wedding",
+      date: "February 2026",
+      guestCount: "450 Guests",
+      venue: "Taj Bengal & Heritage Rajbari, Kolkata",
+      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "Set amidst the architectural grandeur of a 150-year-old Rajbari in Kolkata, Ananya & Arjun's celebration was a poetic tribute to classic Bengali heritage. BLUE ROSE PRODUCTION orchestrated a 3-day royal affair featuring fragrant marigold mandaps, traditional Shehnai recitals, authentic Zamindari cuisine curated by celebrity chefs, and a candlelit lakeside reception.",
+      highlights: [
+        "Custom Rajbari restoration with 10,000+ tuberose blooms",
+        "Authentic 9-course Royal Bengali feast served on silver thalis",
+        "Live Sitar & Shehnai ensemble by classical maestros",
+        "Seamless management of 450 VIP guests with zero delays"
+      ],
+      testimonialQuote: "BLUE ROSE PRODUCTION brought our dream royal Bengali wedding to life with unmatched grace and perfection. Every detail was extraordinary!"
+    },
+    {
+      id: "rohan-meera",
+      title: "Rohan & Meera",
+      subtitle: "Lake Pichola Royal Palace Affair",
+      location: "Udaipur, Rajasthan",
+      category: "Royal Palace Weddings",
+      eventType: "Royal Palace Wedding",
+      date: "January 2026",
+      guestCount: "350 Guests",
+      venue: "City Palace & Jagmandir Island, Udaipur",
+      coverImage: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "A regal multi-day celebration in the City of Lakes. Guests arrived via illuminated royal boats to Lake Pichola for a magical Sangeet night followed by a sunset wedding ceremony framed by ancient Mewar architecture and a fireworks spectacle over the water.",
+      highlights: [
+        "Private boat charter across Lake Pichola for 350 guests",
+        "Custom floating mandap built with Dutch white roses & gold mirror work",
+        "Performance by Bollywood playback singers & Sufi troupes",
+        "Full royal procession with decorated elephants & vintage cars"
+      ],
+      testimonialQuote: "Our guests are still talking about how magical Udaipur felt under BLUE ROSE PRODUCTION’s leadership. Pure perfection!"
+    },
+    {
+      id: "sid-aisha",
+      title: "Siddharth & Aisha",
+      subtitle: "Sunset Arabian Sea Beach Vows",
+      location: "Goa, India",
+      category: "Beachfront Ceremonies",
+      eventType: "Beachfront Luxury Wedding",
+      date: "November 2025",
+      guestCount: "250 Guests",
+      venue: "The St. Regis Goa Resort",
+      coverImage: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "Combining chic coastal aesthetics with traditional Indian rituals, Siddharth & Aisha celebrated their union on the golden sands of Goa. Highlights included a tropical pastel Haldi party, a high-energy Poolside Sangeet, and an ethereal beachfront Pheras ceremony at dusk.",
+      highlights: [
+        "Pastel acrylic mandap positioned directly overlooking the Arabian Sea",
+        "Curated Portuguese-Goan fusion food stations",
+        "Sunset acoustic violin performance during ring exchange",
+        "Eco-friendly floral installations with zero plastic waste"
+      ],
+      testimonialQuote: "The attention to design and guest hospitality made our Goa wedding completely stress-free for us and our families."
+    },
+    {
+      id: "kabir-rhea",
+      title: "Kabir & Rhea",
+      subtitle: "Grand Palatial Sangeet & Anand Karaj",
+      location: "Jaipur, Rajasthan",
+      category: "Royal Palace Weddings",
+      eventType: "Palace Punjabi Wedding",
+      date: "December 2025",
+      guestCount: "600 Guests",
+      venue: "Fairmont Jaipur & Jai Mahal Palace",
+      coverImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "A vibrant celebration of Punjabi culture amidst Rajasthan's palatial grandeur. Featuring a serene morning Anand Karaj in a custom floral Gurdwara setup, followed by a 1000-person Sangeet gala with concert-grade lighting and international performers.",
+      highlights: [
+        "Custom 360-degree concert stage for Sangeet night",
+        "Serene morning Gurdwara structure created inside palace gardens",
+        "Luxury gift hampers with custom brass keepsakes for every guest",
+        "24-Hour live chaat counters and international dessert bar"
+      ],
+      testimonialQuote: "BLUE ROSE PRODUCTION executed a massive 600-guest wedding seamlessly. They handled everything with warmth and extreme professionalism!"
+    },
+    {
+      id: "vikram-devika",
+      title: "Vikram & Devika",
+      subtitle: "Mehrangarh Fort View Candlelit Haveli",
+      location: "Jodhpur, Rajasthan",
+      category: "Heritage Havelis",
+      eventType: "Heritage Haveli Wedding",
+      date: "October 2025",
+      guestCount: "180 Guests",
+      venue: "RAAS Jodhpur & Umaid Bhawan Gardens",
+      coverImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "An intimate, deeply personal celebration for 180 close family and friends in the shadow of Mehrangarh Fort. Candlelit courtyards, handwoven silk textiles, and curated Rajasthani folk performances created an unforgettable atmosphere.",
+      highlights: [
+        "10,000 hand-lit wax diyas across historic stone courtyards",
+        "Private acoustic performance by Manganiyar folk legends",
+        "Custom heirloom brass favors crafted by local Jodhpur artisans",
+        "Personalized butler service for every guest room"
+      ],
+      testimonialQuote: "Intimate, warm, and utterly magical. BLUE ROSE PRODUCTION turned our vision into an unforgettable memory."
+    },
+    {
+      id: "aditya-pooja",
+      title: "Aditya & Pooja",
+      subtitle: "Shore Temple Muhurtham & Reception",
+      location: "Mahabalipuram, Tamil Nadu",
+      category: "Cultural Traditions",
+      eventType: "Coastal Temple Wedding",
+      date: "March 2026",
+      guestCount: "400 Guests",
+      venue: "InterContinental Chennai Mahabalipuram Resort",
+      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+      gallery: [
+        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
+      ],
+      story: "A sacred Muhurtham ceremony overlooking the ancient shore temple ruins. Adorned with fresh jasmine strands, banana leaf motifs, and traditional Nadaswaram melodies, transitioning into a modern evening reception under palm groves.",
+      highlights: [
+        "Handcrafted carved wooden temple mandap draped in Mogra & Kanchipuram silk",
+        "Traditional Sadhya feast served on fresh banana leaves with 26 authentic delicacies",
+        "Carnatic fusion band performance at sunset",
+        "Bespoke silk saree & dhoti gifting concierge"
+      ],
+      testimonialQuote: "The reverence for our South Indian traditions coupled with modern luxury design was remarkable."
+    }
+  ],
+
   venues: [
     {
       id: "v1",
@@ -207,150 +365,6 @@ const VARAJA_DATA = {
       capacity: "100 – 350 Guests",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
       badge: "GLOBAL DESTINATION"
-    }
-  ],
-
-  projects: [
-    {
-      id: "ananya-arjun",
-      title: "Ananya & Arjun",
-      subtitle: "An Elegant Bengali Wedding",
-      location: "Kolkata, West Bengal",
-      eventType: "Traditional Bengali Heritage Wedding",
-      date: "February 2026",
-      guestCount: "450 Guests",
-      venue: "Taj Bengal & Heritage Rajbari, Kolkata",
-      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "Set amidst the architectural grandeur of a 150-year-old Rajbari in Kolkata, Ananya & Arjun's celebration was a poetic tribute to classic Bengali heritage. BLUE ROSE PRODUCTION orchestrated a 3-day royal affair featuring fragrant marigold mandaps, traditional Shehnai recitals, authentic Zamindari cuisine curated by celebrity chefs, and a candlelit lakeside reception.",
-      highlights: [
-        "Custom Rajbari restoration with 10,000+ tuberose blooms",
-        "Authentic 9-course Royal Bengali feast served on silver thalis",
-        "Live Sitar & Shehnai ensemble by classical maestros",
-        "Seamless management of 450 VIP guests with zero delays"
-      ],
-      testimonialQuote: "BLUE ROSE PRODUCTION brought our dream royal Bengali wedding to life with unmatched grace and perfection. Every detail was extraordinary!"
-    },
-    {
-      id: "rohan-meera",
-      title: "Rohan & Meera",
-      subtitle: "Royal Marwari Palace Wedding",
-      location: "Udaipur, Rajasthan",
-      eventType: "Royal Destination Palace Wedding",
-      date: "January 2026",
-      guestCount: "350 Guests",
-      venue: "City Palace & Jagmandir Island, Udaipur",
-      coverImage: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A regal multi-day celebration in the City of Lakes. Guests arrived via illuminated royal boats to Lake Pichola for a magical Sangeet night followed by a sunset wedding ceremony framed by ancient Mewar architecture and a fireworks spectacle over the water.",
-      highlights: [
-        "Private boat charter across Lake Pichola for 350 guests",
-        "Custom floating mandap built with Dutch white roses & gold mirror work",
-        "Performance by Bollywood playback singers & Sufi troupes",
-        "Full royal procession with decorated elephants & vintage cars"
-      ],
-      testimonialQuote: "Our guests are still talking about how magical Udaipur felt under BLUE ROSE PRODUCTION’s leadership. Pure perfection!"
-    },
-    {
-      id: "sid-aisha",
-      title: "Siddharth & Aisha",
-      subtitle: "Sunset Oceanfront Beach Wedding",
-      location: "Goa, India",
-      eventType: "Contemporary Luxury Beach Wedding",
-      date: "November 2025",
-      guestCount: "250 Guests",
-      venue: "The St. Regis Goa Resort",
-      coverImage: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "Combining chic coastal aesthetics with traditional Indian rituals, Siddharth & Aisha celebrated their union on the golden sands of Goa. Highlights included a tropical pastel Haldi party, a high-energy Poolside Sangeet, and an ethereal beachfront Pheras ceremony at dusk.",
-      highlights: [
-        "Pastel acrylic mandap positioned directly overlooking the Arabian Sea",
-        "Curated Portuguese-Goan fusion food stations",
-        "Sunset acoustic violin performance during ring exchange",
-        "Eco-friendly floral installations with zero plastic waste"
-      ],
-      testimonialQuote: "The attention to design and guest hospitality made our Goa wedding completely stress-free for us and our families."
-    },
-    {
-      id: "kabir-rhea",
-      title: "Kabir & Rhea",
-      subtitle: "Grand Punjabi Anand Karaj",
-      location: "Jaipur, Rajasthan",
-      eventType: "Royal Punjabi Wedding & Sangeet Gala",
-      date: "December 2025",
-      guestCount: "600 Guests",
-      venue: "Fairmont Jaipur & Jai Mahal Palace",
-      coverImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A vibrant celebration of Punjabi culture amidst Rajasthan's palatial grandeur. Featuring a serene morning Anand Karaj in a custom floral Gurdwara setup, followed by a 1000-person Sangeet gala with concert-grade lighting and international performers.",
-      highlights: [
-        "Custom 360-degree concert stage for Sangeet night",
-        "Serene morning Gurdwara structure created inside palace gardens",
-        "Luxury gift hampers with custom brass keepsakes for every guest",
-        "24-Hour live chaat counters and international dessert bar"
-      ],
-      testimonialQuote: "BLUE ROSE PRODUCTION executed a massive 600-guest wedding seamlessly. They handled everything with warmth and extreme professionalism!"
-    },
-    {
-      id: "vikram-devika",
-      title: "Vikram & Devika",
-      subtitle: "Intimate Heritage Haveli Ceremony",
-      location: "Jodhpur, Rajasthan",
-      eventType: "Intimate Heritage Royal Wedding",
-      date: "October 2025",
-      guestCount: "180 Guests",
-      venue: "RAAS Jodhpur & Umaid Bhawan Gardens",
-      coverImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "An intimate, deeply personal celebration for 180 close family and friends in the shadow of Mehrangarh Fort. Candlelit courtyards, handwoven silk textiles, and curated Rajasthani folk performances created an unforgettable atmosphere.",
-      highlights: [
-        "10,000 hand-lit wax diyas across historic stone courtyards",
-        "Private acoustic performance by Manganiyar folk legends",
-        "Custom heirloom brass favors crafted by local Jodhpur artisans",
-        "Personalized butler service for every guest room"
-      ],
-      testimonialQuote: "Intimate, warm, and utterly magical. BLUE ROSE PRODUCTION turned our vision into an unforgettable memory."
-    },
-    {
-      id: "aditya-pooja",
-      title: "Aditya & Pooja",
-      subtitle: "Royal South Indian Temple Wedding",
-      location: "Mahabalipuram, Tamil Nadu",
-      eventType: "Traditional Coastal South Indian Wedding",
-      date: "March 2026",
-      guestCount: "400 Guests",
-      venue: "InterContinental Chennai Mahabalipuram Resort",
-      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A sacred Muhurtham ceremony overlooking the ancient shore temple ruins. Adorned with fresh jasmine strands, banana leaf motifs, and traditional Nadaswaram melodies, transitioning into a modern evening reception under palm groves.",
-      highlights: [
-        "Handcrafted carved wooden temple mandap draped in Mogra & Kanchipuram silk",
-        "Traditional Sadhya feast served on fresh banana leaves with 26 authentic delicacies",
-        "Carnatic fusion band performance at sunset",
-        "Bespoke silk saree & dhoti gifting concierge"
-      ],
-      testimonialQuote: "The reverence for our South Indian traditions coupled with modern luxury design was remarkable."
     }
   ],
 
