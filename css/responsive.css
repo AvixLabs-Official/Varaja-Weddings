@@ -94,21 +94,30 @@ body:has(.modal-overlay.active) .mobile-bottom-dock {
 /* ==========================================================================
    TABLET BREAKPOINTS (992px - 768px)
    ========================================================================== */
-@media (max-width: 992px) {
-  body { padding-top: 80px; }
+  .hero-split-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+    text-align: center;
+  }
 
-  .site-header { height: 80px !important; }
-  .nav-links-desktop { display: none !important; }
-  .mobile-hamburger-btn { display: flex !important; }
+  .hero-editorial-stage {
+    align-items: center !important;
+    text-align: center !important;
+  }
 
-  .about-editorial-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-  .about-img-frame img { height: 440px !important; }
-  
-  .portfolio-editorial-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
-  .featured-wedding-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
-  
-  .contact-stage-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-  .google-reviews-card { flex-direction: column !important; text-align: center !important; gap: 24px !important; }
+  .hero-event-type-pills {
+    justify-content: center !important;
+  }
+
+  .hero-arch-frame {
+    height: 420px !important;
+  }
+
+  .hero-floating-stat-badge {
+    left: 16px !important;
+    top: -20px !important;
+    padding: 10px 16px !important;
+  }
 }
 
 /* ==========================================================================

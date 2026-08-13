@@ -22,8 +22,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. STICKY HEADER
+   1. STICKY HEADER & HERO INTERACTIVE STAGE
    -------------------------------------------------------------------------- */
+const HERO_PHOTOS = [
+  { url: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85", caption: "Udaipur • Royal Palace Mandap" },
+  { url: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85", caption: "Goa • Sunset Beachfront Ceremony" },
+  { url: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85", caption: "Kolkata • Heritage Rajbari Courtyard" },
+  { url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85", caption: "Jaipur • Palatial Sangeet Gala" }
+];
+
+const HERO_SUBTITLES = {
+  palace: "From Udaipur to Jodhpur, we orchestrate royal heritage weddings across India's most coveted palaces with authentic Zamindari & Marwari majesty.",
+  beach: "Ethereal beachfront mandaps, sunset vows, and chic oceanfront galas at 5-star coastal resorts in Goa, Kerala & Bali.",
+  heritage: "Restoring historic havelis and ancestral estates into intimate candlelit wedding venues rich in culture and timeless romance.",
+  intimate: "Bespoke private luxury celebrations for 80 to 200 guests with personalized butler service, custom keepsakes, and fine gastronomy."
+};
+
 function initStickyHeader() {
   const header = document.getElementById('main-header');
   if (!header) return;
@@ -35,6 +49,38 @@ function initStickyHeader() {
       header.classList.remove('scrolled');
     }
   });
+}
+
+function switchHeroEventType(typeKey, element) {
+  document.querySelectorAll('.hero-type-pill').forEach(el => el.classList.remove('active'));
+  if (element) element.classList.add('active');
+
+  const subElement = document.getElementById('hero-dynamic-sub');
+  if (subElement && HERO_SUBTITLES[typeKey]) {
+    subElement.style.opacity = '0';
+    setTimeout(() => {
+      subElement.textContent = HERO_SUBTITLES[typeKey];
+      subElement.style.opacity = '1';
+    }, 200);
+  }
+}
+
+function switchHeroPhoto(index) {
+  const mainImg = document.getElementById('hero-arch-img');
+  const captionTxt = document.getElementById('hero-arch-caption');
+  const dots = document.querySelectorAll('.hero-thumb-dot');
+
+  if (!mainImg || !HERO_PHOTOS[index]) return;
+
+  dots.forEach(d => d.classList.remove('active'));
+  if (dots[index]) dots[index].classList.add('active');
+
+  mainImg.style.opacity = '0.3';
+  setTimeout(() => {
+    mainImg.src = HERO_PHOTOS[index].url;
+    mainImg.style.opacity = '1';
+    if (captionTxt) captionTxt.textContent = HERO_PHOTOS[index].caption;
+  }, 250);
 }
 
 /* --------------------------------------------------------------------------

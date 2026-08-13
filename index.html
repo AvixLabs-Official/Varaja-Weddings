@@ -108,59 +108,110 @@
     <!-- ==========================================================================
        HERO SECTION (LUXURY EDITORIAL)
        ========================================================================== -->
+    <!-- ==========================================================================
+       UNIQUE HERO SECTION (ASYMMETRIC EDITORIAL STAGE)
+       ========================================================================== -->
     <section class="hero-section" id="hero">
-      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1920&q=90" alt="Luxury Event Management Blue Rose Production" class="hero-bg-media" id="hero-bg-image">
-      <div class="hero-overlay-gradient"></div>
-      <div class="hero-gold-dust"></div>
-
-      <div class="container hero-content-box">
-        <div class="hero-live-availability reveal-fade-in">
-          <span class="live-pulse-dot"></span>
-          <span>Winter 2026 / Spring 2027 Destination Bookings Open</span>
-        </div>
-
-        <h1 class="hero-main-title reveal-on-scroll">
-          Your Vision. <br><span class="gold-text">Beautifully Celebrated.</span>
-        </h1>
-
-        <p class="hero-sub-text reveal-on-scroll stagger-delay-1">
-          From royal heritage palace weddings in Rajasthan to luxury oceanfront galas in Goa & Bali, <strong>BLUE ROSE PRODUCTION</strong> designs, plans, and executes extraordinary celebrations with white-glove precision.
-        </p>
-
-        <div class="hero-cta-group reveal-on-scroll stagger-delay-2">
-          <a href="#contact" class="btn btn-gold">
-            <span>Plan Your Event</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="#estimator" class="btn btn-glass">
-            <span>Calculate Investment</span>
-          </a>
-        </div>
-
-        <div class="hero-trust-highlights reveal-fade-in stagger-delay-3">
-          <span>👑 Direct Access to 50+ Royal Palaces</span>
-          <span>•</span>
-          <span>🔒 100% NDA Privacy Guarantee</span>
-          <span>•</span>
-          <span>⭐ 4.9 Rating (250+ Verified Reviews)</span>
-        </div>
+      <!-- Rotating Monogram Watermark Background -->
+      <div class="hero-watermark-emblem">
+        <svg width="420" height="420" viewBox="0 0 100 100" fill="none">
+          <path d="M50 22 C34 22 24 34 24 50 C24 66 36 78 50 78 C64 78 76 66 76 50 C76 34 66 22 50 22 Z" stroke="#C5A46D" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <path d="M50 28 C38 32 32 42 34 54 C36 64 46 70 56 68 C66 65 72 55 68 45" stroke="#C5A46D" stroke-width="2" stroke-linecap="round"/>
+        </svg>
       </div>
 
-      <!-- Floating Case Study Preview Badge (Bottom Right) -->
-      <div class="hero-case-study-card reveal-scale stagger-delay-4" onclick="openCaseStudyModal('ananya-arjun')">
-        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=200&q=80" alt="Featured Royal Wedding" class="hero-case-study-thumb">
-        <div style="text-align:left;">
-          <span style="font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-light);">FEATURED CASE STUDY</span>
-          <h4 style="font-family:var(--font-serif); font-size:1.05rem; font-weight:600; color:#FFF; margin-top:2px; line-height:1.2;">Ananya & Arjun</h4>
-          <span style="font-size:0.75rem; color:rgba(247,243,234,0.7); display:block; margin-top:2px;">Heritage Rajbari, Kolkata →</span>
-        </div>
-      </div>
+      <div class="container">
+        <div class="hero-split-grid">
+          <!-- Left Editorial Stage -->
+          <div class="hero-editorial-stage reveal-on-scroll">
+            <div class="royal-badge" style="margin-bottom:16px;">
+              <span class="live-pulse-dot" style="display:inline-block; margin-right:4px;"></span>
+              <span>WINTER 2026 / SPRING 2027 DESTINATION DATES OPEN</span>
+            </div>
 
-      <div class="hero-scroll-indicator">
-        <span>SCROLL TO EXPLORE</span>
-        <div class="scroll-line-anim"></div>
+            <div class="hero-event-type-pills">
+              <button class="hero-type-pill active" onclick="switchHeroEventType('palace', this)">👑 Royal Palaces</button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('beach', this)">🌊 Beach Resorts</button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('heritage', this)">🏰 Heritage Haveli</button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('intimate', this)">✨ Intimate Luxury</button>
+            </div>
+
+            <h1 class="hero-main-title-split">
+              Crafting Royal Celebrations <br><span class="gold-text">Across India & Beyond.</span>
+            </h1>
+
+            <p class="hero-dynamic-sub" id="hero-dynamic-sub">
+              From Udaipur to Jodhpur, we orchestrate royal heritage weddings across India's most coveted palaces with authentic Zamindari & Marwari majesty.
+            </p>
+
+            <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap;">
+              <a href="#contact" class="btn btn-gold">
+                <span>Plan Your Event</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+              <a href="#estimator" class="btn btn-dark">
+                <span>Calculate Investment</span>
+              </a>
+            </div>
+
+            <div style="margin-top:28px; font-size:0.8rem; color:var(--text-secondary); display:flex; gap:20px; flex-wrap:wrap;">
+              <span>⭐ <strong>4.9 Rating</strong> (250+ Reviews)</span>
+              <span>🔒 <strong>100% NDA Privacy</strong></span>
+              <span>👑 <strong>50+ Palaces</strong></span>
+            </div>
+          </div>
+
+          <!-- Right Showcase Stage (Arch Frame + Photo Switcher Dots) -->
+          <div class="hero-showcase-stage reveal-scale stagger-delay-2">
+            <div class="hero-arch-frame">
+              <img id="hero-arch-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="Royal Wedding Blue Rose Production">
+              
+              <div class="hero-photo-thumbs-bar">
+                <div class="hero-thumb-dot active" onclick="switchHeroPhoto(0)" title="Udaipur Palace">
+                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=100&q=70" alt="Udaipur">
+                </div>
+                <div class="hero-thumb-dot" onclick="switchHeroPhoto(1)" title="Goa Beachfront">
+                  <img src="https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=100&q=70" alt="Goa">
+                </div>
+                <div class="hero-thumb-dot" onclick="switchHeroPhoto(2)" title="Kolkata Rajbari">
+                  <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=100&q=70" alt="Kolkata">
+                </div>
+                <div class="hero-thumb-dot" onclick="switchHeroPhoto(3)" title="Jaipur Sangeet">
+                  <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=100&q=70" alt="Jaipur">
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating Stat Badge -->
+            <div class="hero-floating-stat-badge">
+              <div style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--color-gold-light); line-height:1;">
+                150+
+              </div>
+              <div style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted);">
+                Royal Weddings<br><strong style="color:#FFF;">Executed</strong>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
+
+    <!-- Ticker Tape Ribbon -->
+    <div class="hero-ticker-tape">
+      <div class="ticker-track">
+        <span>UDAIPUR PALACES</span> <span>•</span>
+        <span>GOA BEACHFRONT RESORTS</span> <span>•</span>
+        <span>JAIPUR HERITAGE FORTS</span> <span>•</span>
+        <span>KOLKATA ZAMINDARI RAJBARI</span> <span>•</span>
+        <span>LAKE COMO VILLAS</span> <span>•</span>
+        <span>BALI RIVERFRONT SANCTUARY</span> <span>•</span>
+        <span>HYDERABAD NIZAM RESIDENCE</span> <span>•</span>
+        <span>UDAIPUR PALACES</span> <span>•</span>
+        <span>GOA BEACHFRONT RESORTS</span> <span>•</span>
+        <span>JAIPUR HERITAGE FORTS</span> <span>•</span>
+        <span>KOLKATA ZAMINDARI RAJBARI</span> <span>•</span>
+      </div>
+    </div>
 
     <!-- ==========================================================================
        TRUST SECTION (ANIMATED STATS)
