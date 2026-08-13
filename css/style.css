@@ -1,33 +1,34 @@
 /* ==========================================================================
-   BLUE ROSE PRODUCTION - Master Luxury Event & Wedding Design System
-   Color Palette: Sapphire Blue (#1E3A8A, #2563EB), Champagne (#F4EFE6), Obsidian (#0F172A), Gold (#C5A059)
+   BLUE ROSE PRODUCTION - Master Luxury Editorial Design System
+   Color Palette:
+   - Warm Ivory (#F7F3EA) — 60% Main Backgrounds
+   - Deep Espresso (#211C18) — 25% Primary Text, Dark Sections, Footer, Buttons
+   - Soft Beige (#E8DED0) — 10% Cards & Alternate Sections
+   - Champagne Gold (#C5A46D) — 5% Restrained Accents, Borders, Icons, Highlights
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 :root {
-  /* Color Palette */
-  --bg-primary: #FAF8F5;
-  --bg-surface: #FFFFFF;
-  --bg-champagne: #F4EFE6;
-  --bg-dark: #0F172A;
-  --bg-dark-surface: #1E293B;
-  
-  --color-gold: #C5A059;
-  --color-gold-light: #E4C88E;
-  --color-gold-dark: #8C6D2D;
-  --color-gold-glow: rgba(197, 160, 89, 0.25);
+  /* Exact Design Palette */
+  --bg-primary: #F7F3EA;       /* Warm Ivory (60%) */
+  --bg-surface: #FFFFFF;       /* Clean White */
+  --bg-secondary: #E8DED0;     /* Soft Beige (10%) */
+  --bg-dark: #211C18;          /* Deep Espresso (25%) */
+  --bg-dark-surface: #2E2722;  /* Elevated Espresso */
 
-  --color-blue-rose: #2563EB;
-  --color-blue-dark: #1E3A8A;
-  
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #8C8F99;
-  --text-light: #FAF8F5;
-  
-  --border-color: rgba(197, 160, 89, 0.22);
-  --border-color-light: #E6DEC8;
+  --color-gold: #C5A46D;       /* Champagne Gold (5% Restrained) */
+  --color-gold-light: #E0CA9F; /* Light Gold */
+  --color-gold-dark: #9C7D46;  /* Dark Gold */
+  --color-gold-glow: rgba(197, 164, 109, 0.2);
+
+  --text-primary: #211C18;     /* Deep Espresso */
+  --text-secondary: #756D63;   /* Muted Warm Taupe */
+  --text-muted: #9E968C;       /* Light Muted Text */
+  --text-light: #F7F3EA;       /* Warm Ivory */
+
+  --border-color: rgba(197, 164, 109, 0.28);
+  --border-color-light: #E2D7C7;
   --border-dark: rgba(255, 255, 255, 0.12);
 
   /* Typography */
@@ -35,10 +36,10 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Shadows & Radius */
-  --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 12px 36px rgba(15, 23, 42, 0.08);
-  --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.14);
-  --shadow-gold: 0 10px 30px rgba(197, 160, 89, 0.25);
+  --shadow-sm: 0 4px 16px rgba(33, 28, 24, 0.04);
+  --shadow-md: 0 12px 36px rgba(33, 28, 24, 0.08);
+  --shadow-lg: 0 24px 60px rgba(33, 28, 24, 0.14);
+  --shadow-gold: 0 10px 30px rgba(197, 164, 109, 0.25);
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -110,13 +111,6 @@ button, input, select, textarea {
   display: inline-block;
 }
 
-.blue-rose-text {
-  background: linear-gradient(135deg, #60A5FA 0%, #2563EB 50%, #1E3A8A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
 .section-tag-lbl {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -166,12 +160,12 @@ button, input, select, textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  background-color: var(--bg-dark);
   border: 1.5px solid var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(30, 58, 138, 0.3);
+  box-shadow: 0 4px 16px rgba(33, 28, 24, 0.2);
   transition: var(--transition);
 }
 
@@ -195,7 +189,7 @@ button, input, select, textarea {
   font-weight: 800;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--color-gold-dark);
+  color: var(--color-gold);
   display: block;
   margin-top: 3px;
 }
@@ -220,15 +214,15 @@ button, input, select, textarea {
 }
 
 .btn-gold {
-  background: linear-gradient(135deg, #D4AF37 0%, #C5A059 100%);
+  background: linear-gradient(135deg, #D5B37E 0%, #C5A46D 100%);
   color: #FFFFFF;
-  box-shadow: 0 8px 24px rgba(197, 160, 89, 0.3);
+  box-shadow: 0 8px 24px rgba(197, 164, 109, 0.3);
 }
 
 .btn-gold:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(197, 160, 89, 0.45);
-  background: linear-gradient(135deg, #E4C88E 0%, #D4AF37 100%);
+  box-shadow: 0 14px 32px rgba(197, 164, 109, 0.45);
+  background: linear-gradient(135deg, #E0CA9F 0%, #C5A46D 100%);
 }
 
 .btn-dark {
@@ -237,15 +231,15 @@ button, input, select, textarea {
 }
 
 .btn-dark:hover {
-  background-color: #1E293B;
+  background-color: #352E28;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 24px rgba(33, 28, 24, 0.25);
 }
 
 .btn-outline-gold {
   background-color: transparent;
   border-color: var(--color-gold);
-  color: var(--color-gold-dark);
+  color: var(--text-primary);
 }
 
 .btn-outline-gold:hover {
@@ -255,14 +249,14 @@ button, input, select, textarea {
 }
 
 .btn-glass {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(247, 243, 234, 0.15);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(247, 243, 234, 0.3);
   color: #FFFFFF;
 }
 
 .btn-glass:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(247, 243, 234, 0.3);
   border-color: #FFFFFF;
   transform: translateY(-2px);
 }
@@ -272,7 +266,7 @@ button, input, select, textarea {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background-color: rgba(197, 160, 89, 0.1);
+  background-color: rgba(197, 164, 109, 0.12);
   border: 1px solid var(--border-color);
   padding: 6px 16px;
   border-radius: 30px;
@@ -297,7 +291,7 @@ button, input, select, textarea {
   left: 0;
   right: 0;
   height: 90px;
-  background-color: rgba(250, 248, 245, 0.92);
+  background-color: rgba(247, 243, 234, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-color-light);
@@ -307,8 +301,8 @@ button, input, select, textarea {
 
 .site-header.scrolled {
   height: 72px;
-  background-color: rgba(250, 248, 245, 0.98);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  background-color: rgba(247, 243, 234, 0.98);
+  box-shadow: 0 4px 24px rgba(33, 28, 24, 0.06);
 }
 
 .header-container {
@@ -359,7 +353,7 @@ button, input, select, textarea {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   display: none;
@@ -378,7 +372,7 @@ button, input, select, textarea {
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(15, 23, 42, 0.75);
+  background-color: rgba(33, 28, 24, 0.75);
   backdrop-filter: blur(8px);
   z-index: 1050;
   opacity: 0;
@@ -425,7 +419,7 @@ button, input, select, textarea {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   font-size: 1.2rem;
   cursor: pointer;
@@ -450,7 +444,7 @@ button, input, select, textarea {
 }
 
 .mobile-drawer-links a:hover {
-  color: var(--color-gold-dark);
+  color: var(--color-gold);
 }
 
 /* Auto-hide Site Header when Mobile Drawer is open */
@@ -497,7 +491,7 @@ body:has(.modal-overlay.active) .site-header {
 .hero-overlay-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.9) 100%);
+  background: linear-gradient(180deg, rgba(33, 28, 24, 0.75) 0%, rgba(33, 28, 24, 0.5) 50%, rgba(33, 28, 24, 0.9) 100%);
 }
 
 .hero-content-box {
@@ -520,7 +514,7 @@ body:has(.modal-overlay.active) .site-header {
 
 .hero-sub-text {
   font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(247, 243, 234, 0.88);
   max-width: 720px;
   margin: 0 auto 40px;
   font-weight: 300;
@@ -545,7 +539,7 @@ body:has(.modal-overlay.active) .site-header {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(247, 243, 234, 0.6);
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -606,9 +600,10 @@ body:has(.modal-overlay.active) .site-header {
   color: var(--text-secondary);
 }
 
-/* About Section */
+/* About Section (Warm Ivory 60%) */
 .about-section {
   padding: 120px 0;
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -656,10 +651,10 @@ body:has(.modal-overlay.active) .site-header {
   padding: 8px;
 }
 
-/* Services Section */
+/* Services Section (Soft Beige 10% Background) */
 .services-section {
   padding: 120px 0;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -732,6 +727,7 @@ body:has(.modal-overlay.active) .site-header {
 /* Portfolio Gallery (Asymmetrical Editorial Grid) */
 .portfolio-section {
   padding: 120px 0;
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -778,7 +774,7 @@ body:has(.modal-overlay.active) .site-header {
 .project-overlay-content {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.92) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(33, 28, 24, 0.92) 100%);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
@@ -800,7 +796,7 @@ body:has(.modal-overlay.active) .site-header {
   letter-spacing: 0.05em;
 }
 
-/* Featured Wedding Section */
+/* Featured Wedding Section (Deep Espresso 25%) */
 .featured-wedding-section {
   position: relative;
   padding: 140px 0;
@@ -841,7 +837,7 @@ body:has(.modal-overlay.active) .site-header {
 /* Why Choose Us Section */
 .why-section {
   padding: 120px 0;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -854,7 +850,7 @@ body:has(.modal-overlay.active) .site-header {
 
 .why-card-item {
   padding: 36px 28px;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   transition: var(--transition);
@@ -865,6 +861,7 @@ body:has(.modal-overlay.active) .site-header {
   transform: translateY(-4px);
   border-color: var(--color-gold);
   box-shadow: var(--shadow-sm);
+  background-color: var(--bg-surface);
 }
 
 .why-card-num {
@@ -884,10 +881,10 @@ body:has(.modal-overlay.active) .site-header {
   margin-bottom: 12px;
 }
 
-/* Testimonials Carousel */
+/* Testimonials Carousel (Soft Beige 10% Background) */
 .testimonials-section {
   padding: 120px 0;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -937,12 +934,12 @@ body:has(.modal-overlay.active) .site-header {
 /* Google Reviews Banner */
 .google-reviews-section {
   padding: 80px 0;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
 .google-reviews-card {
-  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+  background: linear-gradient(135deg, #2E2722 0%, #211C18 100%);
   color: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 48px 56px;
@@ -970,6 +967,7 @@ body:has(.modal-overlay.active) .site-header {
 /* Full Screen Lightbox & Gallery */
 .gallery-section {
   padding: 120px 0;
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -1026,10 +1024,10 @@ body:has(.modal-overlay.active) .site-header {
   transform: scale(1.08);
 }
 
-/* Process Section Timeline */
+/* Process Section Timeline (Soft Beige 10% Background) */
 .process-section {
   padding: 120px 0;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -1058,7 +1056,7 @@ body:has(.modal-overlay.active) .site-header {
   margin-bottom: 16px;
 }
 
-/* Dramatic CTA Section */
+/* Dramatic CTA Section (Deep Espresso 25%) */
 .cta-banner-section {
   position: relative;
   padding: 140px 0;
@@ -1077,9 +1075,10 @@ body:has(.modal-overlay.active) .site-header {
   opacity: 0.35;
 }
 
-/* Contact / Enquiry Section */
+/* Contact / Enquiry Section (Warm Ivory 60%) */
 .contact-section {
   padding: 120px 0;
+  background-color: var(--bg-primary);
   border-bottom: 1px solid var(--border-color-light);
 }
 
@@ -1091,7 +1090,7 @@ body:has(.modal-overlay.active) .site-header {
 }
 
 .contact-info-card {
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   padding: 40px;
   border-radius: var(--radius-md);
@@ -1169,7 +1168,7 @@ body:has(.modal-overlay.active) .site-header {
   animation: pulseGreen 1.8s infinite;
 }
 
-/* Footer */
+/* Footer (Deep Espresso 25%) */
 .site-footer {
   background-color: var(--bg-dark);
   color: var(--text-light);
@@ -1197,7 +1196,7 @@ body:has(.modal-overlay.active) .site-header {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(15, 23, 42, 0.85);
+  background-color: rgba(33, 28, 24, 0.85);
   backdrop-filter: blur(12px);
   z-index: 2000;
   display: flex;
@@ -1234,7 +1233,7 @@ body:has(.modal-overlay.active) .site-header {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background-color: var(--bg-champagne);
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
   font-size: 1.2rem;
   cursor: pointer;
