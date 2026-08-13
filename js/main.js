@@ -1,10 +1,10 @@
 /**
- * VARAJA LUXURY WEDDINGS & EVENTS - Main Interactive Orchestrator
+ * BLUE ROSE PRODUCTION - Main Interactive Orchestrator
+ * Features Premium Editorial Scroll Reveal Animations & Micro-Interactions
  */
 
 let activeGalleryCategory = 'All';
 let currentTestimonialIndex = 0;
-let testimonialTimer = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderGalleryGrid();
   initTestimonialsSlider();
   initInquiryForm();
+  initScrollAnimations();
 });
 
 /* --------------------------------------------------------------------------
@@ -111,14 +112,14 @@ function animateCounters() {
 }
 
 /* --------------------------------------------------------------------------
-   4. RENDER SERVICES GRID
+   4. RENDER SERVICES GRID WITH STAGGER ANIMATIONS
    -------------------------------------------------------------------------- */
 function renderServicesGrid() {
   const container = document.getElementById('services-cards-container');
   if (!container || !VARAJA_DATA?.services) return;
 
-  container.innerHTML = VARAJA_DATA.services.map(service => `
-    <article class="service-card-item">
+  container.innerHTML = VARAJA_DATA.services.map((service, idx) => `
+    <article class="service-card-item reveal-on-scroll stagger-delay-${(idx % 4) + 1}">
       <div class="service-img-wrap">
         <img src="${service.image}" alt="${service.title}" loading="lazy">
       </div>
@@ -138,21 +139,23 @@ function renderServicesGrid() {
       </div>
     </article>
   `).join('');
+
+  initScrollAnimations();
 }
 
 /* --------------------------------------------------------------------------
-   5. RENDER PORTFOLIO & CASE STUDY MODAL
+   5. RENDER PORTFOLIO & CASE STUDY MODAL WITH STAGGER ANIMATIONS
    -------------------------------------------------------------------------- */
 function renderPortfolioGrid() {
   const container = document.getElementById('portfolio-grid-container');
   if (!container || !VARAJA_DATA?.projects) return;
 
-  container.innerHTML = VARAJA_DATA.projects.map(project => `
-    <article class="project-card-item" onclick="openCaseStudyModal('${project.id}')">
+  container.innerHTML = VARAJA_DATA.projects.map((project, idx) => `
+    <article class="project-card-item reveal-scale stagger-delay-${(idx % 3) + 1}" onclick="openCaseStudyModal('${project.id}')">
       <div class="project-thumb-wrap">
         <img src="${project.coverImage}" alt="${project.title}" loading="lazy">
         <div class="project-overlay-content">
-          <span class="royal-badge" style="background:rgba(18,19,22,0.6); color:#FFF; border-color:rgba(255,255,255,0.3); margin-bottom:8px; align-self:flex-start;">
+          <span class="royal-badge" style="background:rgba(33,28,24,0.6); color:#FFF; border-color:rgba(255,255,255,0.3); margin-bottom:8px; align-self:flex-start;">
             ${project.eventType}
           </span>
           <h3 class="project-couple-name">${project.title}</h3>
@@ -161,6 +164,8 @@ function renderPortfolioGrid() {
       </div>
     </article>
   `).join('');
+
+  initScrollAnimations();
 }
 
 function openCaseStudyModal(projectId) {
@@ -193,7 +198,7 @@ function openCaseStudyModal(projectId) {
       </p>
     </div>
 
-    <div style="background-color:var(--bg-champagne); padding:28px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:32px;">
+    <div style="background-color:var(--bg-secondary); padding:28px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:32px;">
       <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:16px;">Celebration Highlights</h4>
       <ul style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; font-size:0.9rem; color:var(--text-secondary);">
         ${project.highlights.map(h => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--color-gold); font-weight:800;">✓</span><span>${h}</span></li>`).join('')}
@@ -206,7 +211,7 @@ function openCaseStudyModal(projectId) {
 
     <div style="margin-top:40px; text-align:center;">
       <a href="#contact" onclick="closeCaseStudyModal()" class="btn btn-gold">
-        <span>Plan Your Wedding Like This</span>
+        <span>Plan Your Event Like This</span>
       </a>
     </div>
   `;
@@ -245,15 +250,17 @@ function renderGalleryGrid() {
     ? VARAJA_DATA.galleryItems
     : VARAJA_DATA.galleryItems.filter(g => g.category === activeGalleryCategory);
 
-  container.innerHTML = filtered.map(item => `
-    <div class="gallery-photo-item" onclick="openLightbox('${item.image}', '${item.title}', '${item.location}')">
+  container.innerHTML = filtered.map((item, idx) => `
+    <div class="gallery-photo-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}" onclick="openLightbox('${item.image}', '${item.title}', '${item.location}')">
       <img src="${item.image}" alt="${item.title}" loading="lazy">
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(18,19,22,0.85) 100%); padding:20px; display:flex; flex-direction:column; justify-content:flex-end; color:#FFF;">
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(33,28,24,0.88) 100%); padding:20px; display:flex; flex-direction:column; justify-content:flex-end; color:#FFF;">
         <span style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-light);">${item.category} • ${item.location}</span>
         <h4 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600;">${item.title}</h4>
       </div>
     </div>
   `).join('');
+
+  initScrollAnimations();
 }
 
 function filterGallery(cat) {
@@ -295,17 +302,25 @@ function renderTestimonialCard() {
 
   const t = VARAJA_DATA.testimonials[currentTestimonialIndex];
 
-  container.innerHTML = `
-    <div class="testimonial-stars">★★★★★</div>
-    <p class="testimonial-quote-txt">"${t.quote}"</p>
-    <div class="testimonial-couple-info">
-      <img src="${t.avatar}" alt="${t.coupleName}" class="couple-avatar-img">
-      <div style="text-align:left;">
-        <h4 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin-bottom:2px;">${t.coupleName}</h4>
-        <span style="font-size:0.8rem; color:var(--color-gold-dark); font-weight:600;">${t.location}</span>
+  container.style.opacity = '0';
+  container.style.transform = 'translateY(12px)';
+  container.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+
+  setTimeout(() => {
+    container.innerHTML = `
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-quote-txt">"${t.quote}"</p>
+      <div class="testimonial-couple-info">
+        <img src="${t.avatar}" alt="${t.coupleName}" class="couple-avatar-img">
+        <div style="text-align:left;">
+          <h4 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin-bottom:2px;">${t.coupleName}</h4>
+          <span style="font-size:0.8rem; color:var(--color-gold-dark); font-weight:600;">${t.location}</span>
+        </div>
       </div>
-    </div>
-  `;
+    `;
+    container.style.opacity = '1';
+    container.style.transform = 'translateY(0)';
+  }, 150);
 }
 
 function prevTestimonial() {
@@ -377,7 +392,7 @@ function initInquiryForm() {
         alertBox.className = 'form-alert success';
         alertBox.innerHTML = `
           <div style="font-weight:700;">✨ Consultation Request Submitted Successfully!</div>
-          <div style="font-size:0.85rem; margin-top:4px;">Our wedding concierge will contact you via WhatsApp & Email within 12 hours.</div>
+          <div style="font-size:0.85rem; margin-top:4px;">Our event concierge will contact you via WhatsApp & Email within 12 hours.</div>
         `;
         form.reset();
       }
@@ -386,4 +401,25 @@ function initInquiryForm() {
       submitBtn.innerHTML = originalBtnText;
     }
   });
+}
+
+/* --------------------------------------------------------------------------
+   9. INTERSECTION OBSERVER FOR EDITORIAL SCROLL REVEALS
+   -------------------------------------------------------------------------- */
+function initScrollAnimations() {
+  const animatedElements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade-in, .reveal-scale, .gold-divider');
+  if (!animatedElements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  animatedElements.forEach(el => observer.observe(el));
 }
