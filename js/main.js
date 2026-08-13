@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
    -------------------------------------------------------------------------- */
 const HERO_PHOTOS = [
   { url: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85", caption: "Udaipur • Royal Palace Mandap" },
-  { url: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85", caption: "Goa • Sunset Beachfront Ceremony" },
+  { url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85", caption: "Goa • Sunset Beachfront Ceremony" },
   { url: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85", caption: "Kolkata • Heritage Rajbari Courtyard" },
   { url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85", caption: "Jaipur • Palatial Sangeet Gala" }
 ];
