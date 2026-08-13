@@ -1,6 +1,6 @@
 /**
  * BLUE ROSE PRODUCTION - Realistic Agency Data Store
- * Established Wedding Planning & Event Management Studio
+ * Established Luxury Wedding Planning & Event Management Studio
  */
 
 const BLUEROSE_DATA = {
@@ -77,7 +77,7 @@ const BLUEROSE_DATA = {
       location: "Heritage Rajbari, Kolkata",
       type: "3-Day Traditional & Contemporary Wedding",
       image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85",
-      snippet: "An intimate celebration blending traditional rituals with timeless floral design and candlelit evenings."
+      snippet: "An intimate celebration blending traditional Bengali rituals with timeless floral design and candlelit evenings."
     },
     {
       id: "w2",
@@ -85,34 +85,34 @@ const BLUEROSE_DATA = {
       location: "Lakeside Resort, Udaipur",
       type: "Destination Palace Wedding",
       image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
-      snippet: "A vibrant multi-event destination wedding set against scenic lake views and heritage architecture."
+      snippet: "A vibrant multi-event destination wedding set against scenic lake views and heritage palace architecture."
     },
     {
       id: "w3",
       title: "Aisha & Siddharth",
       location: "Beachfront Estate, Goa",
       type: "Sunset Coastal Celebration",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=800&q=85",
-      snippet: "A relaxed beachfront celebration featuring pastel Mandap florals, oceanfront vows, and a lively Sangeet."
+      image: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800&q=85",
+      snippet: "A relaxed beachfront celebration featuring pastel Mandap florals, oceanfront vows, and a lively sunset reception."
     }
   ],
 
   gallery: [
     {
-      caption: "Floral Mandap Design",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85"
+      caption: "Bridal Couture & Heirloom Details",
+      image: "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=85"
     },
     {
-      caption: "Sangeet Stage Lighting",
+      caption: "Floral Canopy & Mandap Architecture",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85"
     },
     {
-      caption: "Tablescape & Dining Details",
+      caption: "Candlelit Dining & Tablescape Styling",
       image: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=85"
     },
     {
-      caption: "Heritage Reception Setup",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85"
+      caption: "Sunset Vows & Ambient Celebration",
+      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=85"
     }
   ],
 

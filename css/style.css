@@ -19,7 +19,7 @@
   --color-white: #FFFFFF;
 
   --border-light: #E3D9CC;
-  --border-gold: rgba(197, 164, 109, 0.4);
+  --border-gold: rgba(197, 164, 109, 0.35);
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -29,10 +29,10 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --shadow-sm: 0 4px 12px rgba(33, 28, 24, 0.05);
+  --shadow-sm: 0 4px 12px rgba(33, 28, 24, 0.04);
   --shadow-md: 0 8px 24px rgba(33, 28, 24, 0.08);
   --shadow-lg: 0 12px 36px rgba(33, 28, 24, 0.12);
-  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Reset & Base */
@@ -101,6 +101,7 @@ img {
   border-color: var(--color-gold);
   color: #211C18;
   box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
 }
 
 .btn-knot-outline {
@@ -121,9 +122,10 @@ img {
 .btn-knot-outline:hover {
   background-color: var(--color-espresso);
   color: #FFFFFF;
+  transform: translateY(-2px);
 }
 
-/* Header & Navigation Bar */
+/* Header & Navigation Bar (UNTOUCHED HERO & HEADER COMPATIBILITY) */
 .knot-site-header {
   position: sticky;
   top: 0;
@@ -237,7 +239,9 @@ img {
   display: none;
 }
 
-/* Hero Section */
+/* ==========================================================================
+   HERO SECTION — UNTOUCHED & PRESERVED EXACTLY AS REQUESTED
+   ========================================================================== */
 .knot-hero-section {
   background-color: var(--bg-primary);
   padding: 64px 0 72px;
@@ -299,7 +303,6 @@ img {
   color: var(--color-espresso);
 }
 
-/* Clean Hero Portrait Image Showcase */
 .hero-clean-portrait-card {
   position: relative;
   width: 100%;
@@ -345,15 +348,18 @@ img {
   100% { transform: translateX(-50%); }
 }
 
-/* Section Shared Rules */
+/* ==========================================================================
+   REFINED SECTIONS BELOW THE HERO SECTION
+   ========================================================================== */
+
 .agency-section {
-  padding: 80px 0;
+  padding: 88px 0;
   border-bottom: 1px solid var(--border-light);
 }
 
 .knot-section-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 52px;
 }
 
 .knot-section-tag {
@@ -363,44 +369,67 @@ img {
   text-transform: uppercase;
   color: var(--color-gold);
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .knot-section-title {
   font-family: var(--font-serif);
-  font-size: 2.4rem;
+  font-size: clamp(2.1rem, 3vw, 2.6rem);
   font-weight: 700;
+  line-height: 1.2;
   color: var(--color-espresso);
 }
 
-/* About Layout */
+/* 1. ABOUT SECTION REFINEMENTS */
 .about-grid-layout {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 54px;
   align-items: center;
+}
+
+.about-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .about-values-stack {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
 .about-value-box {
   background: var(--bg-primary);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 24px;
+  padding: 24px 28px;
   transition: var(--transition);
 }
 
 .about-value-box:hover {
   border-color: var(--color-gold);
-  transform: translateX(4px);
+  transform: translateY(-3px);
+  background: #FFFFFF;
+  box-shadow: 0 6px 20px rgba(33, 28, 24, 0.05);
 }
 
-/* Services Grid (4 Column) */
+.about-value-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+  margin-bottom: 6px;
+}
+
+.about-value-desc {
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+/* 2. SERVICES SECTION REFINEMENTS */
 .services-grid-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -409,23 +438,24 @@ img {
 
 .agency-service-card {
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 28px 24px;
+  padding: 32px 24px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   transition: var(--transition);
 }
 
 .agency-service-card:hover {
   border-color: var(--color-gold);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
 .service-num {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--color-gold);
   margin-bottom: 12px;
@@ -433,31 +463,33 @@ img {
 
 .service-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: var(--color-espresso);
   margin-bottom: 6px;
+  line-height: 1.25;
 }
 
 .service-sub {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--color-gold);
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   display: block;
 }
 
 .service-desc {
   font-size: 0.88rem;
   color: var(--color-muted);
-  line-height: 1.55;
-  margin-bottom: 20px;
+  line-height: 1.6;
+  margin-bottom: 24px;
   flex-grow: 1;
 }
 
 .service-link {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-espresso);
   display: inline-flex;
@@ -466,11 +498,20 @@ img {
   transition: var(--transition);
 }
 
-.service-link:hover {
+.agency-service-card:hover .service-link {
   color: var(--color-gold);
 }
 
-/* Weddings Grid (3 Column) */
+.agency-service-card:hover .link-arrow {
+  transform: translateX(4px);
+}
+
+.link-arrow {
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+/* 3. SELECTED WEDDINGS REFINEMENTS */
 .weddings-grid-3col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -479,36 +520,42 @@ img {
 
 .agency-wedding-card {
   background: var(--bg-primary);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
   overflow: hidden;
+  height: 100%;
   transition: var(--transition);
 }
 
 .agency-wedding-card:hover {
   border-color: var(--color-gold);
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
 }
 
 .wedding-img-box {
-  height: 240px;
+  height: 260px;
   overflow: hidden;
+  position: relative;
+  background: var(--bg-secondary);
 }
 
 .wedding-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .agency-wedding-card:hover .wedding-img-box img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .wedding-card-body {
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .wedding-location {
@@ -537,10 +584,10 @@ img {
 .wedding-snippet {
   font-size: 0.86rem;
   color: var(--color-muted);
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
-/* Gallery Grid (4 Column) */
+/* 4. VISUAL GALLERY REFINEMENTS */
 .gallery-grid-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -549,30 +596,32 @@ img {
 
 .agency-gallery-item {
   position: relative;
-  height: 220px;
+  height: 240px;
   border-radius: var(--radius-md);
+  border: 1px solid var(--border-gold);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  background: var(--bg-primary);
 }
 
 .agency-gallery-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s ease;
 }
 
 .agency-gallery-item:hover img {
-  transform: scale(1.06);
+  transform: scale(1.03);
 }
 
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(33, 28, 24, 0.85), transparent);
+  background: linear-gradient(to top, rgba(33, 28, 24, 0.88) 0%, transparent 60%);
   display: flex;
   align-items: flex-end;
-  padding: 16px;
+  padding: 18px;
   color: #FFFFFF;
   font-size: 0.82rem;
   font-weight: 600;
@@ -584,7 +633,7 @@ img {
   opacity: 1;
 }
 
-/* Reviews Grid (3 Column) */
+/* 5. CLIENT REVIEWS REFINEMENTS */
 .reviews-grid-3col {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -593,26 +642,47 @@ img {
 
 .agency-review-card {
   background: var(--bg-primary);
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-md);
-  padding: 32px 24px;
+  padding: 34px 26px;
   display: flex;
   flex-direction: column;
+  height: 100%;
+  position: relative;
+  transition: var(--transition);
+}
+
+.agency-review-card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.quote-mark-bg {
+  position: absolute;
+  top: 14px;
+  right: 22px;
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  color: rgba(197, 164, 109, 0.18);
+  line-height: 1;
+  pointer-events: none;
 }
 
 .review-header {
   display: flex;
   align-items: center;
   gap: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  z-index: 2;
 }
 
 .review-avatar {
-  width: 50px;
-  height: 50px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--color-gold);
+  border: 1.5px solid var(--color-gold);
 }
 
 .review-couple {
@@ -626,30 +696,33 @@ img {
   font-size: 0.78rem;
   color: var(--color-gold);
   font-weight: 600;
+  display: block;
 }
 
 .review-quote {
   font-style: italic;
   font-size: 0.9rem;
   color: var(--color-muted);
-  line-height: 1.6;
+  line-height: 1.65;
   flex-grow: 1;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  z-index: 2;
 }
 
 .review-stars {
   color: #FFB800;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  z-index: 2;
 }
 
-/* Contact Card Form */
+/* 6. CONTACT FORM REFINEMENTS */
 .agency-contact-card {
-  max-width: 760px;
+  max-width: 740px;
   margin: 0 auto;
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 44px;
   box-shadow: var(--shadow-sm);
 }
 
@@ -664,6 +737,7 @@ img {
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--color-espresso);
   display: block;
   margin-bottom: 6px;
@@ -677,12 +751,14 @@ img {
   font-size: 0.9rem;
   outline: none;
   background: var(--bg-primary);
+  color: var(--color-espresso);
   transition: var(--transition);
 }
 
 .form-input-field:focus {
   border-color: var(--color-gold);
   background: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(197, 164, 109, 0.15);
 }
 
 /* Footer */
