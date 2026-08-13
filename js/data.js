@@ -1,646 +1,241 @@
 /**
- * BLUE ROSE PRODUCTION - Master Data Store
- * Inspired by The Knot Wedding Planning Platform
- * Includes Checklist, Budget Advisor, Vendor Marketplace, Registry, 3D Scenography, and Portfolio Datasets
+ * THE KNOT - Master Data Store
+ * Official Wedding Planning Suite, Vendor Directory, Checklist, Budget, and Registry Data
  */
 
-const VARAJA_DATA = {
+const THEKNOT_DATA = {
   brand: {
-    name: "BLUE ROSE PRODUCTION",
-    shortName: "BLUE ROSE",
-    tagline: "Bespoke Event Management & Luxury Weddings",
-    location: "India • Worldwide Destination Events",
-    phone: "+91 98765 43210",
-    whatsapp: "+91 98765 43210",
-    email: "concierge@blueroseproduction.com",
-    address: "UB City, Vittal Mallya Road, Bengaluru & South Extension II, New Delhi, India",
-    stats: {
-      couples: 250,
-      googleRating: 4.9,
-      reviewsCount: 250,
-      experienceYears: 10,
-      weddingsCompleted: 150
-    }
+    name: "the knot",
+    tagline: "Free Online Wedding Planner, Vendors, Websites & Registry",
+    supportEmail: "help@theknot.com",
+    phone: "1-800-THE-KNOT"
   },
+
+  planningPortals: [
+    {
+      id: "portal-checklist",
+      title: "Interactive Checklist",
+      desc: "Stay organized with your personalized step-by-step 12-month wedding countdown.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`,
+      link: "#checklist",
+      actionText: "Track Your Tasks"
+    },
+    {
+      id: "portal-budget",
+      title: "Budget Advisor",
+      desc: "Get personalized spending estimates across venues, photo, decor & catering.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>`,
+      link: "#budget",
+      actionText: "Calculate Budget"
+    },
+    {
+      id: "portal-vendors",
+      title: "Vendor Marketplace",
+      desc: "Connect with 300,000+ top-rated local venues, photographers & planners.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
+      link: "#vendors",
+      actionText: "Find Local Vendors"
+    },
+    {
+      id: "portal-registry",
+      title: "Registry & Cash Funds",
+      desc: "Combine cash funds, honeymoon experiences, and retail items in one place.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>`,
+      link: "#registry",
+      actionText: "Create Registry"
+    }
+  ],
 
   checklist: [
     {
-      timeframe: "12 - 9 Months Before",
+      timeframe: "12 - 9 Months Out",
       items: [
-        { id: "c1", task: "Determine overall celebration budget & guest count scope", category: "Budget", completed: true },
-        { id: "c2", task: "Reserve heritage palace or beachfront resort venue with BLUE ROSE", category: "Venue", completed: true },
-        { id: "c3", task: "Take The Knot Wedding Style Quiz & select visual aesthetic palette", category: "Style", completed: true },
-        { id: "c4", task: "Hire primary lead event director & 3D spatial scenographer", category: "Planner", completed: true }
+        { id: "c1", task: "Determine overall budget & estimated guest count", category: "Budget", completed: true },
+        { id: "c2", task: "Explore & tour local wedding venues with availability", category: "Venue", completed: true },
+        { id: "c3", task: "Take The Knot Style Quiz to define your wedding vision", category: "Style", completed: true },
+        { id: "c4", task: "Hire your primary wedding planner or lead coordinator", category: "Planner", completed: true }
       ]
     },
     {
-      timeframe: "8 - 6 Months Before",
+      timeframe: "8 - 6 Months Out",
       items: [
-        { id: "c5", task: "Book lead wedding photographer, 4K drone cinematographer & DJ", category: "Vendors", completed: false },
-        { id: "c6", task: "Schedule bridal couture fittings & celebrity makeup masterclass", category: "Attire", completed: false },
-        { id: "c7", task: "Design custom couple wedding website & guest RSVP portal", category: "Website", completed: false },
-        { id: "c8", task: "Create Newlywed Cash Fund & luxury gift registry", category: "Registry", completed: false }
+        { id: "c5", task: "Book lead wedding photographer, videographer & DJ", category: "Vendors", completed: false },
+        { id: "c6", task: "Schedule wedding dress & suit fittings with bridal salon", category: "Attire", completed: false },
+        { id: "c7", task: "Create your free wedding website on The Knot", category: "Website", completed: false },
+        { id: "c8", task: "Set up your Newlywed Cash Fund & gift registry", category: "Registry", completed: false }
       ]
     },
     {
-      timeframe: "5 - 3 Months Before",
+      timeframe: "5 - 3 Months Out",
       items: [
-        { id: "c9", task: "Finalize 3D floral scenography, mandap renders & lighting rig", category: "Decor", completed: false },
-        { id: "c10", task: "Attend multi-course menu tasting with royal thali chefs", category: "Catering", completed: false },
-        { id: "c11", task: "Send gold foil Save-the-Date invitations & room block links", category: "Paper", completed: false },
-        { id: "c12", task: "Book airport VIP chauffeur fleet & guest hampers concierge", category: "Logistics", completed: false }
+        { id: "c9", task: "Finalize floral decor, centerpieces & stage lighting", category: "Decor", completed: false },
+        { id: "c10", task: "Attend catering tasting & select multi-course dinner menu", category: "Catering", completed: false },
+        { id: "c11", task: "Order & mail your official wedding invitations", category: "Invitations", completed: false },
+        { id: "c12", task: "Reserve hotel room blocks for out-of-town guests", category: "Travel", completed: false }
       ]
     },
     {
-      timeframe: "2 - 1 Month Before",
+      timeframe: "2 - 1 Month Out",
       items: [
-        { id: "c13", task: "Review master multi-day timeline & vendor SLA audits", category: "Production", completed: false },
-        { id: "c14", task: "Finalize seating charts, brass urlis, and welcome gifts", category: "Guests", completed: false },
-        { id: "c15", task: "Conduct final on-site dry run with 20+ BLUE ROSE leads", category: "Execution", completed: false }
+        { id: "c13", task: "Confirm final RSVPs & build seating chart arrangement", category: "RSVP", completed: false },
+        { id: "c14", task: "Apply for marriage license & verify local paperwork", category: "Legal", completed: false },
+        { id: "c15", task: "Distribute day-of timeline to all vendors & wedding party", category: "Day-Of", completed: false }
       ]
     }
   ],
 
   budgetCategories: [
-    { name: "Palace Venue & Royal Banquet", percent: 45, color: "#C5A46D", desc: "Palace rentals, silver thali dining, multi-course tastings, & bar services." },
-    { name: "3D Floral Scenography & Lighting", percent: 18, color: "#211C18", desc: "Custom mandaps, Dutch roses, crystal chandeliers, & stage builds." },
-    { name: "Photography & 4K Cinema", percent: 12, color: "#756D63", desc: "4K drone video, fine-art leather albums, & same-day teasers." },
-    { name: "Artist Bookings & Live Sangeet", percent: 10, color: "#C5A46D", desc: "Bollywood singers, Sufi troupes, Sitar maestri, & DMX DJ rigs." },
-    { name: "Guest VIP Concierge & Chauffeurs", percent: 8, color: "#E8DED0", desc: "Airport luxury transfers, welcome hampers, & 24/7 helpdesk." },
-    { name: "Stationery, Foil Paper & Favors", percent: 4, color: "#211C18", desc: "Gold foil invitations, rooming manifests, & heirloom brass favors." },
-    { name: "Contingency & SLA Buffer", percent: 3, color: "#756D63", desc: "Weather backups, emergency floral reserves, & on-call staff." }
+    { name: "Reception Venue & Catering", percent: 45, desc: "Site fee, food, bar service, rentals, tax and tip." },
+    { name: "Photography & Videography", percent: 12, desc: "Full-day coverage, albums, engagement shoot & video edits." },
+    { name: "Flowers & Event Decor", percent: 10, desc: "Ceremony arch, bouquets, centerpieces, candles & linens." },
+    { name: "Attire, Rings & Beauty", percent: 9, desc: "Wedding dress, tuxedo, wedding bands, hair & makeup." },
+    { name: "Music, Band & DJ", percent: 8, desc: "Ceremony musicians, cocktail hour acoustic & reception DJ." },
+    { name: "Wedding Planner / Coordinator", percent: 8, desc: "Full-service planner or day-of wedding coordinator." },
+    { name: "Invitations & Paper Goods", percent: 4, desc: "Save-the-dates, invitations, thank-you cards & postage." },
+    { name: "Transportation & Favors", percent: 4, desc: "Shuttles, getaway car, welcome bags & guest favors." }
   ],
 
-  vendorMarketplace: [
+  vendorCategories: [
+    "All Vendors",
+    "Reception Venues",
+    "Photographers",
+    "Catering",
+    "Wedding Planners",
+    "Florists & Decor",
+    "DJs & Live Music"
+  ],
+
+  vendors: [
     {
-      id: "v-p1",
-      category: "Palaces & Venues",
+      id: "v1",
+      category: "Reception Venues",
+      name: "The Glasshouse at Chelsea Piers",
+      location: "New York, NY",
+      rating: 4.9,
+      reviews: 142,
+      price: "$$$$",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
+      badge: "THE KNOT BEST OF WEDDINGS",
+      desc: "Waterfront luxury venue with floor-to-ceiling glass windows overlooking the Hudson."
+    },
+    {
+      id: "v2",
+      category: "Reception Venues",
       name: "City Palace & Jagmandir Island",
       location: "Udaipur, Rajasthan",
       rating: 4.9,
-      reviews: 128,
-      price: "₹35L - ₹75L / Day",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
-      badge: "VERIFIED VENUE",
-      desc: "Iconic island palace surrounded by Lake Pichola with private boat access."
+      reviews: 98,
+      price: "$$$$",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85",
+      badge: "EXCLUSIVE PALACE",
+      desc: "Historic island palace surrounded by Lake Pichola with private boat access."
     },
     {
-      id: "v-p2",
-      category: "Palaces & Venues",
-      name: "The St. Regis Goa Resort",
-      location: "Cavelossim, Goa",
-      rating: 4.9,
-      reviews: 94,
-      price: "₹25L - ₹50L / Day",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=800&q=85",
-      badge: "COASTAL LUXURY",
-      desc: "50-acre beachfront sanctuary overlooking the Arabian Sea."
-    },
-    {
-      id: "v-d1",
-      category: "Floral & Scenography",
-      name: "Atelier Rose & Gold Decor",
-      location: "Delhi • Jaipur • Mumbai",
+      id: "v3",
+      category: "Photographers",
+      name: "Lumière Editorial Photography",
+      location: "New York, NY • Worldwide",
       rating: 5.0,
-      reviews: 86,
-      price: "₹15L - ₹40L",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
-      badge: "MASTER SCENOGRAPHER",
-      desc: "Bespoke 3D spatial renders, Dutch white rose mandaps, & crystal chandelier rigs."
-    },
-    {
-      id: "v-ph1",
-      category: "Photography & Cinema",
-      name: "Lumière Fine Art Wedding Stories",
-      location: "Bengaluru • Worldwide",
-      rating: 4.9,
-      reviews: 142,
-      price: "₹6L - ₹18L",
+      reviews: 186,
+      price: "$$$",
       image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=85",
-      badge: "VOGUE FEATURED",
-      desc: "Editorial couples portraits, 4K drone cinematography, & handcrafted Italian albums."
+      badge: "FEATURED IN THE KNOT MAG",
+      desc: "Editorial fashion framing, candid wedding moments, and fine-art albums."
     },
     {
-      id: "v-c1",
-      category: "Catering & Gastronomy",
-      name: "Royal Royal Thali & Chefs Table",
-      location: "Kolkata • Udaipur",
-      rating: 5.0,
-      reviews: 110,
-      price: "₹3,500 / Plate",
+      id: "v4",
+      category: "Catering",
+      name: "Savory & Sage Culinary Arts",
+      location: "Los Angeles, CA",
+      rating: 4.8,
+      reviews: 114,
+      price: "$$$",
       image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85",
-      badge: "CELEBRITY CHEF",
-      desc: "Zamindari feasts served on solid silver thalis & global gourmet live counters."
+      badge: "TOP CATERER",
+      desc: "Farm-to-table multi-course tasting menus, custom cocktail bars, and dessert stations."
     },
     {
-      id: "v-b1",
-      category: "Bridal Beauty & Hair",
-      name: "Aura Luxury Bridal Beauty Lounge",
-      location: "Mumbai • Delhi",
+      id: "v5",
+      category: "Florists & Decor",
+      name: "Bloom & Wild Floral Studio",
+      location: "Chicago, IL",
       rating: 4.9,
-      reviews: 78,
-      price: "₹1.5L - ₹3.5L",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=85",
-      badge: "HD AIRBRUSH MASTER",
-      desc: "Celebrity bridal makeup artists, hair trials, and on-call draping masters."
+      reviews: 87,
+      price: "$$$",
+      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
+      badge: "BEST DECORATOR",
+      desc: "Bespoke floral arches, hanging greenery, candlelit centerpieces, and stage styling."
+    },
+    {
+      id: "v6",
+      category: "DJs & Live Music",
+      name: "SoundWave Collective & Symphony",
+      location: "Miami, FL",
+      rating: 5.0,
+      reviews: 130,
+      price: "$$",
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=85",
+      badge: "LIVE ENSEMBLE",
+      desc: "High-energy wedding DJs, brass horn sections, and live string quartets."
     }
   ],
 
   registryItems: [
     {
       id: "r1",
-      title: "Honeymoon Cash Fund in Lake Como",
-      category: "Newlywed Cash Fund",
-      goal: "₹5,00,000",
-      raised: "₹3,40,000",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
-      contributionsCount: 18
+      title: "Newlywed Honeymoon Cash Fund in Italy",
+      category: "Cash Fund",
+      price: "$2,500 Goal",
+      funded: "75% Funded",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "r2",
-      title: "Villeroy & Boch 24-Piece Gold Dinnerware",
-      category: "Home & Tabletop Registry",
-      price: "₹85,000",
-      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
-      contributionsCount: 4
+      title: "KitchenAid Artisan Stand Mixer - Pistachio",
+      category: "Kitchen & Home",
+      price: "$449.99",
+      funded: "1 Gifted",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "r3",
-      title: "Heritage Brass Urli & Candle Candelabras",
-      category: "Decor & Collectibles",
-      price: "₹45,000",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=600&q=80",
-      contributionsCount: 9
+      title: "Villeroy & Boch 16-Piece Porcelain Set",
+      category: "Tabletop & Dining",
+      price: "$320.00",
+      funded: "2 Gifted",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=600&q=80"
     },
     {
       id: "r4",
-      title: "Private Sunset Yacht Cruise in Goa",
-      category: "Experience Gift",
-      price: "₹65,000",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=600&q=80",
-      contributionsCount: 7
+      title: "Sunset Wine Tasting Experience in Tuscany",
+      category: "Experience",
+      price: "$250.00",
+      funded: "4 Gifted",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=600&q=80"
     }
   ],
 
-  scenographyViews: [
+  realWeddings: [
     {
-      id: "mandap-3d",
-      title: "Royal Floating Mandap",
-      location: "Lake Pichola, Udaipur",
-      specs: { span: "45 ft x 45 ft", height: "20 ft", floral: "Dutch White Roses & Tuberose", capacity: "400 Guests" },
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-      hotspots: [
-        { top: "30%", left: "50%", label: "Floating Floral Canopy", desc: "10,000+ hand-strung Dutch white roses and fragrant tuberose strands with hidden misting." },
-        { top: "65%", left: "28%", label: "Teak Carved Pillars", desc: "Traditional Rajasthani carved teak pillars wrapped in gold leaf foil." },
-        { top: "75%", left: "72%", label: "Sunken Royal Baithak", desc: "Custom velvet seating with handwoven brass urli floral centerpieces." }
-      ]
-    },
-    {
-      id: "sangeet-3d",
-      title: "Concert Sangeet Stage",
-      location: "Fairmont, Jaipur",
-      specs: { span: "60 ft x 40 ft", height: "24 ft", floral: "Exotic Orchid Sculptures", capacity: "600 Guests" },
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-      hotspots: [
-        { top: "35%", left: "50%", label: "Crystal Chandelier Rig", desc: "Warm 2700K DMX-programmed crystal chandeliers synchronized to live performances." },
-        { top: "55%", left: "40%", label: "360° Concert Stage", desc: "Glass acrylic elevated stage with LED underlighting and confetti launchers." }
-      ]
-    },
-    {
-      id: "rajbari-3d",
-      title: "Zamindari Candlelit Courtyard",
-      location: "Rajbari, Kolkata",
-      specs: { span: "80 ft x 50 ft", height: "18 ft", floral: "Marigold & Jasmine Strands", capacity: "450 Guests" },
-      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      hotspots: [
-        { top: "45%", left: "30%", label: "Historic Colonnade Lighting", desc: "Warm ambient uplighting highlighting 150-year-old terracotta arches." },
-        { top: "70%", left: "60%", label: "Silver Thali Banquet Setup", desc: "Low heritage dining tables set with solid silver thalis and wax diyas." }
-      ]
-    }
-  ],
-
-  serviceCategories: [
-    "All Offerings",
-    "Royal Weddings",
-    "Decor & Scenography",
-    "Hospitality & Concierge",
-    "Destination & Galas"
-  ],
-
-  portfolioCategories: [
-    "All Celebrations",
-    "Royal Palace Weddings",
-    "Beachfront Ceremonies",
-    "Heritage Havelis",
-    "Cultural Traditions"
-  ],
-
-  services: [
-    {
-      id: "complete-planning",
-      number: "01",
-      category: "Royal Weddings",
-      title: "Complete Wedding & Event Planning",
-      subtitle: "End-to-End Creative Curation & Production",
-      description: "Comprehensive management from visual concepting, venue sourcing, budget allocation, and vendor selection to day-of seamless execution.",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Full Budget Management & Contract SLA Audit",
-        "Master Multi-Day Timeline & Run-of-Show Schedules",
-        "Exclusive Artist & Live Entertainment Curation",
-        "On-site Concierge Lead Team of 20+ Specialists"
-      ]
-    },
-    {
-      id: "decor-styling",
-      number: "02",
-      category: "Decor & Scenography",
-      title: "Event Decor & Floral Scenography",
-      subtitle: "Architectural Florals & Spatial Styling",
-      description: "Bespoke production design, custom stage & mandap scenography, floral sculptures, ambient lighting, and editorial styling.",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Bespoke 3D Decor Renderings & Spatial Layouts",
-        "Exotic Dutch Floral Sourcing & Master Sculpting",
-        "Custom Furniture, Drapery & Architectural Lighting",
-        "Theme Conceptualization across Multi-Day Events"
-      ]
-    },
-    {
-      id: "venue-vendor",
-      number: "03",
-      category: "Royal Weddings",
-      title: "Palace Venue & Vendor Management",
-      subtitle: "Curated Heritage Palaces & Elite Artisans",
-      description: "Direct access to India’s most coveted heritage palaces, luxury beachfront resorts, celebrated caterers, and renowned artisans.",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Private Access to Royal Palaces & Estates",
-        "Net Pricing Vendor Contract Audit",
-        "Celebrity Chef & Custom Menu Tasting Curation",
-        "Technical Stage, Sound & Lighting Management"
-      ]
-    },
-    {
-      id: "photography-video",
-      number: "04",
-      category: "Decor & Scenography",
-      title: "Photography & Cinematography",
-      subtitle: "Cinematic Storytelling & Editorial Framing",
-      description: "Partnering with award-winning event cinematographers and editorial fashion photographers to capture every emotion in high art.",
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "4K Drone Cinematography & Same-Day Teasers",
-        "Editorial Couples Portraits & High Fashion Framing",
-        "Fine-Art Printed Italian Leather Bound Albums",
-        "Private Client Cloud Media Archive Access"
-      ]
-    },
-    {
-      id: "guest-concierge",
-      number: "05",
-      category: "Hospitality & Concierge",
-      title: "White-Glove Guest Concierge",
-      subtitle: "Airport VIP Transfers & Hospitality Desk",
-      description: "Warm Indian hospitality managed with military precision — luxury fleet transfers, personalized welcome hampers, and 24/7 guest helpdesk.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Airport VIP Meet & Greet with Chauffeur Fleet",
-        "Custom Mobile Guest Portal & Rooming Manifests",
-        "Personalized Welcome Gift Hampers & Keepsakes",
-        "24/7 On-call Hospitality Desk at Host Hotels"
-      ]
-    },
-    {
-      id: "bridal-groom",
-      number: "06",
-      category: "Hospitality & Concierge",
-      title: "Couture Styling & Trousseau",
-      subtitle: "Bridal Wardrobe & Makeup Masterclass",
-      description: "Personal styling consultations with India’s leading couturiers, makeup masterclasses, hair trial management, and trousseau packaging.",
-      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "VIP Access to Top Indian Fashion Houses",
-        "Celebrity Makeup Artist Bookings",
-        "Heirloom Jewelry Security & Logistics",
-        "On-Call Wardrobe Stylist & Draping Masters"
-      ]
-    },
-    {
-      id: "destination-weddings",
-      number: "07",
-      category: "Destination & Galas",
-      title: "Destination Weddings & Logistics",
-      subtitle: "Rajasthan Palaces to Beaches of Goa & Italy",
-      description: "Specialized logistics and cultural planning for destination celebrations in Rajasthan, Goa, Kerala, Italy, Thailand, and Dubai.",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Flight Charters & Inter-City Fleet Coordination",
-        "Cross-Border Customs & Permission Clearances",
-        "Destination Scouting & Weather Contingency Plans",
-        "Global Sourcing for Specialized Ingredients & Artists"
-      ]
-    },
-    {
-      id: "corporate-social",
-      number: "08",
-      category: "Destination & Galas",
-      title: "Corporate Galas & High-Net Events",
-      subtitle: "Milestones, Summits & Private Galas",
-      description: "High-octane anniversary galas, milestone birthdays, corporate summits, and private luxury dinners designed with sophisticated grandeur.",
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "High-Profile VIP Guest Protocol & Security",
-        "Custom Multi-Course Culinary Tasting Menus",
-        "Immersive Visual Projection Mapping & Lighting",
-        "Exclusive Symphony & Musical Performances"
-      ]
-    }
-  ],
-
-  projects: [
-    {
-      id: "ananya-arjun",
-      title: "Ananya & Arjun",
-      subtitle: "Zamindari Rajbari Heritage Wedding",
-      location: "Kolkata, West Bengal",
-      category: "Cultural Traditions",
-      eventType: "Bengali Heritage Wedding",
-      date: "February 2026",
-      guestCount: "450 Guests",
-      venue: "Taj Bengal & Heritage Rajbari, Kolkata",
-      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "Set amidst the architectural grandeur of a 150-year-old Rajbari in Kolkata, Ananya & Arjun's celebration was a poetic tribute to classic Bengali heritage. BLUE ROSE PRODUCTION orchestrated a 3-day royal affair featuring fragrant marigold mandaps, traditional Shehnai recitals, authentic Zamindari cuisine curated by celebrity chefs, and a candlelit lakeside reception.",
-      highlights: [
-        "Custom Rajbari restoration with 10,000+ tuberose blooms",
-        "Authentic 9-course Royal Bengali feast served on silver thalis",
-        "Live Sitar & Shehnai ensemble by classical maestros",
-        "Seamless management of 450 VIP guests with zero delays"
-      ],
-      testimonialQuote: "BLUE ROSE PRODUCTION brought our dream royal Bengali wedding to life with unmatched grace and perfection. Every detail was extraordinary!"
-    },
-    {
-      id: "rohan-meera",
-      title: "Rohan & Meera",
-      subtitle: "Lake Pichola Royal Palace Affair",
-      location: "Udaipur, Rajasthan",
-      category: "Royal Palace Weddings",
-      eventType: "Royal Palace Wedding",
-      date: "January 2026",
-      guestCount: "350 Guests",
-      venue: "City Palace & Jagmandir Island, Udaipur",
-      coverImage: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A regal multi-day celebration in the City of Lakes. Guests arrived via illuminated royal boats to Lake Pichola for a magical Sangeet night followed by a sunset wedding ceremony framed by ancient Mewar architecture and a fireworks spectacle over the water.",
-      highlights: [
-        "Private boat charter across Lake Pichola for 350 guests",
-        "Custom floating mandap built with Dutch white roses & gold mirror work",
-        "Performance by Bollywood playback singers & Sufi troupes",
-        "Full royal procession with decorated elephants & vintage cars"
-      ],
-      testimonialQuote: "Our guests are still talking about how magical Udaipur felt under BLUE ROSE PRODUCTION’s leadership. Pure perfection!"
-    },
-    {
-      id: "sid-aisha",
-      title: "Siddharth & Aisha",
-      subtitle: "Sunset Arabian Sea Beach Vows",
-      location: "Goa, India",
-      category: "Beachfront Ceremonies",
-      eventType: "Beachfront Luxury Wedding",
-      date: "November 2025",
-      guestCount: "250 Guests",
-      venue: "The St. Regis Goa Resort",
-      coverImage: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "Combining chic coastal aesthetics with traditional Indian rituals, Siddharth & Aisha celebrated their union on the golden sands of Goa. Highlights included a tropical pastel Haldi party, a high-energy Poolside Sangeet, and an ethereal beachfront Pheras ceremony at dusk.",
-      highlights: [
-        "Pastel acrylic mandap positioned directly overlooking the Arabian Sea",
-        "Curated Portuguese-Goan fusion food stations",
-        "Sunset acoustic violin performance during ring exchange",
-        "Eco-friendly floral installations with zero plastic waste"
-      ],
-      testimonialQuote: "The attention to design and guest hospitality made our Goa wedding completely stress-free for us and our families."
-    },
-    {
-      id: "kabir-rhea",
-      title: "Kabir & Rhea",
-      subtitle: "Grand Palatial Sangeet & Anand Karaj",
-      location: "Jaipur, Rajasthan",
-      category: "Royal Palace Weddings",
-      eventType: "Palace Punjabi Wedding",
-      date: "December 2025",
-      guestCount: "600 Guests",
-      venue: "Fairmont Jaipur & Jai Mahal Palace",
-      coverImage: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A vibrant celebration of Punjabi culture amidst Rajasthan's palatial grandeur. Featuring a serene morning Anand Karaj in a custom floral Gurdwara setup, followed by a 1000-person Sangeet gala with concert-grade lighting and international performers.",
-      highlights: [
-        "Custom 360-degree concert stage for Sangeet night",
-        "Serene morning Gurdwara structure created inside palace gardens",
-        "Luxury gift hampers with custom brass keepsakes for every guest",
-        "24-Hour live chaat counters and international dessert bar"
-      ],
-      testimonialQuote: "BLUE ROSE PRODUCTION executed a massive 600-guest wedding seamlessly. They handled everything with warmth and extreme professionalism!"
-    },
-    {
-      id: "vikram-devika",
-      title: "Vikram & Devika",
-      subtitle: "Mehrangarh Fort View Candlelit Haveli",
-      location: "Jodhpur, Rajasthan",
-      category: "Heritage Havelis",
-      eventType: "Heritage Haveli Wedding",
-      date: "October 2025",
-      guestCount: "180 Guests",
-      venue: "RAAS Jodhpur & Umaid Bhawan Gardens",
-      coverImage: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "An intimate, deeply personal celebration for 180 close family and friends in the shadow of Mehrangarh Fort. Candlelit courtyards, handwoven silk textiles, and curated Rajasthani folk performances created an unforgettable atmosphere.",
-      highlights: [
-        "10,000 hand-lit wax diyas across historic stone courtyards",
-        "Private acoustic performance by Manganiyar folk legends",
-        "Custom heirloom brass favors crafted by local Jodhpur artisans",
-        "Personalized butler service for every guest room"
-      ],
-      testimonialQuote: "Intimate, warm, and utterly magical. BLUE ROSE PRODUCTION turned our vision into an unforgettable memory."
-    },
-    {
-      id: "aditya-pooja",
-      title: "Aditya & Pooja",
-      subtitle: "Shore Temple Muhurtham & Reception",
-      location: "Mahabalipuram, Tamil Nadu",
-      category: "Cultural Traditions",
-      eventType: "Coastal Temple Wedding",
-      date: "March 2026",
-      guestCount: "400 Guests",
-      venue: "InterContinental Chennai Mahabalipuram Resort",
-      coverImage: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      gallery: [
-        "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-        "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85"
-      ],
-      story: "A sacred Muhurtham ceremony overlooking the ancient shore temple ruins. Adorned with fresh jasmine strands, banana leaf motifs, and traditional Nadaswaram melodies, transitioning into a modern evening reception under palm groves.",
-      highlights: [
-        "Handcrafted carved wooden temple mandap draped in Mogra & Kanchipuram silk",
-        "Traditional Sadhya feast served on fresh banana leaves with 26 authentic delicacies",
-        "Carnatic fusion band performance at sunset",
-        "Bespoke silk saree & dhoti gifting concierge"
-      ],
-      testimonialQuote: "The reverence for our South Indian traditions coupled with modern luxury design was remarkable."
-    }
-  ],
-
-  venues: [
-    {
-      id: "v1",
-      name: "City Palace & Jagmandir Island",
-      location: "Udaipur, Rajasthan",
-      type: "Royal Heritage Palace",
-      capacity: "300 – 800 Guests",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
-      badge: "EXCLUSIVE ACCESS"
-    },
-    {
-      id: "v2",
-      name: "Umaid Bhawan Palace",
-      location: "Jodhpur, Rajasthan",
-      type: "Art Deco Royal Estate",
-      capacity: "200 – 600 Guests",
+      id: "rw1",
+      couple: "Olivia & Ethan",
+      location: "New York, NY • Glasshouse Chelsea",
       image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85",
-      badge: "HERITAGE LEGEND"
+      snippet: "A chic modern black-tie wedding overlooking the Manhattan skyline with white orchids."
     },
     {
-      id: "v3",
-      name: "The St. Regis Goa Resort",
-      location: "Cavelossim, Goa",
-      type: "Oceanfront Luxury Resort",
-      capacity: "150 – 500 Guests",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=800&q=85",
-      badge: "COASTAL RETREAT"
-    },
-    {
-      id: "v4",
-      name: "Taj Falaknuma Palace",
-      location: "Hyderabad, Telangana",
-      type: "19th Century Nizam Residence",
-      capacity: "100 – 400 Guests",
+      id: "rw2",
+      couple: "Ananya & Arjun",
+      location: "Kolkata, India • Heritage Rajbari",
       image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85",
-      badge: "ROYAL PRIVILEGE"
+      snippet: "A romantic 3-day royal Bengali celebration draped in 10,000 fresh tuberose strands."
     },
     {
-      id: "v5",
-      name: "Villa d'Este & Villa Balbiano",
-      location: "Lake Como, Italy",
-      type: "Italian Renaissance Villa",
-      capacity: "80 – 250 Guests",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=85",
-      badge: "GLOBAL DESTINATION"
-    },
-    {
-      id: "v6",
-      name: "Mandapa, A Ritz-Carlton Reserve",
-      location: "Ubud, Bali",
-      type: "Tropical Sanctuary & Riverfront",
-      capacity: "100 – 350 Guests",
+      id: "rw3",
+      couple: "Sophia & Liam",
+      location: "Napa Valley, CA • Vineyard Estate",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
-      badge: "GLOBAL DESTINATION"
+      snippet: "An outdoor sunset vineyard ceremony with rustic wooden tables and acoustic violin."
     }
-  ],
-
-  faqs: [
-    {
-      q: "How far in advance should we book BLUE ROSE PRODUCTION?",
-      a: "We recommend booking 6 to 12 months prior to your target event date, especially for multi-day destination weddings in Rajasthan or Goa where heritage palace bookings and celebrity artists require early reservation."
-    },
-    {
-      q: "Do you manage international destination events outside India?",
-      a: "Yes! We specialize in cross-border luxury events across Dubai, Lake Como (Italy), Bali (Indonesia), Thailand, and Sri Lanka, managing flight charters, international customs, and local venue logistics seamlessly."
-    },
-    {
-      q: "What is your fee structure and budget management policy?",
-      a: "We operate on a transparent fixed professional management fee structure calculated on scale and event scope. All vendor contracts are billed directly at net cost with zero hidden markups or surprise surcharges."
-    },
-    {
-      q: "Can you work alongside our family’s preferred caterers or priest?",
-      a: "Absolutely. We respect family traditions and heritage relationships. We collaborate seamlessly with your preferred vendors while auditing contract SLAs and managing on-site logistics."
-    }
-  ],
-
-  testimonials: [
-    {
-      id: "t1",
-      coupleName: "Ananya & Arjun Roy",
-      location: "Kolkata • Royal Rajbari Wedding",
-      rating: 5,
-      quote: "BLUE ROSE PRODUCTION made our wedding look like it belonged on the pages of Vogue. The coordination between our 450 guests, international artists, and venue staff was flawless. They handled every detail with extreme grace!",
-      date: "February 2026",
-      avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: "t2",
-      coupleName: "Meera & Rohan Singhania",
-      location: "Udaipur • City Palace Celebration",
-      rating: 5,
-      quote: "Planning a destination palace wedding from London seemed daunting until we met the BLUE ROSE PRODUCTION team. They took care of everything from boat charters to 3D decor setups. We could simply relax and enjoy our special days.",
-      date: "January 2026",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: "t3",
-      coupleName: "Aisha & Siddharth Malhotra",
-      location: "Goa • St. Regis Beachfront",
-      rating: 5,
-      quote: "The aesthetic sensitivity BLUE ROSE PRODUCTION possesses is unmatched. The beach mandap design was breathtaking, and their guest hospitality team took personal care of all our family members coming from across the world.",
-      date: "November 2025",
-      avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: "t4",
-      coupleName: "Rhea & Kabir Kapoor",
-      location: "Jaipur • Fairmont & Jai Mahal",
-      rating: 5,
-      quote: "Managing a 600-person Punjabi wedding requires high energy and razor-sharp organization. BLUE ROSE PRODUCTION delivered both in abundance! Our Sangeet night was the talk of the town.",
-      date: "December 2025",
-      avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&q=80"
-    },
-    {
-      id: "t5",
-      coupleName: "Devika & Vikram Rathore",
-      location: "Jodhpur • Heritage Haveli",
-      rating: 5,
-      quote: "If you want an event that feels high-end, deeply personal, and completely stress-free, BLUE ROSE PRODUCTION is the only team to trust in India. Truly world-class event creators.",
-      date: "October 2025",
-      avatar: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=200&q=80"
-    }
-  ],
-
-  galleryItems: [
-    { id: "g1", category: "Weddings", title: "Royal Mandap at Lake Pichola", location: "Udaipur", image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g2", category: "Decor", title: "Dutch Floral & Gold Scenography", location: "Jaipur", image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g3", category: "Haldi", title: "Marigold & Pastel Sunken Haldi", location: "Goa", image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g4", category: "Reception", title: "Candlelit Rajbari Courtyard Dinner", location: "Kolkata", image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g5", category: "Weddings", title: "Traditional Bengali Wedding Rituals", location: "Kolkata", image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g6", category: "Decor", title: "Glass Crystal Sangeet Stage Design", location: "Jaipur", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g7", category: "Haldi", title: "Traditional Brass Urli Floral Haldi", location: "Udaipur", image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g8", category: "Reception", title: "Oceanfront Starlight Banquet Table", location: "Goa", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85" },
-    { id: "g9", category: "Corporate", title: "High-Net Luxury Brand Summit Gala", location: "Bengaluru", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85" }
   ]
 };

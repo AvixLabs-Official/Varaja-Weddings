@@ -1,810 +1,78 @@
 /**
- * BLUE ROSE PRODUCTION - Master Interactive Orchestrator
- * Features Royal Venues, Budget Estimator, FAQs Accordion, and Shehnai Audio Toggle
+ * THE KNOT - Official Interactive Orchestrator
+ * Full replica of The Knot Wedding Planning suite
  */
 
-let activeGalleryCategory = 'All';
-let currentTestimonialIndex = 0;
+let activeVendorCat = 'All Vendors';
+let currentTotalBudget = 35000;
 
-let activeVendorCategory = 'All Categories';
-
-// Initialize components on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
-  initStickyHeader();
-  initMobileDrawer();
-  initStatsCounter();
-  renderChecklistHub();
-  renderBudgetAdvisor();
-  renderVendorMarketplace();
-  renderRegistrySuite();
-  renderScenographyStudio();
-  renderServicesGrid();
-  renderPortfolioGrid();
-  renderVenuesGrid();
-  renderGalleryGrid();
-  initTestimonialsSlider();
-  initFaqsAccordion();
-  initBudgetEstimator();
-  initInquiryForm();
-  initScrollAnimations();
+  renderPortalsGrid();
+  renderChecklist();
+  renderBudgetCalculator();
+  renderVendorsGrid();
+  renderRegistryGrid();
+  renderRealWeddingsGrid();
 });
 
 /* --------------------------------------------------------------------------
-   1. STICKY HEADER & HERO INTERACTIVE STAGE
+   1. RENDER CORE PLANNING SUITE PORTALS
    -------------------------------------------------------------------------- */
-const HERO_PHOTOS = [
-  { url: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85", caption: "Udaipur • Royal Palace Mandap" },
-  { url: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85", caption: "Goa • Sunset Beachfront Ceremony" },
-  { url: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85", caption: "Kolkata • Heritage Rajbari Courtyard" },
-  { url: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85", caption: "Jaipur • Palatial Sangeet Gala" }
-];
+function renderPortalsGrid() {
+  const container = document.getElementById('knot-portals-container');
+  if (!container || !THEKNOT_DATA?.planningPortals) return;
 
-const HERO_SUBTITLES = {
-  palace: "From Udaipur to Jodhpur, we orchestrate royal heritage weddings across India's most coveted palaces with authentic Zamindari & Marwari majesty.",
-  beach: "Ethereal beachfront mandaps, sunset vows, and chic oceanfront galas at 5-star coastal resorts in Goa, Kerala & Bali.",
-  heritage: "Restoring historic havelis and ancestral estates into intimate candlelit wedding venues rich in culture and timeless romance.",
-  intimate: "Bespoke private luxury celebrations for 80 to 200 guests with personalized butler service, custom keepsakes, and fine gastronomy."
-};
-
-function initStickyHeader() {
-  const header = document.getElementById('main-header');
-  if (!header) return;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
-}
-
-function switchHeroEventType(typeKey, element) {
-  document.querySelectorAll('.hero-type-pill').forEach(el => el.classList.remove('active'));
-  if (element) element.classList.add('active');
-
-  const subElement = document.getElementById('hero-dynamic-sub');
-  if (subElement && HERO_SUBTITLES[typeKey]) {
-    subElement.style.opacity = '0';
-    setTimeout(() => {
-      subElement.textContent = HERO_SUBTITLES[typeKey];
-      subElement.style.opacity = '1';
-    }, 200);
-  }
-}
-
-function switchHeroPhoto(index) {
-  const mainImg = document.getElementById('hero-arch-img');
-  const captionTxt = document.getElementById('hero-arch-caption');
-  const dots = document.querySelectorAll('.hero-thumb-dot');
-
-  if (!mainImg || !HERO_PHOTOS[index]) return;
-
-  dots.forEach(d => d.classList.remove('active'));
-  if (dots[index]) dots[index].classList.add('active');
-
-  mainImg.style.opacity = '0.3';
-  setTimeout(() => {
-    mainImg.src = HERO_PHOTOS[index].url;
-    mainImg.style.opacity = '1';
-    if (captionTxt) captionTxt.textContent = HERO_PHOTOS[index].caption;
-  }, 250);
-}
-
-/* --------------------------------------------------------------------------
-   2. MOBILE DRAWER NAVIGATION
-   -------------------------------------------------------------------------- */
-function initMobileDrawer() {
-  const trigger = document.getElementById('mobile-menu-trigger');
-  const drawer = document.getElementById('mobile-nav-drawer');
-  const overlay = document.getElementById('mobile-drawer-overlay');
-  const closeBtn = document.getElementById('mobile-menu-close');
-
-  const openDrawer = () => {
-    drawer?.classList.add('active');
-    overlay?.classList.add('active');
-    document.body.classList.add('drawer-open');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeDrawer = () => {
-    drawer?.classList.remove('active');
-    overlay?.classList.remove('active');
-    document.body.classList.remove('drawer-open');
-    document.body.style.overflow = '';
-  };
-
-  if (trigger) trigger.addEventListener('click', openDrawer);
-  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-  if (overlay) overlay.addEventListener('click', closeDrawer);
-
-  drawer?.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeDrawer);
-  });
-}
-
-/* --------------------------------------------------------------------------
-   3. ANIMATED TRUST STATS COUNTERS
-   -------------------------------------------------------------------------- */
-function initStatsCounter() {
-  const statsContainer = document.getElementById('trust-stats-section');
-  if (!statsContainer) return;
-
-  let animated = false;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        animateCounters();
-      }
-    });
-  }, { threshold: 0.3 });
-
-  observer.observe(statsContainer);
-}
-
-function animateCounters() {
-  const counters = document.querySelectorAll('.stat-counter');
-  counters.forEach(counter => {
-    const target = parseFloat(counter.getAttribute('data-target'));
-    const isDecimal = counter.getAttribute('data-decimal') === 'true';
-    const prefix = counter.getAttribute('data-prefix') || '';
-    const suffix = counter.getAttribute('data-suffix') || '';
-
-    let current = 0;
-    const duration = 2000;
-    const stepTime = 30;
-    const steps = duration / stepTime;
-    const increment = target / steps;
-
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        current = target;
-        clearInterval(timer);
-      }
-      counter.textContent = prefix + (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
-    }, stepTime);
-  });
-}
-
-let activeServiceCategory = 'All Offerings';
-
-/* --------------------------------------------------------------------------
-   4. RENDER SERVICES GRID WITH CATEGORY TABS
-   -------------------------------------------------------------------------- */
-function renderServicesGrid() {
-  const container = document.getElementById('services-cards-container');
-  const tabsContainer = document.getElementById('service-category-tabs');
-  if (!container || !VARAJA_DATA?.services) return;
-
-  const categories = VARAJA_DATA.serviceCategories || ['All Offerings'];
-
-  if (tabsContainer) {
-    tabsContainer.innerHTML = categories.map(cat => `
-      <button class="service-cat-btn ${cat === activeServiceCategory ? 'active' : ''}" onclick="filterServices('${cat}')">
-        ${cat}
-      </button>
-    `).join('');
-  }
-
-  const filtered = activeServiceCategory === 'All Offerings'
-    ? VARAJA_DATA.services
-    : VARAJA_DATA.services.filter(s => s.category === activeServiceCategory);
-
-  container.innerHTML = filtered.map((service, idx) => `
-    <article class="service-card-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
-      <span class="service-card-num-badge">${service.number}</span>
-      <div class="service-img-wrap">
-        <img src="${service.image}" alt="${service.title}" loading="lazy">
+  container.innerHTML = THEKNOT_DATA.planningPortals.map(p => `
+    <article class="knot-portal-card">
+      <div class="knot-portal-icon-wrap">
+        ${p.icon}
       </div>
-      <div class="service-card-body">
-        <span class="service-card-subtitle">${service.subtitle}</span>
-        <h3 class="service-card-title">${service.title}</h3>
-        <p class="service-card-desc">${service.description}</p>
-        
-let currentScenographyIndex = 0;
-let activeHotspotIndex = 0;
-
-/* --------------------------------------------------------------------------
-   3D SPATIAL SCENOGRAPHY STUDIO
-   -------------------------------------------------------------------------- */
-function renderScenographyStudio() {
-  const controlsContainer = document.getElementById('scenography-controls');
-  const canvasBox = document.getElementById('scenography-canvas-box');
-  const specsBar = document.getElementById('scenography-specs-bar');
-  if (!canvasBox || !VARAJA_DATA?.scenographyViews) return;
-
-  const currentView = VARAJA_DATA.scenographyViews[currentScenographyIndex];
-  if (!currentView) return;
-
-  // Controls Buttons
-  if (controlsContainer) {
-    controlsContainer.innerHTML = VARAJA_DATA.scenographyViews.map((view, idx) => `
-      <button class="scenography-view-btn ${idx === currentScenographyIndex ? 'active' : ''}" onclick="switchScenographyView(${idx})">
-        <div>
-          <span style="font-size:0.72rem; font-weight:700; color:var(--color-gold); text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:2px;">SCENOGRAPHY 0${idx + 1}</span>
-          <strong style="display:block; font-size:1rem; color:#FFF;">${view.title}</strong>
-          <span style="font-size:0.78rem; color:rgba(247,243,234,0.7); display:inline-flex; align-items:center; gap:4px; margin-top:4px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span>${view.location}</span>
-          </span>
-        </div>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-      </button>
-    `).join('');
-  }
-
-  // Active Hotspot
-  const activeHotspot = currentView.hotspots[activeHotspotIndex] || currentView.hotspots[0];
-
-  // Canvas View HTML
-  canvasBox.innerHTML = `
-    <img src="${currentView.image}" alt="${currentView.title}">
-    
-    ${currentView.hotspots.map((hs, hIdx) => `
-      <button class="scenography-hotspot-pin ${hIdx === activeHotspotIndex ? 'active' : ''}" style="top:${hs.top}; left:${hs.left};" onclick="selectHotspot(${hIdx})" title="${hs.label}">
-        ${hIdx + 1}
-      </button>
-    `).join('')}
-
-    <div class="scenography-hotspot-card">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-        <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold); font-weight:700;">
-          SPATIAL SPECIFICATION (${activeHotspotIndex + 1}/${currentView.hotspots.length})
-        </span>
-        <span class="royal-badge" style="background:rgba(197,164,109,0.2); color:var(--color-gold-light); border-color:var(--color-gold); font-size:0.68rem; padding:2px 8px;">
-          ACTIVE PIN
-        </span>
-      </div>
-      <h4 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600; color:#FFF; margin-bottom:6px;">
-        ${activeHotspot.label}
-      </h4>
-      <p style="font-size:0.88rem; color:rgba(247,243,234,0.85); margin:0; line-height:1.6;">
-        ${activeHotspot.desc}
-      </p>
-    </div>
-  `;
-
-  // Specs Bar HTML with SVG icons
-  if (specsBar) {
-    specsBar.innerHTML = `
-      <div class="scenography-spec-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
-        <div>
-          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">STAGE SPAN</span>
-          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.span}</strong>
-        </div>
-      </div>
-      <div class="scenography-spec-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        <div>
-          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">CLEAR HEIGHT</span>
-          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.height}</strong>
-        </div>
-      </div>
-      <div class="scenography-spec-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
-        <div>
-          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">FLORAL SCENOGRAPHY</span>
-          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.floral}</strong>
-        </div>
-      </div>
-      <div class="scenography-spec-card">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-        <div>
-          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">GUEST CAPACITY</span>
-          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.capacity}</strong>
-        </div>
-      </div>
-    `;
-  }
-}
-
-function switchScenographyView(idx) {
-  currentScenographyIndex = idx;
-  activeHotspotIndex = 0;
-  renderScenographyStudio();
-}
-
-function selectHotspot(hIdx) {
-  activeHotspotIndex = hIdx;
-  renderScenographyStudio();
-}
-          ${service.features.map(f => `
-            <div class="service-deliverable-item">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2.5" style="flex-shrink:0; margin-top:3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              <span>${f}</span>
-            </div>
-          `).join('')}
-        </div>
-
-        <a href="#contact" onclick="preselectService('${service.title}')" class="btn btn-outline-gold" style="padding:12px 20px; font-size:0.75rem; margin-top:auto; align-self:stretch; justify-content:center;">
-          <span>Inquire This Service</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </a>
-      </div>
-    </article>
-  `).join('');
-
-  initScrollAnimations();
-}
-
-function filterServices(cat) {
-  activeServiceCategory = cat;
-  renderServicesGrid();
-}
-
-function preselectService(serviceTitle) {
-  const eventSelect = document.getElementById('enquiry-event');
-  if (eventSelect) {
-    for (let i = 0; i < eventSelect.options.length; i++) {
-      if (eventSelect.options[i].text.toLowerCase().includes(serviceTitle.toLowerCase()) || serviceTitle.toLowerCase().includes(eventSelect.options[i].text.toLowerCase())) {
-        eventSelect.selectedIndex = i;
-        break;
-      }
-    }
-  }
-}
-
-let activePortfolioCategory = 'All Celebrations';
-
-/* --------------------------------------------------------------------------
-   5. RENDER PORTFOLIO GRID WITH CATEGORY TABS
-   -------------------------------------------------------------------------- */
-function renderPortfolioGrid() {
-  const container = document.getElementById('portfolio-grid-container');
-  const tabsContainer = document.getElementById('portfolio-category-tabs');
-  if (!container || !VARAJA_DATA?.projects) return;
-
-  const categories = VARAJA_DATA.portfolioCategories || ['All Celebrations'];
-
-  if (tabsContainer) {
-    tabsContainer.innerHTML = categories.map(cat => `
-      <button class="portfolio-cat-btn ${cat === activePortfolioCategory ? 'active' : ''}" onclick="filterPortfolio('${cat}')">
-        ${cat}
-      </button>
-    `).join('');
-  }
-
-  const filtered = activePortfolioCategory === 'All Celebrations'
-    ? VARAJA_DATA.projects
-    : VARAJA_DATA.projects.filter(p => p.category === activePortfolioCategory);
-
-  container.innerHTML = filtered.map((project, idx) => `
-    <article class="project-card-item reveal-scale stagger-delay-${(idx % 3) + 1}" onclick="openCaseStudyModal('${project.id}')">
-      <div class="project-thumb-wrap">
-        <img src="${project.coverImage}" alt="${project.title}" loading="lazy">
-        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.78); color:var(--color-gold-light); border-color:var(--color-gold);">
-          ${project.eventType}
-        </span>
-      </div>
-      <div class="project-card-body">
-        <span class="project-card-tag">📍 ${project.location}</span>
-        <h3 class="project-couple-name">${project.title}</h3>
-        <div class="project-card-sub">${project.subtitle}</div>
-
-        <div class="project-card-quote-box">
-          "${project.testimonialQuote}"
-        </div>
-
-        <div class="project-card-footer-meta">
-          <span style="display:inline-flex; align-items:center; gap:6px;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            <span>${project.guestCount}</span>
-          </span>
-          <span style="color:var(--color-gold-dark); font-weight:600; display:inline-flex; align-items:center; gap:4px;">
-            <span>Explore Case Study</span>
-            <span>→</span>
-          </span>
-        </div>
-      </div>
-    </article>
-  `).join('');
-
-  initScrollAnimations();
-}
-
-function filterPortfolio(cat) {
-  activePortfolioCategory = cat;
-  renderPortfolioGrid();
-}
-
-/* --------------------------------------------------------------------------
-   6. RENDER ROYAL VENUES SHOWCASE
-   -------------------------------------------------------------------------- */
-function renderVenuesGrid() {
-  const container = document.getElementById('venues-cards-container');
-  if (!container || !VARAJA_DATA?.venues) return;
-
-  container.innerHTML = VARAJA_DATA.venues.map((v, idx) => `
-    <article class="venue-card-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
-      <div class="venue-thumb-wrap">
-        <img src="${v.image}" alt="${v.name}" loading="lazy">
-        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.78); color:var(--color-gold-light); border-color:var(--color-gold);">
-          ${v.badge}
-        </span>
-      </div>
-      <div class="venue-card-body">
-        <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark);">${v.type}</span>
-        <h3 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin:4px 0 12px;">${v.name}</h3>
-        <div style="font-size:0.85rem; color:var(--text-secondary); display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid var(--border-color-light);">
-          <span style="display:inline-flex; align-items:center; gap:6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span>${v.location}</span>
-          </span>
-          <span style="display:inline-flex; align-items:center; gap:6px;">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
-            <span>${v.capacity}</span>
-          </span>
-        </div>
-      </div>
-    </article>
-  `).join('');
-
-  initScrollAnimations();
-}
-
-/* --------------------------------------------------------------------------
-   7. CELEBRATION INVESTMENT CALCULATOR
-   -------------------------------------------------------------------------- */
-function initBudgetEstimator() {
-  const guestsInput = document.getElementById('calc-guests');
-  const daysInput = document.getElementById('calc-days');
-  const tierInput = document.getElementById('calc-tier');
-  const resultDisplay = document.getElementById('calc-result-val');
-
-  if (!guestsInput || !daysInput || !tierInput || !resultDisplay) return;
-
-  const calculateEstimate = () => {
-    const guests = parseInt(guestsInput.value) || 250;
-    const days = parseInt(daysInput.value) || 3;
-    const tier = parseFloat(tierInput.value) || 1.0;
-
-    // Base cost formula: Base ~ ₹12,000/guest/day * tier multiplier
-    const totalMin = Math.round((guests * days * 11000 * tier) / 100000);
-    const totalMax = Math.round((guests * days * 15000 * tier) / 100000);
-
-    let formattedResult = `₹${totalMin} Lakhs – ₹${totalMax} Lakhs`;
-    if (totalMin >= 100) {
-      formattedResult = `₹${(totalMin / 100).toFixed(1)} Cr – ₹${(totalMax / 100).toFixed(1)} Cr`;
-    }
-
-    resultDisplay.textContent = formattedResult;
-  };
-
-  guestsInput.addEventListener('change', calculateEstimate);
-  daysInput.addEventListener('change', calculateEstimate);
-  tierInput.addEventListener('change', calculateEstimate);
-
-  calculateEstimate();
-}
-
-/* --------------------------------------------------------------------------
-   8. RENDER GALLERY & LIGHTBOX
-   -------------------------------------------------------------------------- */
-function renderGalleryGrid() {
-  const container = document.getElementById('gallery-photos-container');
-  const tabsContainer = document.getElementById('gallery-filter-tabs');
-  if (!container || !VARAJA_DATA?.galleryItems) return;
-
-  const categories = ['All', 'Weddings', 'Decor', 'Haldi', 'Reception', 'Corporate'];
-
-  if (tabsContainer) {
-    tabsContainer.innerHTML = categories.map(cat => `
-      <button class="gallery-tab-btn ${cat === activeGalleryCategory ? 'active' : ''}" onclick="filterGallery('${cat}')">
-        ${cat}
-      </button>
-    `).join('');
-  }
-
-  const filtered = activeGalleryCategory === 'All'
-    ? VARAJA_DATA.galleryItems
-    : VARAJA_DATA.galleryItems.filter(g => g.category === activeGalleryCategory);
-
-  container.innerHTML = filtered.map((item, idx) => `
-    <div class="gallery-photo-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}" onclick="openLightbox('${item.image}', '${item.title}', '${item.location}')">
-      <img src="${item.image}" alt="${item.title}" loading="lazy">
-      <div style="position:absolute; inset:0; background:linear-gradient(180deg, transparent 50%, rgba(33,28,24,0.88) 100%); padding:20px; display:flex; flex-direction:column; justify-content:flex-end; color:#FFF;">
-        <span style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-light);">${item.category} • ${item.location}</span>
-        <h4 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600;">${item.title}</h4>
-      </div>
-    </div>
-  `).join('');
-
-  initScrollAnimations();
-}
-
-function filterGallery(cat) {
-  activeGalleryCategory = cat;
-  renderGalleryGrid();
-}
-
-function openLightbox(imgUrl, title, location) {
-  const lightboxOverlay = document.getElementById('gallery-lightbox-modal');
-  const lightboxImg = document.getElementById('lightbox-img');
-  const lightboxCaption = document.getElementById('lightbox-caption');
-  if (!lightboxOverlay || !lightboxImg) return;
-
-  lightboxImg.src = imgUrl;
-  if (lightboxCaption) lightboxCaption.textContent = `${title} — ${location}`;
-
-  lightboxOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-  const lightboxOverlay = document.getElementById('gallery-lightbox-modal');
-  if (lightboxOverlay) {
-    lightboxOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
-/* --------------------------------------------------------------------------
-   9. FAQS ACCORDION
-   -------------------------------------------------------------------------- */
-function initFaqsAccordion() {
-  const container = document.getElementById('faqs-accordion-container');
-  if (!container || !VARAJA_DATA?.faqs) return;
-
-  container.innerHTML = VARAJA_DATA.faqs.map((faq, idx) => `
-    <div class="faq-item-box ${idx === 0 ? 'active' : ''}">
-      <div class="faq-question-head" onclick="toggleFaqItem(this)">
-        <span>${faq.q}</span>
-        <div class="faq-toggle-icon">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </div>
-      </div>
-      <div class="faq-answer-body">
-        <p>${faq.a}</p>
-      </div>
-    </div>
-  `).join('');
-}
-
-function toggleFaqItem(element) {
-  const item = element.parentElement;
-  const isActive = item.classList.contains('active');
-
-  document.querySelectorAll('.faq-item-box').forEach(el => el.classList.remove('active'));
-
-  if (!isActive) {
-    item.classList.add('active');
-  }
-}
-
-/* --------------------------------------------------------------------------
-   10. TESTIMONIALS SLIDER
-   -------------------------------------------------------------------------- */
-function initTestimonialsSlider() {
-  renderTestimonialCard();
-}
-
-function renderTestimonialCard() {
-  const container = document.getElementById('testimonial-slider-card');
-  if (!container || !VARAJA_DATA?.testimonials) return;
-
-  const t = VARAJA_DATA.testimonials[currentTestimonialIndex];
-
-  container.style.opacity = '0';
-  container.style.transform = 'translateY(12px)';
-  container.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-  setTimeout(() => {
-    container.innerHTML = `
-      <div class="testimonial-stars">★★★★★</div>
-      <p class="testimonial-quote-txt">"${t.quote}"</p>
-      <div class="testimonial-couple-info">
-        <img src="${t.avatar}" alt="${t.coupleName}" class="couple-avatar-img">
-        <div style="text-align:left;">
-          <h4 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin-bottom:2px;">${t.coupleName}</h4>
-          <span style="font-size:0.8rem; color:var(--color-gold-dark); font-weight:600;">${t.location}</span>
-        </div>
-      </div>
-    `;
-    container.style.opacity = '1';
-    container.style.transform = 'translateY(0)';
-  }, 150);
-}
-
-function prevTestimonial() {
-  const len = VARAJA_DATA.testimonials.length;
-  currentTestimonialIndex = (currentTestimonialIndex - 1 + len) % len;
-  renderTestimonialCard();
-}
-
-function nextTestimonial() {
-  const len = VARAJA_DATA.testimonials.length;
-  currentTestimonialIndex = (currentTestimonialIndex + 1) % len;
-  renderTestimonialCard();
-}
-
-/* --------------------------------------------------------------------------
-   11. CONSULTATION INQUIRY FORM SUBMISSION
-   -------------------------------------------------------------------------- */
-function initInquiryForm() {
-  const form = document.getElementById('wedding-consultation-form');
-  const alertBox = document.getElementById('form-alert-msg');
-  if (!form) return;
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = `<span>Sending Inquiry...</span>`;
-
-    const formData = {
-      name: document.getElementById('enquiry-name')?.value,
-      phone: document.getElementById('enquiry-phone')?.value,
-      email: document.getElementById('enquiry-email')?.value,
-      date: document.getElementById('enquiry-date')?.value,
-      location: document.getElementById('enquiry-location')?.value,
-      eventType: document.getElementById('enquiry-event')?.value,
-      budget: document.getElementById('enquiry-budget')?.value,
-      message: document.getElementById('enquiry-message')?.value
-    };
-
-    try {
-      const response = await fetch('/api/inquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-      });
-
-      const result = await response.json();
-
-      if (alertBox) {
-        alertBox.style.display = 'block';
-        if (result.success) {
-          alertBox.className = 'form-alert success';
-          alertBox.innerHTML = `
-            <div style="font-weight:700; margin-bottom:4px;">✨ ${result.message}</div>
-            <div style="font-size:0.8rem; opacity:0.85;">Ref ID: ${result.enquiryId}</div>
-          `;
-          form.reset();
-        } else {
-          alertBox.className = 'form-alert error';
-          alertBox.textContent = result.message || 'Error submitting request. Please try again.';
-        }
-      }
-    } catch (err) {
-      console.error('Submission error:', err);
-      if (alertBox) {
-        alertBox.style.display = 'block';
-        alertBox.className = 'form-alert success';
-        alertBox.innerHTML = `
-          <div style="font-weight:700;">✨ Consultation Request Submitted Successfully!</div>
-          <div style="font-size:0.85rem; margin-top:4px;">Our event concierge will contact you via WhatsApp & Email within 12 hours.</div>
-        `;
-        form.reset();
-      }
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalBtnText;
-    }
-  });
-}
-
-function openCaseStudyModal(projectId) {
-  const project = VARAJA_DATA.projects.find(p => p.id === projectId);
-  if (!project) return;
-
-  const modalOverlay = document.getElementById('case-study-modal');
-  const modalBox = document.getElementById('case-study-content');
-  if (!modalOverlay || !modalBox) return;
-
-  modalBox.innerHTML = `
-    <div style="margin-bottom:24px;">
-      <span class="section-tag-lbl">${project.eventType}</span>
-      <h2 style="font-family:var(--font-serif); font-size:2.8rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">
-        ${project.title}
-      </h2>
-      <p style="font-size:1.05rem; color:var(--color-gold-dark); font-weight:600;">
-        📍 ${project.venue} — ${project.location} (${project.date})
-      </p>
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:32px;">
-      ${project.gallery.map(img => `<img src="${img}" alt="${project.title}" style="width:100%; height:220px; object-fit:cover; border-radius:var(--radius-sm);">`).join('')}
-    </div>
-
-    <div style="margin-bottom:32px;">
-      <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:12px; color:var(--text-primary);">The Story & Vision</h3>
-      <p style="font-size:0.98rem; color:var(--text-secondary); line-height:1.8;">
-        ${project.story}
-      </p>
-    </div>
-
-    <div style="background-color:var(--bg-secondary); padding:28px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:32px;">
-      <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:16px;">Celebration Highlights</h4>
-      <ul style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; font-size:0.9rem; color:var(--text-secondary);">
-        ${project.highlights.map(h => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--color-gold); font-weight:800;">✓</span><span>${h}</span></li>`).join('')}
-      </ul>
-    </div>
-
-    <div style="border-left:3px solid var(--color-gold); padding-left:20px; font-style:italic; font-family:var(--font-serif); font-size:1.2rem; color:var(--text-primary);">
-      "${project.testimonialQuote}"
-    </div>
-
-    <div style="margin-top:40px; text-align:center;">
-      <a href="#contact" onclick="closeCaseStudyModal()" class="btn btn-gold">
-        <span>Plan Your Event Like This</span>
+      <h3 class="knot-portal-title">${p.title}</h3>
+      <p class="knot-portal-desc">${p.desc}</p>
+      <a href="${p.link}" class="btn-knot-outline" style="margin-top:auto; font-size:0.82rem; padding:8px 18px;">
+        <span>${p.actionText}</span>
+        <span>→</span>
       </a>
-    </div>
-  `;
-
-  modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCaseStudyModal() {
-  const modalOverlay = document.getElementById('case-study-modal');
-  if (modalOverlay) {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+    </article>
+  `).join('');
 }
 
 /* --------------------------------------------------------------------------
-   12. INTERSECTION OBSERVER FOR SCROLL REVEALS
+   2. RENDER 12-MONTH INTERACTIVE CHECKLIST
    -------------------------------------------------------------------------- */
-function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade-in, .reveal-scale, .gold-divider');
-  if (!animatedElements.length) return;
+function renderChecklist() {
+  const container = document.getElementById('knot-checklist-container');
+  const countTxt = document.getElementById('knot-checklist-count');
+  const fillBar = document.getElementById('knot-checklist-fill');
+  if (!container || !THEKNOT_DATA?.checklist) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-      }
-    });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -40px 0px'
-  });
+  let total = 0;
+  let completed = 0;
 
-  animatedElements.forEach(el => observer.observe(el));
-}
-
-/* --------------------------------------------------------------------------
-   13. THE KNOT INTERACTIVE CHECKLIST HUB
-   -------------------------------------------------------------------------- */
-function renderChecklistHub() {
-  const container = document.getElementById('checklist-timeframe-container');
-  const countText = document.getElementById('checklist-progress-text');
-  const fillBar = document.getElementById('checklist-progress-fill');
-  if (!container || !VARAJA_DATA?.checklist) return;
-
-  let totalTasks = 0;
-  let completedTasks = 0;
-
-  VARAJA_DATA.checklist.forEach(tf => {
+  THEKNOT_DATA.checklist.forEach(tf => {
     tf.items.forEach(item => {
-      totalTasks++;
-      if (item.completed) completedTasks++;
+      total++;
+      if (item.completed) completed++;
     });
   });
 
-  const percentage = Math.round((completedTasks / totalTasks) * 100);
-  if (countText) countText.textContent = `${completedTasks} of ${totalTasks} Tasks Completed (${percentage}%)`;
-  if (fillBar) fillBar.style.width = `${percentage}%`;
+  const pct = Math.round((completed / total) * 100);
+  if (countTxt) countTxt.textContent = `${completed} of ${total} Tasks Completed (${pct}%)`;
+  if (fillBar) fillBar.style.width = `${pct}%`;
 
-  container.innerHTML = VARAJA_DATA.checklist.map(tf => `
-    <div class="checklist-card-block">
-      <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:4px;">
-        TIMEFRAME
-      </div>
-      <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:600; color:var(--text-primary); margin-bottom:16px;">
+  container.innerHTML = THEKNOT_DATA.checklist.map(tf => `
+    <div class="knot-task-card">
+      <span class="knot-section-tag" style="margin-bottom:4px;">TIMEFRAME</span>
+      <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:700; color:var(--knot-dark); margin-bottom:16px;">
         ${tf.timeframe}
       </h3>
       <div>
         ${tf.items.map(item => `
-          <label class="checklist-item-row">
-            <input type="checkbox" class="checklist-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleChecklistItem('${item.id}', this.checked)">
-            <span style="${item.completed ? 'text-decoration:line-through; opacity:0.6;' : ''}">${item.task}</span>
+          <label class="knot-task-row">
+            <input type="checkbox" class="knot-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleChecklistTask('${item.id}', this.checked)">
+            <span style="${item.completed ? 'text-decoration:line-through; color:var(--knot-gray);' : 'color:var(--knot-dark);'} font-weight:500;">
+              ${item.task}
+            </span>
           </label>
         `).join('')}
       </div>
@@ -812,145 +80,157 @@ function renderChecklistHub() {
   `).join('');
 }
 
-function toggleChecklistItem(id, isChecked) {
-  VARAJA_DATA.checklist.forEach(tf => {
+function toggleChecklistTask(id, isChecked) {
+  THEKNOT_DATA.checklist.forEach(tf => {
     tf.items.forEach(item => {
       if (item.id === id) item.completed = isChecked;
     });
   });
-  renderChecklistHub();
+  renderChecklist();
 }
 
 /* --------------------------------------------------------------------------
-   14. SMART BUDGET BREAKDOWN ADVISOR
+   3. RENDER BUDGET CALCULATOR
    -------------------------------------------------------------------------- */
-let currentTotalBudgetLakhs = 50;
+function renderBudgetCalculator() {
+  const container = document.getElementById('knot-budget-list');
+  const inputEl = document.getElementById('knot-budget-input');
+  if (!container || !THEKNOT_DATA?.budgetCategories) return;
 
-function renderBudgetAdvisor() {
-  const container = document.getElementById('budget-categories-list');
-  const inputEl = document.getElementById('budget-total-input');
-  if (!container || !VARAJA_DATA?.budgetCategories) return;
+  if (inputEl) inputEl.value = currentTotalBudget;
 
-  if (inputEl) inputEl.value = currentTotalBudgetLakhs;
-
-  const totalRupees = currentTotalBudgetLakhs * 100000;
-
-  container.innerHTML = VARAJA_DATA.budgetCategories.map(cat => {
-    const allocated = Math.round((cat.percent / 100) * totalRupees);
-    const lakhsVal = (allocated / 100000).toFixed(2);
+  container.innerHTML = THEKNOT_DATA.budgetCategories.map(cat => {
+    const amount = Math.round((cat.percent / 100) * currentTotalBudget);
     return `
-      <div class="budget-cat-card">
+      <div class="knot-budget-cat-row">
         <div>
-          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
-            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${cat.color};"></span>
-            <strong style="font-size:0.98rem; color:var(--text-primary);">${cat.name} (${cat.percent}%)</strong>
-          </div>
-          <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">${cat.desc}</p>
+          <strong style="font-size:0.95rem; color:var(--knot-dark); display:block;">${cat.name} (${cat.percent}%)</strong>
+          <span style="font-size:0.8rem; color:var(--knot-gray);">${cat.desc}</span>
         </div>
-        <div style="text-align:right; flex-shrink:0;">
-          <strong style="font-family:var(--font-serif); font-size:1.15rem; color:var(--color-gold-dark);">₹${lakhsVal} Lakhs</strong>
-          <span style="display:block; font-size:0.72rem; color:var(--text-muted);">₹${allocated.toLocaleString('en-IN')}</span>
+        <div style="text-align:right;">
+          <strong style="font-family:var(--font-serif); font-size:1.25rem; color:var(--knot-coral);">$${amount.toLocaleString()}</strong>
         </div>
       </div>
     `;
   }).join('');
 }
 
-function recalculateBudget(val) {
-  currentTotalBudgetLakhs = parseFloat(val) || 50;
-  renderBudgetAdvisor();
+function updateBudgetTotal(val) {
+  currentTotalBudget = parseInt(val) || 35000;
+  renderBudgetCalculator();
 }
 
 /* --------------------------------------------------------------------------
-   15. VENDOR MARKETPLACE EXPLORER
+   4. RENDER VENDOR MARKETPLACE
    -------------------------------------------------------------------------- */
-function renderVendorMarketplace() {
-  const container = document.getElementById('vendor-market-grid-container');
-  const tabsContainer = document.getElementById('vendor-category-tabs');
-  if (!container || !VARAJA_DATA?.vendorMarketplace) return;
-
-  const categories = ['All Categories', 'Palaces & Venues', 'Floral & Scenography', 'Photography & Cinema', 'Catering & Gastronomy', 'Bridal Beauty & Hair'];
+function renderVendorsGrid() {
+  const container = document.getElementById('knot-vendors-container');
+  const tabsContainer = document.getElementById('knot-vendor-tabs');
+  if (!container || !THEKNOT_DATA?.vendors) return;
 
   if (tabsContainer) {
-    tabsContainer.innerHTML = categories.map(cat => `
-      <button class="portfolio-cat-btn ${cat === activeVendorCategory ? 'active' : ''}" onclick="filterVendors('${cat}')">
+    tabsContainer.innerHTML = THEKNOT_DATA.vendorCategories.map(cat => `
+      <button class="btn-knot-outline ${cat === activeVendorCat ? 'active' : ''}" style="padding:8px 18px; font-size:0.8rem; ${cat === activeVendorCat ? 'background:var(--knot-dark); color:#FFF;' : ''}" onclick="filterVendorCat('${cat}')">
         ${cat}
       </button>
     `).join('');
   }
 
-  const filtered = activeVendorCategory === 'All Categories'
-    ? VARAJA_DATA.vendorMarketplace
-    : VARAJA_DATA.vendorMarketplace.filter(v => v.category === activeVendorCategory);
+  const filtered = activeVendorCat === 'All Vendors'
+    ? THEKNOT_DATA.vendors
+    : THEKNOT_DATA.vendors.filter(v => v.category === activeVendorCat);
 
-  container.innerHTML = filtered.map((v, idx) => `
-    <article class="vendor-market-card reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
-      <div class="vendor-market-img">
-        <img src="${v.image}" alt="${v.name}" loading="lazy">
-        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.82); color:var(--color-gold-light); border-color:var(--color-gold);">
+  container.innerHTML = filtered.map(v => `
+    <article class="knot-vendor-card">
+      <div class="knot-vendor-img">
+        <img src="${v.image}" alt="${v.name}">
+        <span style="position:absolute; top:12px; left:12px; background:rgba(26,26,26,0.85); color:#FFF; font-size:0.68rem; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:0.05em;">
           ${v.badge}
         </span>
       </div>
-      <div class="vendor-market-body">
+      <div class="knot-vendor-body">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-          <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark);">${v.category}</span>
-          <span style="font-size:0.8rem; font-weight:700; color:var(--text-primary); display:inline-flex; align-items:center; gap:3px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#C5A46D" stroke="#C5A46D"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--knot-coral);">${v.category}</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--knot-dark); display:inline-flex; align-items:center; gap:3px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#FD5B60" stroke="#FD5B60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             <span>${v.rating} (${v.reviews})</span>
           </span>
         </div>
 
-        <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:600; color:var(--text-primary); margin-bottom:4px;">${v.name}</h3>
-        <span style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:12px;">📍 ${v.location}</span>
-        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5; margin-bottom:20px; flex-grow:1;">${v.desc}</p>
+        <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:700; color:var(--knot-dark); margin-bottom:4px;">${v.name}</h3>
+        <span style="font-size:0.82rem; color:var(--knot-gray); margin-bottom:10px;">📍 ${v.location}</span>
+        <p style="font-size:0.85rem; color:var(--knot-gray); line-height:1.5; margin-bottom:20px; flex-grow:1;">${v.desc}</p>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-color-light);">
-          <strong style="font-family:var(--font-serif); font-size:1.1rem; color:var(--color-gold-dark);">${v.price}</strong>
-          <a href="#contact" onclick="preselectService('${v.name}')" class="btn btn-dark" style="padding:8px 16px; font-size:0.72rem;">
-            <span>Inquire Vendor</span>
-          </a>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-light);">
+          <strong style="font-family:var(--font-serif); font-size:1.15rem; color:var(--knot-dark);">${v.price}</strong>
+          <button onclick="contactVendorModal('${v.name}')" class="btn-knot-primary" style="padding:8px 18px; font-size:0.78rem;">
+            <span>Contact Vendor</span>
+          </button>
         </div>
       </div>
     </article>
   `).join('');
-
-  initScrollAnimations();
 }
 
-function filterVendors(cat) {
-  activeVendorCategory = cat;
-  renderVendorMarketplace();
+function filterVendorCat(cat) {
+  activeVendorCat = cat;
+  renderVendorsGrid();
+}
+
+function contactVendorModal(name) {
+  alert(`Thank you for reaching out to ${name}! A representative from The Knot vendor team will connect with you shortly.`);
 }
 
 /* --------------------------------------------------------------------------
-   16. NEWLYWED REGISTRY & CASH FUND
+   5. RENDER REGISTRY STORE
    -------------------------------------------------------------------------- */
-function renderRegistrySuite() {
-  const container = document.getElementById('registry-items-container');
-  if (!container || !VARAJA_DATA?.registryItems) return;
+function renderRegistryGrid() {
+  const container = document.getElementById('knot-registry-container');
+  if (!container || !THEKNOT_DATA?.registryItems) return;
 
-  container.innerHTML = VARAJA_DATA.registryItems.map((r, idx) => `
-    <article class="registry-card-item reveal-scale stagger-delay-${(idx % 4) + 1}">
-      <div class="registry-thumb-wrap">
-        <img src="${r.image}" alt="${r.title}" loading="lazy">
-        <span class="royal-badge" style="position:absolute; top:12px; left:12px; background:rgba(33,28,24,0.85); color:var(--color-gold-light); border-color:var(--color-gold); font-size:0.68rem; padding:2px 8px;">
-          ${r.category}
-        </span>
+  container.innerHTML = THEKNOT_DATA.registryItems.map(r => `
+    <article class="knot-registry-card">
+      <div class="knot-registry-img">
+        <img src="${r.image}" alt="${r.title}">
       </div>
-      <div class="registry-card-body">
-        <h4 style="font-family:var(--font-serif); font-size:1.15rem; font-weight:600; color:#FFF; margin-bottom:8px; line-height:1.3;">${r.title}</h4>
-        <div style="margin-top:auto; padding-top:12px; border-top:1px solid var(--border-dark);">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-            <strong style="color:var(--color-gold-light); font-size:1.05rem;">${r.price || r.goal}</strong>
-            <span style="font-size:0.75rem; color:rgba(247,243,234,0.7);">${r.contributionsCount} Gifted</span>
-          </div>
-          <a href="#contact" class="btn btn-gold" style="width:100%; padding:8px 12px; font-size:0.72rem; justify-content:center;">
-            <span>Contribute Gift</span>
-          </a>
+      <div class="knot-registry-body">
+        <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; color:var(--knot-coral); margin-bottom:4px;">${r.category}</span>
+        <h4 style="font-family:var(--font-serif); font-size:1.15rem; font-weight:700; color:var(--knot-dark); margin-bottom:12px; line-height:1.3;">${r.title}</h4>
+        
+        <div style="margin-top:auto; padding-top:12px; border-top:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:1.05rem; color:var(--knot-dark);">${r.price}</strong>
+          <span style="font-size:0.75rem; color:var(--knot-gray); font-weight:600;">${r.funded}</span>
         </div>
+
+        <button onclick="giftItem('${r.title}')" class="btn-knot-primary" style="width:100%; justify-content:center; padding:8px 14px; font-size:0.78rem; margin-top:12px;">
+          <span>Contribute / Gift</span>
+        </button>
       </div>
     </article>
   `).join('');
+}
 
-  initScrollAnimations();
+function giftItem(title) {
+  alert(`Thank you for contributing to "${title}" on The Knot Newlywed Fund!`);
+}
+
+/* --------------------------------------------------------------------------
+   6. RENDER REAL WEDDINGS INSPIRATION
+   -------------------------------------------------------------------------- */
+function renderRealWeddingsGrid() {
+  const container = document.getElementById('knot-real-container');
+  if (!container || !THEKNOT_DATA?.realWeddings) return;
+
+  container.innerHTML = THEKNOT_DATA.realWeddings.map(rw => `
+    <article class="knot-real-card">
+      <div class="knot-real-img">
+        <img src="${rw.image}" alt="${rw.couple}">
+      </div>
+      <div class="knot-real-body">
+        <h3 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:700; color:var(--knot-dark); margin-bottom:4px;">${rw.couple}</h3>
+        <span style="font-size:0.82rem; color:var(--knot-gray); display:block; margin-bottom:12px;">📍 ${rw.location}</span>
+        <p style="font-size:0.85rem; color:var(--knot-gray); line-height:1.5;">${rw.snippet}</p>
+      </div>
+    </article>
+  `).join('');
 }
