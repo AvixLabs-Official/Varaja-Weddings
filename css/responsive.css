@@ -28,6 +28,15 @@
     gap: 20px !important;
   }
 
+  .knot-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+
+  .knot-arch-frame {
+    height: 380px !important;
+  }
+
   .knot-footer-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 32px !important;

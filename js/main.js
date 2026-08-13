@@ -234,3 +234,35 @@ function renderRealWeddingsGrid() {
     </article>
   `).join('');
 }
+
+/* --------------------------------------------------------------------------
+   7. HERO PHOTO SWITCHER & SEARCH TRIGGER
+   -------------------------------------------------------------------------- */
+const HERO_PHOTOS = [
+  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
+];
+
+function switchHeroPhoto(idx) {
+  const mainImg = document.getElementById('hero-arch-img');
+  const dots = document.querySelectorAll('.knot-thumb-dot');
+  if (!mainImg || !HERO_PHOTOS[idx]) return;
+
+  mainImg.style.opacity = '0';
+  setTimeout(() => {
+    mainImg.src = HERO_PHOTOS[idx];
+    mainImg.style.opacity = '1';
+  }, 250);
+
+  dots.forEach((d, i) => {
+    if (i === idx) d.classList.add('active');
+    else d.classList.remove('active');
+  });
+}
+
+function triggerHeroVendorSearch() {
+  const cat = document.getElementById('hero-vendor-category-select')?.value || 'All Vendors';
+  filterVendorCat(cat);
+}

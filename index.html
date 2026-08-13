@@ -65,42 +65,115 @@
   <!-- ==========================================================================
      HERO SECTION WITH VENDOR SEARCH WIDGET
      ========================================================================== -->
+  <!-- ==========================================================================
+     ULTRA-PREMIUM HERO SECTION (DUAL STAGE EDITORIAL SPLIT)
+     ========================================================================== -->
   <section class="knot-hero-section" id="hero">
     <div class="container">
-      <h1 class="knot-hero-title">
-        Your Wedding, Your Way
-      </h1>
-      <p class="knot-hero-sub">
-        Find the best local venues, manage your honeymoon cash fund, create a free website, and check off every item on your checklist with The Knot.
-      </p>
+      <div class="knot-hero-grid">
+        <!-- Left Editorial Stage -->
+        <div class="knot-hero-left-stage">
+          <div class="knot-trust-live-pill">
+            <span class="knot-live-dot"></span>
+            <span>OVER 2,000,000 COUPLES TRUST THE KNOT WORLDWIDE</span>
+          </div>
 
-      <!-- Search Widget -->
-      <div class="knot-search-widget-box">
-        <div class="knot-widget-input-group">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <select>
-            <option>Reception Venues</option>
-            <option>Photographers</option>
-            <option>Wedding Planners</option>
-            <option>Catering & Food</option>
-            <option>Florists & Decor</option>
-            <option>DJs & Live Music</option>
-          </select>
+          <h1 class="knot-hero-title">
+            Your Dream Wedding, <br><span style="color:var(--knot-coral);">Orchestrated to Perfection.</span>
+          </h1>
+
+          <p class="knot-hero-sub">
+            Discover 300,000+ top-rated local venues, manage your Newlywed Cash Fund, build a free couple website, and track every item on your checklist with The Knot.
+          </p>
+
+          <!-- Search Widget -->
+          <div class="knot-search-widget-box">
+            <div class="knot-widget-input-group">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <select id="hero-vendor-category-select">
+                <option value="Reception Venues">Reception Venues</option>
+                <option value="Photographers">Photographers</option>
+                <option value="Wedding Planners">Wedding Planners</option>
+                <option value="Catering">Catering & Food</option>
+                <option value="Florists & Decor">Florists & Decor</option>
+                <option value="DJs & Live Music">DJs & Live Music</option>
+              </select>
+            </div>
+
+            <div class="knot-widget-divider"></div>
+
+            <div class="knot-widget-input-group">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              <input type="text" id="hero-vendor-location-input" placeholder="Location e.g. New York, NY or Udaipur">
+            </div>
+
+            <a href="#vendors" onclick="triggerHeroVendorSearch()" class="btn-knot-primary" style="padding:12px 28px;">
+              <span>Find Vendors</span>
+            </a>
+          </div>
+
+          <!-- Trust Badges Bar -->
+          <div class="knot-hero-trust-bar">
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="#FD5B60" stroke="#FD5B60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span><strong>4.9 Rating</strong> (350,000+ Reviews)</span>
+            </span>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              <span><strong>100% Free</strong> Planning Tools</span>
+            </span>
+            <span style="display:inline-flex; align-items:center; gap:6px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              <span><strong>300,000+</strong> Verified Vendors</span>
+            </span>
+          </div>
         </div>
 
-        <div class="knot-widget-divider"></div>
+        <!-- Right Showcase Stage (Arch Frame + Photo Switcher Dots) -->
+        <div class="knot-hero-right-stage">
+          <div class="knot-arch-container">
+            <div class="knot-arch-top-bar">
+              <div class="knot-top-pill dark">
+                <strong style="color:var(--knot-gold); font-family:var(--font-serif); font-size:1.1rem; margin-right:4px;">150+</strong>
+                <span>ROYAL CELEBRATIONS</span>
+              </div>
+              <a href="#checklist" class="knot-top-pill coral">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-1px; margin-right:4px;"><circle cx="12" cy="12" r="10"></circle><polyline points="12 8 12 12 14 14"></polyline></svg>
+                <span>12-MONTH CHECKLIST ↓</span>
+              </a>
+            </div>
 
-        <div class="knot-widget-input-group">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <input type="text" placeholder="Location e.g. New York, NY or Udaipur">
+            <div class="knot-arch-frame">
+              <img id="hero-arch-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="The Knot Wedding Planning">
+
+              <div class="knot-photo-thumbs-bar">
+                <div class="knot-thumb-dot active" onclick="switchHeroPhoto(0)" title="Udaipur Palace">
+                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=100&q=70" alt="Udaipur">
+                </div>
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(1)" title="Goa Beachfront">
+                  <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=100&q=70" alt="Goa">
+                </div>
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(2)" title="Kolkata Rajbari">
+                  <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=100&q=70" alt="Kolkata">
+                </div>
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(3)" title="Jaipur Sangeet">
+                  <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=100&q=70" alt="Jaipur">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <a href="#vendors" class="btn-knot-primary" style="padding:14px 32px;">
-          <span>Find Vendors</span>
-        </a>
       </div>
     </div>
   </section>
+
+  <!-- Marquee Ticker Tape Ribbon -->
+  <div class="knot-ticker-tape">
+    <div class="knot-ticker-track">
+      <span>RECEPTION VENUES • PHOTOGRAPHERS • WEDDING PLANNERS • CATERERS • FLORISTS & DECOR • DJS & LIVE MUSIC • BRIDAL SALONS • BRIDAL MAKEUP • </span>
+      <span>RECEPTION VENUES • PHOTOGRAPHERS • WEDDING PLANNERS • CATERERS • FLORISTS & DECOR • DJS & LIVE MUSIC • BRIDAL SALONS • BRIDAL MAKEUP • </span>
+    </div>
+  </div>
 
   <!-- ==========================================================================
      CORE PLANNING SUITE PORTALS (4 CARDS GRID)

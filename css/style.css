@@ -213,28 +213,64 @@ img {
   color: var(--knot-coral);
 }
 
-/* Hero Search Hub */
+/* Ultra-Premium Dual Stage Hero Section */
 .knot-hero-section {
   background-color: var(--bg-blush);
   padding: 64px 0 80px;
   border-bottom: 1px solid var(--border-light);
-  text-align: center;
+}
+
+.knot-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.knot-trust-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--knot-dark);
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.knot-live-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--knot-coral);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(253, 91, 96, 0.2);
+  animation: knotPulse 2s infinite;
+}
+
+@keyframes knotPulse {
+  0% { box-shadow: 0 0 0 0 rgba(253, 91, 96, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(253, 91, 96, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(253, 91, 96, 0); }
 }
 
 .knot-hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.12;
   color: var(--knot-dark);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .knot-hero-sub {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: var(--knot-gray);
-  max-width: 680px;
-  margin: 0 auto 40px;
+  margin-bottom: 32px;
   line-height: 1.6;
 }
 
@@ -242,19 +278,18 @@ img {
   background: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: 40px;
-  padding: 8px 12px 8px 24px;
-  max-width: 780px;
-  margin: 0 auto;
+  padding: 8px 10px 8px 20px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
   box-shadow: var(--shadow-md);
+  margin-bottom: 32px;
 }
 
 .knot-widget-input-group {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex: 1;
 }
 
@@ -262,7 +297,7 @@ img {
 .knot-widget-input-group input {
   border: none;
   outline: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--knot-dark);
   background: transparent;
   width: 100%;
@@ -271,8 +306,137 @@ img {
 
 .knot-widget-divider {
   width: 1px;
-  height: 32px;
+  height: 28px;
   background: var(--border-light);
+}
+
+.knot-hero-trust-bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  font-size: 0.8rem;
+  color: var(--knot-gray);
+  flex-wrap: wrap;
+}
+
+/* Right Stage Arch Frame */
+.knot-arch-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.knot-arch-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.knot-top-pill {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+}
+
+.knot-top-pill.dark {
+  background: var(--knot-dark);
+  color: #FFFFFF;
+}
+
+.knot-top-pill.coral {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  color: var(--knot-coral);
+}
+
+.knot-arch-frame {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  outline: 4px solid rgba(212, 163, 89, 0.25);
+  outline-offset: 4px;
+}
+
+.knot-arch-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+.knot-photo-thumbs-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 26, 26, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.knot-thumb-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  opacity: 0.65;
+  transition: var(--transition);
+}
+
+.knot-thumb-dot:hover,
+.knot-thumb-dot.active {
+  opacity: 1;
+  border-color: var(--knot-coral);
+  transform: scale(1.1);
+}
+
+.knot-thumb-dot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Marquee Ticker Tape Ribbon */
+.knot-ticker-tape {
+  background: var(--knot-dark);
+  color: #FFFFFF;
+  padding: 12px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.knot-ticker-track {
+  display: inline-block;
+  animation: knotTicker 30s linear infinite;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--knot-gold);
+}
+
+@keyframes knotTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Suite Features Grid (4 Core Portals) */
