@@ -180,37 +180,17 @@ img {
   color: var(--color-gold);
 }
 
-.knot-search-couples-bar {
+.knot-nav-inline {
   display: flex;
   align-items: center;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-light);
-  border-radius: 30px;
-  padding: 8px 18px;
-  gap: 10px;
-  width: 340px;
-}
-
-.knot-search-couples-bar input {
-  border: none;
-  background: transparent;
-  outline: none;
-  font-size: 0.85rem;
-  width: 100%;
-  color: var(--color-espresso);
-}
-
-.knot-nav-bar {
-  border-top: 1px solid var(--border-light);
 }
 
 .knot-nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 24px;
   list-style: none;
-  padding: 12px 0;
-  overflow-x: auto;
+  padding: 0;
 }
 
 .knot-nav-links a {
