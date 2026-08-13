@@ -942,9 +942,12 @@ body:has(.modal-overlay.active) .site-header {
   font-weight: 700;
   font-size: 0.75rem;
   cursor: pointer;
-  box-shadow: 0 0 20px var(--color-gold);
-  animation: pulsePin 2s infinite;
-  z-index: 20;
+.scenography-hotspot-pin.active,
+.scenography-hotspot-pin:hover {
+  background: var(--bg-dark);
+  border-color: var(--color-gold-light);
+  transform: scale(1.25);
+  box-shadow: 0 0 24px var(--color-gold);
 }
 
 @keyframes pulsePin {
@@ -970,14 +973,24 @@ body:has(.modal-overlay.active) .site-header {
 .scenography-specs-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 20px;
   margin-top: 32px;
-  background: rgba(247, 243, 234, 0.05);
+}
+
+.scenography-spec-card {
+  background: rgba(247, 243, 234, 0.04);
   border: 1px solid var(--border-dark);
-  padding: 20px 32px;
   border-radius: var(--radius-md);
-  text-align: center;
-  font-size: 0.85rem;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: var(--transition);
+}
+
+.scenography-spec-card:hover {
+  background: rgba(197, 164, 109, 0.08);
+  border-color: var(--color-gold);
 }
 
 /* Services Section (Soft Beige Background 10%) */

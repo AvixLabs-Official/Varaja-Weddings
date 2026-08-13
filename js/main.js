@@ -217,8 +217,12 @@ function renderScenographyStudio() {
     controlsContainer.innerHTML = VARAJA_DATA.scenographyViews.map((view, idx) => `
       <button class="scenography-view-btn ${idx === currentScenographyIndex ? 'active' : ''}" onclick="switchScenographyView(${idx})">
         <div>
-          <strong style="display:block; font-size:0.95rem; color:#FFF;">${view.title}</strong>
-          <span style="font-size:0.78rem; opacity:0.8;">📍 ${view.location}</span>
+          <span style="font-size:0.72rem; font-weight:700; color:var(--color-gold); text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:2px;">SCENOGRAPHY 0${idx + 1}</span>
+          <strong style="display:block; font-size:1rem; color:#FFF;">${view.title}</strong>
+          <span style="font-size:0.78rem; color:rgba(247,243,234,0.7); display:inline-flex; align-items:center; gap:4px; margin-top:4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>${view.location}</span>
+          </span>
         </div>
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
       </button>
@@ -233,31 +237,60 @@ function renderScenographyStudio() {
     <img src="${currentView.image}" alt="${currentView.title}">
     
     ${currentView.hotspots.map((hs, hIdx) => `
-      <button class="scenography-hotspot-pin" style="top:${hs.top}; left:${hs.left};" onclick="selectHotspot(${hIdx})" title="${hs.label}">
+      <button class="scenography-hotspot-pin ${hIdx === activeHotspotIndex ? 'active' : ''}" style="top:${hs.top}; left:${hs.left};" onclick="selectHotspot(${hIdx})" title="${hs.label}">
         ${hIdx + 1}
       </button>
     `).join('')}
 
     <div class="scenography-hotspot-card">
-      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold); margin-bottom:4px;">
-        SPATIAL ARCHITECTURE DETAILS (${activeHotspotIndex + 1}/${currentView.hotspots.length})
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+        <span style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold); font-weight:700;">
+          SPATIAL SPECIFICATION (${activeHotspotIndex + 1}/${currentView.hotspots.length})
+        </span>
+        <span class="royal-badge" style="background:rgba(197,164,109,0.2); color:var(--color-gold-light); border-color:var(--color-gold); font-size:0.68rem; padding:2px 8px;">
+          ACTIVE PIN
+        </span>
       </div>
-      <h4 style="font-family:var(--font-serif); font-size:1.25rem; font-weight:600; color:#FFF; margin-bottom:6px;">
+      <h4 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:600; color:#FFF; margin-bottom:6px;">
         ${activeHotspot.label}
       </h4>
-      <p style="font-size:0.85rem; color:rgba(247,243,234,0.8); margin:0; line-height:1.5;">
+      <p style="font-size:0.88rem; color:rgba(247,243,234,0.85); margin:0; line-height:1.6;">
         ${activeHotspot.desc}
       </p>
     </div>
   `;
 
-  // Specs Bar
+  // Specs Bar HTML with SVG icons
   if (specsBar) {
     specsBar.innerHTML = `
-      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">STAGE SPAN</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.span}</strong></div>
-      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">CLEAR HEIGHT</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.height}</strong></div>
-      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">FLORAL SCENOGRAPHY</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.floral}</strong></div>
-      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">GUEST CAPACITY</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.capacity}</strong></div>
+      <div class="scenography-spec-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+        <div>
+          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">STAGE SPAN</span>
+          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.span}</strong>
+        </div>
+      </div>
+      <div class="scenography-spec-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        <div>
+          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">CLEAR HEIGHT</span>
+          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.height}</strong>
+        </div>
+      </div>
+      <div class="scenography-spec-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+        <div>
+          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">FLORAL SCENOGRAPHY</span>
+          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.floral}</strong>
+        </div>
+      </div>
+      <div class="scenography-spec-card">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+        <div>
+          <span style="color:var(--text-muted); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px;">GUEST CAPACITY</span>
+          <strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.capacity}</strong>
+        </div>
+      </div>
     `;
   }
 }
