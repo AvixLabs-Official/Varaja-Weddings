@@ -1,0 +1,244 @@
+/* ==========================================================================
+   VARAJA LUXURY WEDDINGS - Master Ultra-Responsive Stylesheet
+   Supports desktop down to 250px mobile viewports with zero overflow
+   ========================================================================== */
+
+/* Zero Horizontal Overflow Lock */
+html {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+body {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: clip !important;
+  position: relative !important;
+  margin: 0 !important;
+  padding-top: 90px;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+h1, h2, h3, h4, .section-title, .hero-main-title, .project-couple-name, .service-card-title {
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* Mobile Bottom Navigation Dock */
+.mobile-bottom-dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(18, 19, 22, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--border-dark);
+  z-index: 998;
+  display: none;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 8px;
+}
+
+.mobile-dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.mobile-dock-btn.active,
+.mobile-dock-btn:hover {
+  color: var(--color-gold-light);
+}
+
+.mobile-dock-btn svg {
+  stroke: currentColor;
+}
+
+/* Auto-hide Bottom Dock when Drawer or Modal is Open */
+body.drawer-open .mobile-bottom-dock,
+body:has(.mobile-nav-drawer.active) .mobile-bottom-dock,
+body:has(.mobile-drawer-overlay.active) .mobile-bottom-dock,
+body:has(.modal-overlay.active) .mobile-bottom-dock {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
+/* ==========================================================================
+   DESKTOP & LARGE TABLET BREAKPOINTS (1200px - 992px)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .container { padding-left: 24px !important; padding-right: 24px !important; }
+  
+  .services-cards-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .why-cards-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .process-grid-flex { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .footer-top-grid { grid-template-columns: 1.5fr 1fr 1fr !important; gap: 32px !important; }
+}
+
+/* ==========================================================================
+   TABLET BREAKPOINTS (992px - 768px)
+   ========================================================================== */
+@media (max-width: 992px) {
+  body { padding-top: 80px; }
+
+  .site-header { height: 80px !important; }
+  .nav-links-desktop { display: none !important; }
+  .mobile-hamburger-btn { display: flex !important; }
+
+  .about-editorial-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+  .about-img-frame img { height: 440px !important; }
+  
+  .portfolio-editorial-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 24px !important; }
+  .featured-wedding-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+  
+  .contact-stage-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .google-reviews-card { flex-direction: column !important; text-align: center !important; gap: 24px !important; }
+}
+
+/* ==========================================================================
+   MOBILE BREAKPOINTS (768px - 480px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    padding-top: 72px !important;
+    padding-bottom: 70px !important;
+  }
+
+  .site-header { height: 72px !important; }
+  .mobile-bottom-dock { display: flex !important; }
+  
+  .floating-whatsapp-btn {
+    bottom: 80px !important;
+    right: 16px !important;
+    padding: 10px 16px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .trust-stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .trust-stat-card {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border-color-light) !important;
+    padding-bottom: 20px !important;
+  }
+
+  .trust-stat-card:nth-child(3),
+  .trust-stat-card:nth-child(4) {
+    border-bottom: none !important;
+  }
+
+  /* Services Swipeable Carousel on Mobile */
+  .services-cards-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: normal !important;
+    gap: 16px !important;
+    scroll-snap-type: x mandatory;
+    padding: 12px 4px 24px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .services-cards-grid::-webkit-scrollbar { display: none !important; }
+
+  .service-card-item {
+    flex: 0 0 290px !important;
+    min-width: 270px !important;
+    scroll-snap-align: start;
+  }
+
+  /* Portfolio Swipeable Carousel on Mobile */
+  .portfolio-editorial-grid {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: normal !important;
+    gap: 16px !important;
+    scroll-snap-type: x mandatory;
+    padding: 12px 4px 24px !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .portfolio-editorial-grid::-webkit-scrollbar { display: none !important; }
+
+  .project-card-item {
+    flex: 0 0 310px !important;
+    min-width: 280px !important;
+    scroll-snap-align: start;
+  }
+
+  .gallery-photos-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  .process-grid-flex {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .why-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .testimonials-slider-box {
+    padding: 36px 20px !important;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .footer-bottom-flex {
+    flex-direction: column !important;
+    gap: 16px !important;
+    text-align: center !important;
+  }
+
+  .contact-form-card {
+    padding: 28px 20px !important;
+  }
+}
+
+/* ==========================================================================
+   ULTRA-NARROW MOBILE BREAKPOINTS (250px - 480px)
+   ========================================================================== */
+@media (max-width: 480px) {
+  .container { padding-left: 16px !important; padding-right: 16px !important; }
+
+  .hero-cta-group { flex-direction: column !important; width: 100% !important; }
+  .hero-cta-group .btn { width: 100% !important; }
+
+  .trust-stats-grid { grid-template-columns: 1fr !important; }
+  
+  .gallery-photos-grid { grid-template-columns: 1fr !important; }
+
+  .service-card-item { flex: 0 0 88% !important; min-width: 240px !important; }
+  .project-card-item { flex: 0 0 90% !important; min-width: 250px !important; }
+
+  .modal-case-study-box {
+    padding: 28px 20px !important;
+    max-height: 94vh !important;
+  }
+}
