@@ -1,6 +1,7 @@
 /**
  * BLUE ROSE PRODUCTION - Master Data Store
- * Includes Categorized Services, Portfolio Projects, Royal Venues, FAQs, and 3D Scenography Data
+ * Inspired by The Knot Wedding Planning Platform
+ * Includes Checklist, Budget Advisor, Vendor Marketplace, Registry, 3D Scenography, and Portfolio Datasets
  */
 
 const VARAJA_DATA = {
@@ -21,6 +22,165 @@ const VARAJA_DATA = {
       weddingsCompleted: 150
     }
   },
+
+  checklist: [
+    {
+      timeframe: "12 - 9 Months Before",
+      items: [
+        { id: "c1", task: "Determine overall celebration budget & guest count scope", category: "Budget", completed: true },
+        { id: "c2", task: "Reserve heritage palace or beachfront resort venue with BLUE ROSE", category: "Venue", completed: true },
+        { id: "c3", task: "Take The Knot Wedding Style Quiz & select visual aesthetic palette", category: "Style", completed: true },
+        { id: "c4", task: "Hire primary lead event director & 3D spatial scenographer", category: "Planner", completed: true }
+      ]
+    },
+    {
+      timeframe: "8 - 6 Months Before",
+      items: [
+        { id: "c5", task: "Book lead wedding photographer, 4K drone cinematographer & DJ", category: "Vendors", completed: false },
+        { id: "c6", task: "Schedule bridal couture fittings & celebrity makeup masterclass", category: "Attire", completed: false },
+        { id: "c7", task: "Design custom couple wedding website & guest RSVP portal", category: "Website", completed: false },
+        { id: "c8", task: "Create Newlywed Cash Fund & luxury gift registry", category: "Registry", completed: false }
+      ]
+    },
+    {
+      timeframe: "5 - 3 Months Before",
+      items: [
+        { id: "c9", task: "Finalize 3D floral scenography, mandap renders & lighting rig", category: "Decor", completed: false },
+        { id: "c10", task: "Attend multi-course menu tasting with royal thali chefs", category: "Catering", completed: false },
+        { id: "c11", task: "Send gold foil Save-the-Date invitations & room block links", category: "Paper", completed: false },
+        { id: "c12", task: "Book airport VIP chauffeur fleet & guest hampers concierge", category: "Logistics", completed: false }
+      ]
+    },
+    {
+      timeframe: "2 - 1 Month Before",
+      items: [
+        { id: "c13", task: "Review master multi-day timeline & vendor SLA audits", category: "Production", completed: false },
+        { id: "c14", task: "Finalize seating charts, brass urlis, and welcome gifts", category: "Guests", completed: false },
+        { id: "c15", task: "Conduct final on-site dry run with 20+ BLUE ROSE leads", category: "Execution", completed: false }
+      ]
+    }
+  ],
+
+  budgetCategories: [
+    { name: "Palace Venue & Royal Banquet", percent: 45, color: "#C5A46D", desc: "Palace rentals, silver thali dining, multi-course tastings, & bar services." },
+    { name: "3D Floral Scenography & Lighting", percent: 18, color: "#211C18", desc: "Custom mandaps, Dutch roses, crystal chandeliers, & stage builds." },
+    { name: "Photography & 4K Cinema", percent: 12, color: "#756D63", desc: "4K drone video, fine-art leather albums, & same-day teasers." },
+    { name: "Artist Bookings & Live Sangeet", percent: 10, color: "#C5A46D", desc: "Bollywood singers, Sufi troupes, Sitar maestri, & DMX DJ rigs." },
+    { name: "Guest VIP Concierge & Chauffeurs", percent: 8, color: "#E8DED0", desc: "Airport luxury transfers, welcome hampers, & 24/7 helpdesk." },
+    { name: "Stationery, Foil Paper & Favors", percent: 4, color: "#211C18", desc: "Gold foil invitations, rooming manifests, & heirloom brass favors." },
+    { name: "Contingency & SLA Buffer", percent: 3, color: "#756D63", desc: "Weather backups, emergency floral reserves, & on-call staff." }
+  ],
+
+  vendorMarketplace: [
+    {
+      id: "v-p1",
+      category: "Palaces & Venues",
+      name: "City Palace & Jagmandir Island",
+      location: "Udaipur, Rajasthan",
+      rating: 4.9,
+      reviews: 128,
+      price: "₹35L - ₹75L / Day",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
+      badge: "VERIFIED VENUE",
+      desc: "Iconic island palace surrounded by Lake Pichola with private boat access."
+    },
+    {
+      id: "v-p2",
+      category: "Palaces & Venues",
+      name: "The St. Regis Goa Resort",
+      location: "Cavelossim, Goa",
+      rating: 4.9,
+      reviews: 94,
+      price: "₹25L - ₹50L / Day",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=800&q=85",
+      badge: "COASTAL LUXURY",
+      desc: "50-acre beachfront sanctuary overlooking the Arabian Sea."
+    },
+    {
+      id: "v-d1",
+      category: "Floral & Scenography",
+      name: "Atelier Rose & Gold Decor",
+      location: "Delhi • Jaipur • Mumbai",
+      rating: 5.0,
+      reviews: 86,
+      price: "₹15L - ₹40L",
+      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
+      badge: "MASTER SCENOGRAPHER",
+      desc: "Bespoke 3D spatial renders, Dutch white rose mandaps, & crystal chandelier rigs."
+    },
+    {
+      id: "v-ph1",
+      category: "Photography & Cinema",
+      name: "Lumière Fine Art Wedding Stories",
+      location: "Bengaluru • Worldwide",
+      rating: 4.9,
+      reviews: 142,
+      price: "₹6L - ₹18L",
+      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=85",
+      badge: "VOGUE FEATURED",
+      desc: "Editorial couples portraits, 4K drone cinematography, & handcrafted Italian albums."
+    },
+    {
+      id: "v-c1",
+      category: "Catering & Gastronomy",
+      name: "Royal Royal Thali & Chefs Table",
+      location: "Kolkata • Udaipur",
+      rating: 5.0,
+      reviews: 110,
+      price: "₹3,500 / Plate",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85",
+      badge: "CELEBRITY CHEF",
+      desc: "Zamindari feasts served on solid silver thalis & global gourmet live counters."
+    },
+    {
+      id: "v-b1",
+      category: "Bridal Beauty & Hair",
+      name: "Aura Luxury Bridal Beauty Lounge",
+      location: "Mumbai • Delhi",
+      rating: 4.9,
+      reviews: 78,
+      price: "₹1.5L - ₹3.5L",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=85",
+      badge: "HD AIRBRUSH MASTER",
+      desc: "Celebrity bridal makeup artists, hair trials, and on-call draping masters."
+    }
+  ],
+
+  registryItems: [
+    {
+      id: "r1",
+      title: "Honeymoon Cash Fund in Lake Como",
+      category: "Newlywed Cash Fund",
+      goal: "₹5,00,000",
+      raised: "₹3,40,000",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80",
+      contributionsCount: 18
+    },
+    {
+      id: "r2",
+      title: "Villeroy & Boch 24-Piece Gold Dinnerware",
+      category: "Home & Tabletop Registry",
+      price: "₹85,000",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80",
+      contributionsCount: 4
+    },
+    {
+      id: "r3",
+      title: "Heritage Brass Urli & Candle Candelabras",
+      category: "Decor & Collectibles",
+      price: "₹45,000",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=600&q=80",
+      contributionsCount: 9
+    },
+    {
+      id: "r4",
+      title: "Private Sunset Yacht Cruise in Goa",
+      category: "Experience Gift",
+      price: "₹65,000",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=600&q=80",
+      contributionsCount: 7
+    }
+  ],
 
   scenographyViews: [
     {

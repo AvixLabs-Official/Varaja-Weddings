@@ -133,6 +133,26 @@ body:has(.modal-overlay.active) .mobile-bottom-dock {
     gap: 16px !important;
     padding: 16px !important;
   }
+
+  .checklist-timeframe-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .budget-stage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .vendor-market-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
+
+  .registry-items-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 20px !important;
+  }
 }
 
 /* ==========================================================================

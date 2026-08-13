@@ -42,13 +42,12 @@
 
       <nav aria-label="Main Navigation">
         <ul class="nav-links-desktop">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#venues">Venues</a></li>
-          <li><a href="#weddings">Weddings</a></li>
-          <li><a href="#estimator">Estimator</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#checklist">Checklist</a></li>
+          <li><a href="#budget">Budget Advisor</a></li>
+          <li><a href="#vendors">Vendors Marketplace</a></li>
+          <li><a href="#scenography">3D Studio</a></li>
+          <li><a href="#weddings">Case Studies</a></li>
+          <li><a href="#registry">Registry</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -260,6 +259,130 @@
 
         <!-- Technical Specs Bar -->
         <div class="scenography-specs-bar reveal-on-scroll" id="scenography-specs-bar">
+          <!-- Rendered dynamically by js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       12-MONTH INTERACTIVE COUNTDOWN CHECKLIST HUB (#checklist)
+       ========================================================================== -->
+    <section class="checklist-section" id="checklist">
+      <div class="container">
+        <div style="text-align:center;" class="reveal-on-scroll">
+          <span class="royal-badge" style="margin-bottom:12px;">PLANNING TOOL</span>
+          <h2 class="section-title">Interactive 12-Month Wedding Checklist</h2>
+          <p class="section-subtitle" style="margin:16px auto 0;">
+            Track every deadline from 12 months out to your wedding day. Check off milestones as you plan with BLUE ROSE.
+          </p>
+        </div>
+
+        <div class="checklist-hub-box reveal-scale">
+          <div class="checklist-progress-bar-container">
+            <span style="font-weight:700; font-size:0.85rem; color:var(--text-primary);" id="checklist-progress-text">0 of 15 Tasks Completed</span>
+            <div class="checklist-progress-bar">
+              <div class="checklist-progress-fill" id="checklist-progress-fill"></div>
+            </div>
+            <span class="royal-badge" style="background:rgba(197,164,109,0.15); color:var(--color-gold-dark); border-color:var(--color-gold);">THE KNOT POWERED</span>
+          </div>
+
+          <div class="checklist-timeframe-grid" id="checklist-timeframe-container">
+            <!-- Rendered dynamically by js/main.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       SMART WEDDING BUDGET BREAKDOWN ADVISOR (#budget)
+       ========================================================================== -->
+    <section class="budget-section" id="budget">
+      <div class="container">
+        <div style="text-align:center;" class="reveal-on-scroll">
+          <span class="section-tag-lbl">FINANCIAL ADVISOR</span>
+          <h2 class="section-title">Smart Wedding Budget Breakdown</h2>
+          <p class="section-subtitle" style="margin:16px auto 0;">
+            Enter your target investment total to instantly view recommended percentage allocations across palace venues, 3D florals, cinema, and hospitality.
+          </p>
+        </div>
+
+        <div class="budget-stage-grid">
+          <div class="reveal-on-scroll stagger-delay-1">
+            <div style="background:var(--bg-surface); border:1px solid var(--border-color); padding:32px; border-radius:var(--radius-md); margin-bottom:24px;">
+              <label style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); display:block; margin-bottom:8px;">
+                TOTAL TARGET CELEBRATION BUDGET (IN LAKHS ₹)
+              </label>
+              <div style="display:flex; gap:16px; align-items:center;">
+                <span style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--text-primary);">₹</span>
+                <input type="number" id="budget-total-input" value="50" min="10" max="500" step="5" oninput="recalculateBudget(this.value)" style="width:100%; padding:14px 20px; font-family:var(--font-serif); font-size:1.5rem; font-weight:700; border:1px solid var(--border-color); border-radius:var(--radius-sm); background:var(--bg-primary); color:var(--text-primary);">
+                <span style="font-size:1.1rem; font-weight:700; color:var(--text-primary);">Lakhs</span>
+              </div>
+            </div>
+
+            <div class="budget-cat-list" id="budget-categories-list">
+              <!-- Rendered dynamically by js/main.js -->
+            </div>
+          </div>
+
+          <div class="reveal-scale stagger-delay-2" style="background:var(--bg-dark); color:#FFF; padding:40px; border-radius:var(--radius-md); border:1px solid var(--border-dark); text-align:center;">
+            <span class="royal-badge" style="background:rgba(197,164,109,0.15); color:var(--color-gold-light); border-color:var(--color-gold); margin-bottom:16px;">
+              NET COST AUDIT GUARANTEE
+            </span>
+            <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:600; color:var(--color-gold-light); margin-bottom:16px;">
+              Zero Vendor Markups
+            </h3>
+            <p style="font-size:0.9rem; color:rgba(247,243,234,0.8); line-height:1.7; margin-bottom:28px;">
+              All vendor contracts sourced through BLUE ROSE PRODUCTION are billed directly at net price. Our fixed management fee guarantees zero hidden commissions or surcharges.
+            </p>
+            <a href="#contact" class="btn btn-gold" style="width:100%; justify-content:center;">
+              <span>Request Custom Financial Audit</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       LUXURY VENDOR MARKETPLACE EXPLORER (#vendors)
+       ========================================================================== -->
+    <section class="vendors-section" id="vendors">
+      <div class="container">
+        <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px;" class="reveal-on-scroll">
+          <div>
+            <span class="section-tag-lbl">THE KNOT MARKETPLACE</span>
+            <h2 class="section-title">Curated Vendor Directory</h2>
+          </div>
+          <p class="section-subtitle" style="margin:0; max-width:480px;">
+            Explore verified heritage palaces, master floral scenographers, 4K cinematographers, and celebrity thali chefs.
+          </p>
+        </div>
+
+        <div class="portfolio-category-tabs reveal-fade-in" id="vendor-category-tabs">
+          <!-- Category buttons rendered dynamically by js/main.js -->
+        </div>
+
+        <div class="vendor-market-grid" id="vendor-market-grid-container">
+          <!-- Rendered dynamically by js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       NEWLYWED CASH FUND & REGISTRY SUITE (#registry)
+       ========================================================================== -->
+    <section class="registry-section" id="registry">
+      <div class="container">
+        <div style="text-align:center;" class="reveal-on-scroll">
+          <span class="royal-badge" style="background:rgba(197,164,109,0.15); color:var(--color-gold-light); border-color:var(--color-gold); margin-bottom:12px;">
+            GUEST REGISTRY SUITE
+          </span>
+          <h2 class="section-title" style="color:#FFF;">Newlywed Cash Funds & Wishlist Registry</h2>
+          <p class="section-subtitle" style="margin:16px auto 0; color:rgba(247,243,234,0.75);">
+            Give your guests effortless options to contribute toward honeymoon experiences, heritage tabletop dining, and cash funds.
+          </p>
+        </div>
+
+        <div class="registry-items-grid" id="registry-items-container">
           <!-- Rendered dynamically by js/main.js -->
         </div>
       </div>

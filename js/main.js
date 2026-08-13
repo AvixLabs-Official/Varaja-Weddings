@@ -6,11 +6,17 @@
 let activeGalleryCategory = 'All';
 let currentTestimonialIndex = 0;
 
+let activeVendorCategory = 'All Categories';
+
 // Initialize components on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileDrawer();
   initStatsCounter();
+  renderChecklistHub();
+  renderBudgetAdvisor();
+  renderVendorMarketplace();
+  renderRegistrySuite();
   renderScenographyStudio();
   renderServicesGrid();
   renderPortfolioGrid();
@@ -761,4 +767,190 @@ function initScrollAnimations() {
   });
 
   animatedElements.forEach(el => observer.observe(el));
+}
+
+/* --------------------------------------------------------------------------
+   13. THE KNOT INTERACTIVE CHECKLIST HUB
+   -------------------------------------------------------------------------- */
+function renderChecklistHub() {
+  const container = document.getElementById('checklist-timeframe-container');
+  const countText = document.getElementById('checklist-progress-text');
+  const fillBar = document.getElementById('checklist-progress-fill');
+  if (!container || !VARAJA_DATA?.checklist) return;
+
+  let totalTasks = 0;
+  let completedTasks = 0;
+
+  VARAJA_DATA.checklist.forEach(tf => {
+    tf.items.forEach(item => {
+      totalTasks++;
+      if (item.completed) completedTasks++;
+    });
+  });
+
+  const percentage = Math.round((completedTasks / totalTasks) * 100);
+  if (countText) countText.textContent = `${completedTasks} of ${totalTasks} Tasks Completed (${percentage}%)`;
+  if (fillBar) fillBar.style.width = `${percentage}%`;
+
+  container.innerHTML = VARAJA_DATA.checklist.map(tf => `
+    <div class="checklist-card-block">
+      <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:4px;">
+        TIMEFRAME
+      </div>
+      <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:600; color:var(--text-primary); margin-bottom:16px;">
+        ${tf.timeframe}
+      </h3>
+      <div>
+        ${tf.items.map(item => `
+          <label class="checklist-item-row">
+            <input type="checkbox" class="checklist-checkbox" ${item.completed ? 'checked' : ''} onchange="toggleChecklistItem('${item.id}', this.checked)">
+            <span style="${item.completed ? 'text-decoration:line-through; opacity:0.6;' : ''}">${item.task}</span>
+          </label>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleChecklistItem(id, isChecked) {
+  VARAJA_DATA.checklist.forEach(tf => {
+    tf.items.forEach(item => {
+      if (item.id === id) item.completed = isChecked;
+    });
+  });
+  renderChecklistHub();
+}
+
+/* --------------------------------------------------------------------------
+   14. SMART BUDGET BREAKDOWN ADVISOR
+   -------------------------------------------------------------------------- */
+let currentTotalBudgetLakhs = 50;
+
+function renderBudgetAdvisor() {
+  const container = document.getElementById('budget-categories-list');
+  const inputEl = document.getElementById('budget-total-input');
+  if (!container || !VARAJA_DATA?.budgetCategories) return;
+
+  if (inputEl) inputEl.value = currentTotalBudgetLakhs;
+
+  const totalRupees = currentTotalBudgetLakhs * 100000;
+
+  container.innerHTML = VARAJA_DATA.budgetCategories.map(cat => {
+    const allocated = Math.round((cat.percent / 100) * totalRupees);
+    const lakhsVal = (allocated / 100000).toFixed(2);
+    return `
+      <div class="budget-cat-card">
+        <div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${cat.color};"></span>
+            <strong style="font-size:0.98rem; color:var(--text-primary);">${cat.name} (${cat.percent}%)</strong>
+          </div>
+          <p style="font-size:0.8rem; color:var(--text-secondary); margin:0;">${cat.desc}</p>
+        </div>
+        <div style="text-align:right; flex-shrink:0;">
+          <strong style="font-family:var(--font-serif); font-size:1.15rem; color:var(--color-gold-dark);">₹${lakhsVal} Lakhs</strong>
+          <span style="display:block; font-size:0.72rem; color:var(--text-muted);">₹${allocated.toLocaleString('en-IN')}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function recalculateBudget(val) {
+  currentTotalBudgetLakhs = parseFloat(val) || 50;
+  renderBudgetAdvisor();
+}
+
+/* --------------------------------------------------------------------------
+   15. VENDOR MARKETPLACE EXPLORER
+   -------------------------------------------------------------------------- */
+function renderVendorMarketplace() {
+  const container = document.getElementById('vendor-market-grid-container');
+  const tabsContainer = document.getElementById('vendor-category-tabs');
+  if (!container || !VARAJA_DATA?.vendorMarketplace) return;
+
+  const categories = ['All Categories', 'Palaces & Venues', 'Floral & Scenography', 'Photography & Cinema', 'Catering & Gastronomy', 'Bridal Beauty & Hair'];
+
+  if (tabsContainer) {
+    tabsContainer.innerHTML = categories.map(cat => `
+      <button class="portfolio-cat-btn ${cat === activeVendorCategory ? 'active' : ''}" onclick="filterVendors('${cat}')">
+        ${cat}
+      </button>
+    `).join('');
+  }
+
+  const filtered = activeVendorCategory === 'All Categories'
+    ? VARAJA_DATA.vendorMarketplace
+    : VARAJA_DATA.vendorMarketplace.filter(v => v.category === activeVendorCategory);
+
+  container.innerHTML = filtered.map((v, idx) => `
+    <article class="vendor-market-card reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
+      <div class="vendor-market-img">
+        <img src="${v.image}" alt="${v.name}" loading="lazy">
+        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.82); color:var(--color-gold-light); border-color:var(--color-gold);">
+          ${v.badge}
+        </span>
+      </div>
+      <div class="vendor-market-body">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+          <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark);">${v.category}</span>
+          <span style="font-size:0.8rem; font-weight:700; color:var(--text-primary); display:inline-flex; align-items:center; gap:3px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="#C5A46D" stroke="#C5A46D"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+            <span>${v.rating} (${v.reviews})</span>
+          </span>
+        </div>
+
+        <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:600; color:var(--text-primary); margin-bottom:4px;">${v.name}</h3>
+        <span style="font-size:0.82rem; color:var(--text-secondary); margin-bottom:12px;">📍 ${v.location}</span>
+        <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5; margin-bottom:20px; flex-grow:1;">${v.desc}</p>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-color-light);">
+          <strong style="font-family:var(--font-serif); font-size:1.1rem; color:var(--color-gold-dark);">${v.price}</strong>
+          <a href="#contact" onclick="preselectService('${v.name}')" class="btn btn-dark" style="padding:8px 16px; font-size:0.72rem;">
+            <span>Inquire Vendor</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  initScrollAnimations();
+}
+
+function filterVendors(cat) {
+  activeVendorCategory = cat;
+  renderVendorMarketplace();
+}
+
+/* --------------------------------------------------------------------------
+   16. NEWLYWED REGISTRY & CASH FUND
+   -------------------------------------------------------------------------- */
+function renderRegistrySuite() {
+  const container = document.getElementById('registry-items-container');
+  if (!container || !VARAJA_DATA?.registryItems) return;
+
+  container.innerHTML = VARAJA_DATA.registryItems.map((r, idx) => `
+    <article class="registry-card-item reveal-scale stagger-delay-${(idx % 4) + 1}">
+      <div class="registry-thumb-wrap">
+        <img src="${r.image}" alt="${r.title}" loading="lazy">
+        <span class="royal-badge" style="position:absolute; top:12px; left:12px; background:rgba(33,28,24,0.85); color:var(--color-gold-light); border-color:var(--color-gold); font-size:0.68rem; padding:2px 8px;">
+          ${r.category}
+        </span>
+      </div>
+      <div class="registry-card-body">
+        <h4 style="font-family:var(--font-serif); font-size:1.15rem; font-weight:600; color:#FFF; margin-bottom:8px; line-height:1.3;">${r.title}</h4>
+        <div style="margin-top:auto; padding-top:12px; border-top:1px solid var(--border-dark);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <strong style="color:var(--color-gold-light); font-size:1.05rem;">${r.price || r.goal}</strong>
+            <span style="font-size:0.75rem; color:rgba(247,243,234,0.7);">${r.contributionsCount} Gifted</span>
+          </div>
+          <a href="#contact" class="btn btn-gold" style="width:100%; padding:8px 12px; font-size:0.72rem; justify-content:center;">
+            <span>Contribute Gift</span>
+          </a>
+        </div>
+      </div>
+    </article>
+  `).join('');
+
+  initScrollAnimations();
 }
