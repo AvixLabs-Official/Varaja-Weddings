@@ -1,8 +1,8 @@
 /**
- * THE KNOT - Master Interactive Orchestrator (Couple Planning & Guest RSVP Suite)
+ * BLUE ROSE PRODUCTION - Master Interactive Orchestrator (Bespoke Planning & Guest RSVP Suite)
  */
 
-let currentTotalBudget = 35000;
+let currentTotalBudgetLakhs = 50;
 
 document.addEventListener('DOMContentLoaded', () => {
   renderPortalsGrid();
@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
    -------------------------------------------------------------------------- */
 function renderPortalsGrid() {
   const container = document.getElementById('knot-portals-container');
-  if (!container || !THEKNOT_DATA?.planningPortals) return;
+  if (!container || !BLUEROSE_DATA?.planningPortals) return;
 
-  container.innerHTML = THEKNOT_DATA.planningPortals.map(p => `
+  container.innerHTML = BLUEROSE_DATA.planningPortals.map(p => `
     <article class="knot-portal-card">
       <div class="knot-portal-icon-wrap">
         ${p.icon}
@@ -42,12 +42,12 @@ function renderChecklist() {
   const container = document.getElementById('knot-checklist-container');
   const countTxt = document.getElementById('knot-checklist-count');
   const fillBar = document.getElementById('knot-checklist-fill');
-  if (!container || !THEKNOT_DATA?.checklist) return;
+  if (!container || !BLUEROSE_DATA?.checklist) return;
 
   let total = 0;
   let completed = 0;
 
-  THEKNOT_DATA.checklist.forEach(tf => {
+  BLUEROSE_DATA.checklist.forEach(tf => {
     tf.items.forEach(item => {
       total++;
       if (item.completed) completed++;
@@ -58,7 +58,7 @@ function renderChecklist() {
   if (countTxt) countTxt.textContent = `${completed} of ${total} Tasks Completed (${pct}%)`;
   if (fillBar) fillBar.style.width = `${pct}%`;
 
-  container.innerHTML = THEKNOT_DATA.checklist.map(tf => `
+  container.innerHTML = BLUEROSE_DATA.checklist.map(tf => `
     <div class="knot-task-card">
       <span class="knot-section-tag" style="margin-bottom:4px;">TIMEFRAME</span>
       <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:700; color:var(--knot-dark); margin-bottom:16px;">
@@ -79,7 +79,7 @@ function renderChecklist() {
 }
 
 function toggleChecklistTask(id, isChecked) {
-  THEKNOT_DATA.checklist.forEach(tf => {
+  BLUEROSE_DATA.checklist.forEach(tf => {
     tf.items.forEach(item => {
       if (item.id === id) item.completed = isChecked;
     });
@@ -93,12 +93,15 @@ function toggleChecklistTask(id, isChecked) {
 function renderBudgetCalculator() {
   const container = document.getElementById('knot-budget-list');
   const inputEl = document.getElementById('knot-budget-input');
-  if (!container || !THEKNOT_DATA?.budgetCategories) return;
+  if (!container || !BLUEROSE_DATA?.budgetCategories) return;
 
-  if (inputEl) inputEl.value = currentTotalBudget;
+  if (inputEl) inputEl.value = currentTotalBudgetLakhs;
 
-  container.innerHTML = THEKNOT_DATA.budgetCategories.map(cat => {
-    const amount = Math.round((cat.percent / 100) * currentTotalBudget);
+  const totalRupees = currentTotalBudgetLakhs * 100000;
+
+  container.innerHTML = BLUEROSE_DATA.budgetCategories.map(cat => {
+    const allocated = Math.round((cat.percent / 100) * totalRupees);
+    const lakhsVal = (allocated / 100000).toFixed(2);
     return `
       <div class="knot-budget-cat-row">
         <div>
@@ -106,7 +109,7 @@ function renderBudgetCalculator() {
           <span style="font-size:0.8rem; color:var(--knot-gray);">${cat.desc}</span>
         </div>
         <div style="text-align:right;">
-          <strong style="font-family:var(--font-serif); font-size:1.25rem; color:var(--knot-coral);">$${amount.toLocaleString()}</strong>
+          <strong style="font-family:var(--font-serif); font-size:1.25rem; color:var(--knot-coral);">₹${lakhsVal} Lakhs</strong>
         </div>
       </div>
     `;
@@ -114,7 +117,7 @@ function renderBudgetCalculator() {
 }
 
 function updateBudgetTotal(val) {
-  currentTotalBudget = parseInt(val) || 35000;
+  currentTotalBudgetLakhs = parseFloat(val) || 50;
   renderBudgetCalculator();
 }
 
@@ -123,9 +126,9 @@ function updateBudgetTotal(val) {
    -------------------------------------------------------------------------- */
 function renderGuestsGrid() {
   const container = document.getElementById('knot-guests-table-body');
-  if (!container || !THEKNOT_DATA?.guestList) return;
+  if (!container || !BLUEROSE_DATA?.guestList) return;
 
-  container.innerHTML = THEKNOT_DATA.guestList.map(g => `
+  container.innerHTML = BLUEROSE_DATA.guestList.map(g => `
     <tr style="border-bottom:1px solid var(--border-light);">
       <td style="padding:16px 20px; font-weight:600; color:var(--knot-dark);">${g.name}</td>
       <td style="padding:16px 20px; color:var(--knot-gray);">${g.party}</td>
@@ -143,16 +146,16 @@ function renderGuestsGrid() {
 function addNewGuestPrompt() {
   const name = prompt("Enter guest full name:");
   if (name) {
-    THEKNOT_DATA.guestList.push({
-      id: "g" + (THEKNOT_DATA.guestList.length + 1),
+    BLUEROSE_DATA.guestList.push({
+      id: "g" + (BLUEROSE_DATA.guestList.length + 1),
       name: name,
       party: "Party of 2",
       rsvpStatus: "Attending",
-      meal: "Chef Special",
-      table: "Table " + (THEKNOT_DATA.guestList.length + 1)
+      meal: "Zamindari Thali",
+      table: "Table " + (BLUEROSE_DATA.guestList.length + 1)
     });
     renderGuestsGrid();
-    alert(`Guest "${name}" added to your interactive RSVP manager!`);
+    alert(`Guest "${name}" added to your BLUE ROSE PRODUCTION guest list!`);
   }
 }
 
@@ -161,9 +164,9 @@ function addNewGuestPrompt() {
    -------------------------------------------------------------------------- */
 function renderRegistryGrid() {
   const container = document.getElementById('knot-registry-container');
-  if (!container || !THEKNOT_DATA?.registryItems) return;
+  if (!container || !BLUEROSE_DATA?.registryItems) return;
 
-  container.innerHTML = THEKNOT_DATA.registryItems.map(r => `
+  container.innerHTML = BLUEROSE_DATA.registryItems.map(r => `
     <article class="knot-registry-card">
       <div class="knot-registry-img">
         <img src="${r.image}" alt="${r.title}">
@@ -186,7 +189,7 @@ function renderRegistryGrid() {
 }
 
 function giftItem(title) {
-  alert(`Thank you for contributing to "${title}" on The Knot Newlywed Fund!`);
+  alert(`Thank you for contributing to "${title}" on BLUE ROSE PRODUCTION Registry Fund!`);
 }
 
 /* --------------------------------------------------------------------------
@@ -194,9 +197,9 @@ function giftItem(title) {
    -------------------------------------------------------------------------- */
 function renderRealWeddingsGrid() {
   const container = document.getElementById('knot-real-container');
-  if (!container || !THEKNOT_DATA?.realWeddings) return;
+  if (!container || !BLUEROSE_DATA?.realWeddings) return;
 
-  container.innerHTML = THEKNOT_DATA.realWeddings.map(rw => `
+  container.innerHTML = BLUEROSE_DATA.realWeddings.map(rw => `
     <article class="knot-real-card">
       <div class="knot-real-img">
         <img src="${rw.image}" alt="${rw.couple}">
