@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTestimonialsGrid();
   renderChecklist();
   renderBudgetCalculator();
-  renderGuestsGrid();
+  renderRegistryGrid();
   renderRealWeddingsGrid();
   initInquiryForm();
 });
@@ -185,41 +185,36 @@ function updateBudgetTotal(val) {
 }
 
 /* --------------------------------------------------------------------------
-   6. RENDER GUESTS & RSVP MANAGER SUITE
+   6. RENDER REGISTRY STORE
    -------------------------------------------------------------------------- */
-function renderGuestsGrid() {
-  const container = document.getElementById('knot-guests-table-body');
-  if (!container || !BLUEROSE_DATA?.guestList) return;
+function renderRegistryGrid() {
+  const container = document.getElementById('knot-registry-container');
+  if (!container || !BLUEROSE_DATA?.registryItems) return;
 
-  container.innerHTML = BLUEROSE_DATA.guestList.map(g => `
-    <tr style="border-bottom:1px solid var(--border-light);">
-      <td style="padding:16px 20px; font-weight:600; color:var(--knot-dark);">${g.name}</td>
-      <td style="padding:16px 20px; color:var(--knot-gray);">${g.party}</td>
-      <td style="padding:16px 20px;">
-        <span style="padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; ${g.rsvpStatus === 'Attending' ? 'background:#E8F5E9; color:#2E7D32;' : 'background:#FFF3E0; color:#E65100;'}">
-          ${g.rsvpStatus}
-        </span>
-      </td>
-      <td style="padding:16px 20px; color:var(--knot-gray);">${g.meal}</td>
-      <td style="padding:16px 20px; font-weight:600; color:var(--knot-dark);">${g.table}</td>
-    </tr>
+  container.innerHTML = BLUEROSE_DATA.registryItems.map(r => `
+    <article class="knot-registry-card">
+      <div class="knot-registry-img">
+        <img src="${r.image}" alt="${r.title}">
+      </div>
+      <div class="knot-registry-body">
+        <span style="font-size:0.72rem; font-weight:700; text-transform:uppercase; color:var(--knot-coral); margin-bottom:4px;">${r.category}</span>
+        <h4 style="font-family:var(--font-serif); font-size:1.15rem; font-weight:700; color:var(--knot-dark); margin-bottom:12px; line-height:1.3;">${r.title}</h4>
+        
+        <div style="margin-top:auto; padding-top:12px; border-top:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:1.05rem; color:var(--knot-dark);">${r.price}</strong>
+          <span style="font-size:0.75rem; color:var(--knot-gray); font-weight:600;">${r.funded}</span>
+        </div>
+
+        <button onclick="giftItem('${r.title}')" class="btn-knot-primary" style="width:100%; justify-content:center; padding:8px 14px; font-size:0.78rem; margin-top:12px;">
+          <span>Contribute / Gift</span>
+        </button>
+      </div>
+    </article>
   `).join('');
 }
 
-function addNewGuestPrompt() {
-  const name = prompt("Enter guest full name:");
-  if (name) {
-    BLUEROSE_DATA.guestList.push({
-      id: "g" + (BLUEROSE_DATA.guestList.length + 1),
-      name: name,
-      party: "Party of 2",
-      rsvpStatus: "Attending",
-      meal: "Zamindari Thali",
-      table: "Table " + (BLUEROSE_DATA.guestList.length + 1)
-    });
-    renderGuestsGrid();
-    alert(`Guest "${name}" added to your BLUE ROSE PRODUCTION guest list!`);
-  }
+function giftItem(title) {
+  alert(`Thank you for contributing to "${title}" on BLUE ROSE PRODUCTION Registry Fund!`);
 }
 
 /* --------------------------------------------------------------------------
@@ -277,7 +272,7 @@ function initInquiryForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('inquiry-name')?.value;
-    alert(`Thank you, ${name || 'Valued Client'}! Your private consultation inquiry has been submitted to BLUE ROSE PRODUCTION. Our senior concierge will connect with you within 24 hours.`);
+    alert(`Thank you, ${name || 'Valued Client'}! Your private consultation inquiry has been submitted to BLUE ROSE PRODUCTION. Our senior director will connect with you within 24 hours.`);
     form.reset();
   });
 }

@@ -33,14 +33,11 @@
         <!-- Search Couple's Site or Registry -->
         <div class="knot-search-couples-bar">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--knot-gray)" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" placeholder="Search couple's portal or RSVP...">
+          <input type="text" placeholder="Search couple's website or registry...">
         </div>
 
         <!-- Actions -->
         <div style="display:flex; align-items:center; gap:16px;">
-          <a href="#guests" class="btn-knot-outline" style="padding:8px 18px; font-size:0.8rem;">
-            <span>Guest Portal</span>
-          </a>
           <a href="#contact" class="btn-knot-primary" style="padding:10px 22px; font-size:0.85rem;">
             <span>Book Consultation</span>
           </a>
@@ -55,7 +52,7 @@
           <li><a href="#weddings">Case Studies</a></li>
           <li><a href="#checklist">Planning Tools</a></li>
           <li><a href="#budget">Budget Advisor</a></li>
-          <li><a href="#guests">Guests & RSVPs</a></li>
+          <li><a href="#registry">Luxury Registry</a></li>
           <li><a href="#testimonials">Royal Praise</a></li>
           <li><a href="#contact">Contact Concierge</a></li>
         </ul>
@@ -175,6 +172,17 @@
   </section>
 
   <!-- ==========================================================================
+     CORE PLANNING SUITE PORTALS (4 CARDS GRID)
+     ========================================================================== -->
+  <section class="knot-suite-portals-section" style="background:var(--bg-blush); border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);">
+    <div class="container">
+      <div class="knot-portals-grid" id="knot-portals-container">
+        <!-- Rendered dynamically by js/main.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
      CURATED ROYAL VENUES SHOWCASE (#venues)
      ========================================================================== -->
   <section class="knot-vendor-section" id="venues">
@@ -283,35 +291,18 @@
   </section>
 
   <!-- ==========================================================================
-     GUESTS & RSVP MANAGEMENT SUITE (#guests)
+     REGISTRY & CASH FUNDS STORE (#registry)
      ========================================================================== -->
-  <section class="knot-vendor-section" id="guests" style="background:#FFFFFF;">
+  <section class="knot-registry-section" id="registry">
     <div class="container">
-      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:32px;">
-        <div>
-          <span class="knot-section-tag">GUEST LIST MANAGER</span>
-          <h2 class="knot-section-title">Guests & Online RSVP Tracker</h2>
-        </div>
-        <button onclick="addNewGuestPrompt()" class="btn-knot-primary" style="padding:10px 24px; font-size:0.85rem;">
-          <span>+ Add New Guest</span>
-        </button>
+      <div class="knot-section-header">
+        <span class="knot-section-tag">ALL-IN-ONE REGISTRY</span>
+        <h2 class="knot-section-title">Newlywed Cash Funds & Wishlist Registry</h2>
+        <p style="color:var(--knot-gray); margin-top:8px;">Give your guests seamless options to gift toward honeymoons, tabletop china, and experiences.</p>
       </div>
 
-      <div style="background:var(--bg-blush); border:1px solid var(--border-light); border-radius:var(--radius-md); overflow-x:auto;">
-        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
-          <thead>
-            <tr style="border-bottom:2px solid var(--border-light); background:#FFFFFF; color:var(--knot-dark); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em;">
-              <th style="padding:16px 20px;">Guest Name</th>
-              <th style="padding:16px 20px;">Party Size</th>
-              <th style="padding:16px 20px;">RSVP Status</th>
-              <th style="padding:16px 20px;">Meal Choice</th>
-              <th style="padding:16px 20px;">Table Assignment</th>
-            </tr>
-          </thead>
-          <tbody id="knot-guests-table-body">
-            <!-- Rendered dynamically by js/main.js -->
-          </tbody>
-        </table>
+      <div class="knot-registry-grid" id="knot-registry-container">
+        <!-- Rendered dynamically by js/main.js -->
       </div>
     </div>
   </section>
@@ -416,12 +407,12 @@
         </div>
 
         <div class="knot-footer-col">
-          <h4>Planning Tools</h4>
+          <h4>Planning Suite</h4>
           <ul>
             <li><a href="#checklist">12-Month Checklist</a></li>
             <li><a href="#budget">Budget Advisor</a></li>
-            <li><a href="#guests">Guest List & RSVPs</a></li>
-            <li><a href="#checklist">Website Portal</a></li>
+            <li><a href="#venues">Royal Venues</a></li>
+            <li><a href="#registry">Luxury Registry</a></li>
           </ul>
         </div>
 

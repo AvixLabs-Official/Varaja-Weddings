@@ -21,6 +21,41 @@ const BLUEROSE_DATA = {
     weddingsExecuted: "150+"
   },
 
+  planningPortals: [
+    {
+      id: "portal-checklist",
+      title: "Interactive Checklist",
+      desc: "Stay organized with your personalized step-by-step 12-month wedding countdown.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>`,
+      link: "#checklist",
+      actionText: "Track Milestones"
+    },
+    {
+      id: "portal-budget",
+      title: "Budget Advisor",
+      desc: "Get personalized spending estimates across palace venue, photography, decor & couture.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>`,
+      link: "#budget",
+      actionText: "Calculate Budget"
+    },
+    {
+      id: "portal-venues",
+      title: "Royal Venues Access",
+      desc: "Scout iconic heritage palaces, private islands, and oceanfront luxury retreats.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>`,
+      link: "#venues",
+      actionText: "Explore Venues"
+    },
+    {
+      id: "portal-registry",
+      title: "Luxury Registry Suite",
+      desc: "Combine cash funds, Lake Como honeymoons, and heritage brass collectibles in one place.",
+      icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>`,
+      link: "#registry",
+      actionText: "Create Registry"
+    }
+  ],
+
   services: [
     {
       id: "s1",
@@ -120,10 +155,10 @@ const BLUEROSE_DATA = {
     {
       timeframe: "8 - 6 Months Out",
       items: [
-        { id: "c5", task: "Design custom couple wedding website & guest RSVP portal", category: "Website", completed: false },
+        { id: "c5", task: "Design custom couple wedding website & photo gallery", category: "Website", completed: false },
         { id: "c6", task: "Schedule bridal couture fittings & celebrity makeup masterclass", category: "Attire", completed: false },
         { id: "c7", task: "Build Newlywed Cash Fund & luxury gift registry wishlist", category: "Registry", completed: false },
-        { id: "c8", task: "Collect digital guest addresses & contact phone numbers", category: "Guests", completed: false }
+        { id: "c8", task: "Finalize master guest manifest & accommodation blocks", category: "Travel", completed: false }
       ]
     },
     {
@@ -155,12 +190,39 @@ const BLUEROSE_DATA = {
     { name: "Contingency & SLA Buffer", percent: 3, desc: "Weather backups, emergency floral reserves, & on-call staff." }
   ],
 
-  guestList: [
-    { id: "g1", name: "Ananya Roy", party: "Party of 2", rsvpStatus: "Attending", meal: "Zamindari Thali", table: "Table 1 - Royal Mandap" },
-    { id: "g2", name: "Rohan Singhania", party: "Party of 4", rsvpStatus: "Attending", meal: "Gourmet Non-Veg", table: "Table 2 - Lake View" },
-    { id: "g3", name: "Siddharth Malhotra", party: "Party of 2", rsvpStatus: "Attending", meal: "Jain Special", table: "Table 1 - Royal Mandap" },
-    { id: "g4", name: "Kabir Kapoor", party: "Party of 2", rsvpStatus: "Pending", meal: "TBD", table: "Unassigned" },
-    { id: "g5", name: "Devika Rathore", party: "Party of 3", rsvpStatus: "Attending", meal: "Zamindari Thali", table: "Table 3 - Courtyard" }
+  registryItems: [
+    {
+      id: "r1",
+      title: "Honeymoon Cash Fund in Lake Como",
+      category: "Newlywed Cash Fund",
+      price: "₹5,00,000 Goal",
+      funded: "75% Funded",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      id: "r2",
+      title: "Villeroy & Boch 24-Piece Gold Dinnerware",
+      category: "Tabletop Registry",
+      price: "₹85,000",
+      funded: "1 Gifted",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      id: "r3",
+      title: "Heritage Brass Urli & Candle Candelabras",
+      category: "Decor Collectibles",
+      price: "₹45,000",
+      funded: "2 Gifted",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+      id: "r4",
+      title: "Private Sunset Yacht Cruise in Goa",
+      category: "Experience Gift",
+      price: "₹65,000",
+      funded: "4 Gifted",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=600&q=80"
+    }
   ],
 
   testimonials: [
