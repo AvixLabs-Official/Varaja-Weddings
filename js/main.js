@@ -1,10 +1,12 @@
 /**
- * BLUE ROSE PRODUCTION - Main Interactive Orchestrator
- * Features Premium Editorial Scroll Reveal Animations & Micro-Interactions
+ * BLUE ROSE PRODUCTION - Master Interactive Orchestrator
+ * Features Royal Venues, Budget Estimator, FAQs Accordion, and Shehnai Audio Toggle
  */
 
 let activeGalleryCategory = 'All';
 let currentTestimonialIndex = 0;
+let isAudioPlaying = false;
+let audioInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
@@ -12,14 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
   initStatsCounter();
   renderServicesGrid();
   renderPortfolioGrid();
+  renderVenuesGrid();
   renderGalleryGrid();
   initTestimonialsSlider();
+  initFaqsAccordion();
+  initBudgetEstimator();
   initInquiryForm();
   initScrollAnimations();
 });
 
 /* --------------------------------------------------------------------------
-   1. STICKY HEADER & SCROLL EFFECTS
+   1. STICKY HEADER & AMBIENT AUDIO TOGGLE
    -------------------------------------------------------------------------- */
 function initStickyHeader() {
   const header = document.getElementById('main-header');
@@ -32,6 +37,21 @@ function initStickyHeader() {
       header.classList.remove('scrolled');
     }
   });
+}
+
+function toggleAmbientAudio() {
+  const btn = document.getElementById('ambient-music-btn');
+  const statusTxt = document.getElementById('ambient-audio-status');
+
+  if (!isAudioPlaying) {
+    isAudioPlaying = true;
+    if (statusTxt) statusTxt.textContent = '🎵 Shehnai Soundscape (Active)';
+    if (btn) btn.style.borderColor = 'var(--color-gold)';
+  } else {
+    isAudioPlaying = false;
+    if (statusTxt) statusTxt.textContent = '🎵 Play Shehnai Soundscape';
+    if (btn) btn.style.borderColor = '';
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -112,7 +132,7 @@ function animateCounters() {
 }
 
 /* --------------------------------------------------------------------------
-   4. RENDER SERVICES GRID WITH STAGGER ANIMATIONS
+   4. RENDER SERVICES GRID
    -------------------------------------------------------------------------- */
 function renderServicesGrid() {
   const container = document.getElementById('services-cards-container');
@@ -144,7 +164,7 @@ function renderServicesGrid() {
 }
 
 /* --------------------------------------------------------------------------
-   5. RENDER PORTFOLIO & CASE STUDY MODAL WITH STAGGER ANIMATIONS
+   5. RENDER PORTFOLIO & CASE STUDY MODAL
    -------------------------------------------------------------------------- */
 function renderPortfolioGrid() {
   const container = document.getElementById('portfolio-grid-container');
@@ -168,68 +188,72 @@ function renderPortfolioGrid() {
   initScrollAnimations();
 }
 
-function openCaseStudyModal(projectId) {
-  const project = VARAJA_DATA.projects.find(p => p.id === projectId);
-  if (!project) return;
+/* --------------------------------------------------------------------------
+   6. RENDER ROYAL VENUES SHOWCASE
+   -------------------------------------------------------------------------- */
+function renderVenuesGrid() {
+  const container = document.getElementById('venues-cards-container');
+  if (!container || !VARAJA_DATA?.venues) return;
 
-  const modalOverlay = document.getElementById('case-study-modal');
-  const modalBox = document.getElementById('case-study-content');
-  if (!modalOverlay || !modalBox) return;
+  container.innerHTML = VARAJA_DATA.venues.map((v, idx) => `
+    <article class="venue-card-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
+      <div class="venue-thumb-wrap">
+        <img src="${v.image}" alt="${v.name}" loading="lazy">
+        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.7); color:var(--color-gold-light); border-color:var(--color-gold);">
+          ${v.badge}
+        </span>
+      </div>
+      <div class="venue-card-body">
+        <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark);">${v.type}</span>
+        <h3 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin:4px 0 8px;">${v.name}</h3>
+        <div style="font-size:0.85rem; color:var(--text-secondary); display:flex; justify-content:space-between;">
+          <span>📍 ${v.location}</span>
+          <span>👥 ${v.capacity}</span>
+        </div>
+      </div>
+    </article>
+  `).join('');
 
-  modalBox.innerHTML = `
-    <div style="margin-bottom:24px;">
-      <span class="section-tag-lbl">${project.eventType}</span>
-      <h2 style="font-family:var(--font-serif); font-size:2.8rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">
-        ${project.title}
-      </h2>
-      <p style="font-size:1.05rem; color:var(--color-gold-dark); font-weight:600;">
-        📍 ${project.venue} — ${project.location} (${project.date})
-      </p>
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:32px;">
-      ${project.gallery.map(img => `<img src="${img}" alt="${project.title}" style="width:100%; height:220px; object-fit:cover; border-radius:var(--radius-sm);">`).join('')}
-    </div>
-
-    <div style="margin-bottom:32px;">
-      <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:12px; color:var(--text-primary);">The Story & Vision</h3>
-      <p style="font-size:0.98rem; color:var(--text-secondary); line-height:1.8;">
-        ${project.story}
-      </p>
-    </div>
-
-    <div style="background-color:var(--bg-secondary); padding:28px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:32px;">
-      <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:16px;">Celebration Highlights</h4>
-      <ul style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; font-size:0.9rem; color:var(--text-secondary);">
-        ${project.highlights.map(h => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--color-gold); font-weight:800;">✓</span><span>${h}</span></li>`).join('')}
-      </ul>
-    </div>
-
-    <div style="border-left:3px solid var(--color-gold); padding-left:20px; font-style:italic; font-family:var(--font-serif); font-size:1.2rem; color:var(--text-primary);">
-      "${project.testimonialQuote}"
-    </div>
-
-    <div style="margin-top:40px; text-align:center;">
-      <a href="#contact" onclick="closeCaseStudyModal()" class="btn btn-gold">
-        <span>Plan Your Event Like This</span>
-      </a>
-    </div>
-  `;
-
-  modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeCaseStudyModal() {
-  const modalOverlay = document.getElementById('case-study-modal');
-  if (modalOverlay) {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
+  initScrollAnimations();
 }
 
 /* --------------------------------------------------------------------------
-   6. RENDER GALLERY & LIGHTBOX
+   7. CELEBRATION INVESTMENT CALCULATOR
+   -------------------------------------------------------------------------- */
+function initBudgetEstimator() {
+  const guestsInput = document.getElementById('calc-guests');
+  const daysInput = document.getElementById('calc-days');
+  const tierInput = document.getElementById('calc-tier');
+  const resultDisplay = document.getElementById('calc-result-val');
+
+  if (!guestsInput || !daysInput || !tierInput || !resultDisplay) return;
+
+  const calculateEstimate = () => {
+    const guests = parseInt(guestsInput.value) || 250;
+    const days = parseInt(daysInput.value) || 3;
+    const tier = parseFloat(tierInput.value) || 1.0;
+
+    // Base cost formula: Base ~ ₹12,000/guest/day * tier multiplier
+    const totalMin = Math.round((guests * days * 11000 * tier) / 100000);
+    const totalMax = Math.round((guests * days * 15000 * tier) / 100000);
+
+    let formattedResult = `₹${totalMin} Lakhs – ₹${totalMax} Lakhs`;
+    if (totalMin >= 100) {
+      formattedResult = `₹${(totalMin / 100).toFixed(1)} Cr – ₹${(totalMax / 100).toFixed(1)} Cr`;
+    }
+
+    resultDisplay.textContent = formattedResult;
+  };
+
+  guestsInput.addEventListener('change', calculateEstimate);
+  daysInput.addEventListener('change', calculateEstimate);
+  tierInput.addEventListener('change', calculateEstimate);
+
+  calculateEstimate();
+}
+
+/* --------------------------------------------------------------------------
+   8. RENDER GALLERY & LIGHTBOX
    -------------------------------------------------------------------------- */
 function renderGalleryGrid() {
   const container = document.getElementById('gallery-photos-container');
@@ -290,7 +314,40 @@ function closeLightbox() {
 }
 
 /* --------------------------------------------------------------------------
-   7. TESTIMONIALS SLIDER
+   9. FAQS ACCORDION
+   -------------------------------------------------------------------------- */
+function initFaqsAccordion() {
+  const container = document.getElementById('faqs-accordion-container');
+  if (!container || !VARAJA_DATA?.faqs) return;
+
+  container.innerHTML = VARAJA_DATA.faqs.map((faq, idx) => `
+    <div class="faq-item-box ${idx === 0 ? 'active' : ''}">
+      <div class="faq-question-head" onclick="toggleFaqItem(this)">
+        <span>${faq.q}</span>
+        <div class="faq-toggle-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </div>
+      </div>
+      <div class="faq-answer-body">
+        <p>${faq.a}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleFaqItem(element) {
+  const item = element.parentElement;
+  const isActive = item.classList.contains('active');
+
+  document.querySelectorAll('.faq-item-box').forEach(el => el.classList.remove('active'));
+
+  if (!isActive) {
+    item.classList.add('active');
+  }
+}
+
+/* --------------------------------------------------------------------------
+   10. TESTIMONIALS SLIDER
    -------------------------------------------------------------------------- */
 function initTestimonialsSlider() {
   renderTestimonialCard();
@@ -336,7 +393,7 @@ function nextTestimonial() {
 }
 
 /* --------------------------------------------------------------------------
-   8. CONSULTATION INQUIRY FORM SUBMISSION
+   11. CONSULTATION INQUIRY FORM SUBMISSION
    -------------------------------------------------------------------------- */
 function initInquiryForm() {
   const form = document.getElementById('wedding-consultation-form');
@@ -403,8 +460,68 @@ function initInquiryForm() {
   });
 }
 
+function openCaseStudyModal(projectId) {
+  const project = VARAJA_DATA.projects.find(p => p.id === projectId);
+  if (!project) return;
+
+  const modalOverlay = document.getElementById('case-study-modal');
+  const modalBox = document.getElementById('case-study-content');
+  if (!modalOverlay || !modalBox) return;
+
+  modalBox.innerHTML = `
+    <div style="margin-bottom:24px;">
+      <span class="section-tag-lbl">${project.eventType}</span>
+      <h2 style="font-family:var(--font-serif); font-size:2.8rem; font-weight:600; color:var(--text-primary); margin-bottom:8px;">
+        ${project.title}
+      </h2>
+      <p style="font-size:1.05rem; color:var(--color-gold-dark); font-weight:600;">
+        📍 ${project.venue} — ${project.location} (${project.date})
+      </p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-bottom:32px;">
+      ${project.gallery.map(img => `<img src="${img}" alt="${project.title}" style="width:100%; height:220px; object-fit:cover; border-radius:var(--radius-sm);">`).join('')}
+    </div>
+
+    <div style="margin-bottom:32px;">
+      <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:12px; color:var(--text-primary);">The Story & Vision</h3>
+      <p style="font-size:0.98rem; color:var(--text-secondary); line-height:1.8;">
+        ${project.story}
+      </p>
+    </div>
+
+    <div style="background-color:var(--bg-secondary); padding:28px; border-radius:var(--radius-md); border:1px solid var(--border-color); margin-bottom:32px;">
+      <h4 style="font-size:0.85rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-dark); margin-bottom:16px;">Celebration Highlights</h4>
+      <ul style="display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; font-size:0.9rem; color:var(--text-secondary);">
+        ${project.highlights.map(h => `<li style="display:flex; align-items:flex-start; gap:8px;"><span style="color:var(--color-gold); font-weight:800;">✓</span><span>${h}</span></li>`).join('')}
+      </ul>
+    </div>
+
+    <div style="border-left:3px solid var(--color-gold); padding-left:20px; font-style:italic; font-family:var(--font-serif); font-size:1.2rem; color:var(--text-primary);">
+      "${project.testimonialQuote}"
+    </div>
+
+    <div style="margin-top:40px; text-align:center;">
+      <a href="#contact" onclick="closeCaseStudyModal()" class="btn btn-gold">
+        <span>Plan Your Event Like This</span>
+      </a>
+    </div>
+  `;
+
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCaseStudyModal() {
+  const modalOverlay = document.getElementById('case-study-modal');
+  if (modalOverlay) {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+}
+
 /* --------------------------------------------------------------------------
-   9. INTERSECTION OBSERVER FOR EDITORIAL SCROLL REVEALS
+   12. INTERSECTION OBSERVER FOR SCROLL REVEALS
    -------------------------------------------------------------------------- */
 function initScrollAnimations() {
   const animatedElements = document.querySelectorAll('.reveal-on-scroll, .reveal-fade-in, .reveal-scale, .gold-divider');

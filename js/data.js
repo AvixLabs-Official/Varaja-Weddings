@@ -1,6 +1,6 @@
 /**
- * BLUE ROSE PRODUCTION - Data Store
- * Premium Event Management & Luxury Wedding Planning
+ * BLUE ROSE PRODUCTION - Master Data Store
+ * Includes Venues, FAQs, and Budget Estimator Data
  */
 
 const VARAJA_DATA = {
@@ -21,6 +21,63 @@ const VARAJA_DATA = {
       weddingsCompleted: 150
     }
   },
+
+  venues: [
+    {
+      id: "v1",
+      name: "City Palace & Jagmandir Island",
+      location: "Udaipur, Rajasthan",
+      type: "Royal Heritage Palace",
+      capacity: "300 – 800 Guests",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=800&q=85",
+      badge: "EXCLUSIVE ACCESS"
+    },
+    {
+      id: "v2",
+      name: "Umaid Bhawan Palace",
+      location: "Jodhpur, Rajasthan",
+      type: "Art Deco Royal Estate",
+      capacity: "200 – 600 Guests",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=85",
+      badge: "HERITAGE LEGEND"
+    },
+    {
+      id: "v3",
+      name: "The St. Regis Goa Resort",
+      location: "Cavelossim, Goa",
+      type: "Oceanfront Luxury Resort",
+      capacity: "150 – 500 Guests",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=800&q=85",
+      badge: "COASTAL RETREAT"
+    },
+    {
+      id: "v4",
+      name: "Taj Falaknuma Palace",
+      location: "Hyderabad, Telangana",
+      type: "19th Century Nizam Residence",
+      capacity: "100 – 400 Guests",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85",
+      badge: "ROYAL PRIVILEGE"
+    },
+    {
+      id: "v5",
+      name: "Villa d'Este & Villa Balbiano",
+      location: "Lake Como, Italy",
+      type: "Italian Renaissance Villa",
+      capacity: "80 – 250 Guests",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=85",
+      badge: "GLOBAL DESTINATION"
+    },
+    {
+      id: "v6",
+      name: "Mandapa, A Ritz-Carlton Reserve",
+      location: "Ubud, Bali",
+      type: "Tropical Sanctuary & Riverfront",
+      capacity: "100 – 350 Guests",
+      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
+      badge: "GLOBAL DESTINATION"
+    }
+  ],
 
   services: [
     {
@@ -306,6 +363,25 @@ const VARAJA_DATA = {
     }
   ],
 
+  faqs: [
+    {
+      q: "How far in advance should we book BLUE ROSE PRODUCTION?",
+      a: "We recommend booking 6 to 12 months prior to your target event date, especially for multi-day destination weddings in Rajasthan or Goa where heritage palace bookings and celebrity artists require early reservation."
+    },
+    {
+      q: "Do you manage international destination events outside India?",
+      a: "Yes! We specialize in cross-border luxury events across Dubai, Lake Como (Italy), Bali (Indonesia), Thailand, and Sri Lanka, managing flight charters, international customs, and local venue logistics seamlessly."
+    },
+    {
+      q: "What is your fee structure and budget management policy?",
+      a: "We operate on a transparent fixed professional management fee structure calculated on scale and event scope. All vendor contracts are billed directly at net cost with zero hidden markups or surprise surcharges."
+    },
+    {
+      q: "Can you work alongside our family’s preferred caterers or priest?",
+      a: "Absolutely. We respect family traditions and heritage relationships. We collaborate seamlessly with your preferred vendors while auditing contract SLAs and managing on-site logistics."
+    }
+  ],
+
   testimonials: [
     {
       id: "t1",
@@ -350,7 +426,7 @@ const VARAJA_DATA = {
       rating: 5,
       quote: "If you want an event that feels high-end, deeply personal, and completely stress-free, BLUE ROSE PRODUCTION is the only team to trust in India. Truly world-class event creators.",
       date: "October 2025",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
+      avatar: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=200&q=80"
     }
   ],
 

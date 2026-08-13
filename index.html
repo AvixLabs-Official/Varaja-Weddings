@@ -45,14 +45,19 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
+          <li><a href="#venues">Venues</a></li>
           <li><a href="#weddings">Weddings</a></li>
+          <li><a href="#estimator">Estimator</a></li>
           <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
       <div class="header-actions-wrap">
+        <button class="ambient-audio-btn" id="ambient-music-btn" onclick="toggleAmbientAudio()" aria-label="Toggle Shehnai Soundscape">
+          <span id="ambient-audio-status">🎵 Shehnai Soundscape</span>
+        </button>
+
         <a href="#contact" class="btn btn-gold" style="padding:12px 24px; font-size:0.78rem;">
           <span>Plan Your Event</span>
         </a>
@@ -86,9 +91,10 @@
       <a href="#hero"><span>Home</span> <span>→</span></a>
       <a href="#about"><span>About Us</span> <span>→</span></a>
       <a href="#services"><span>Services</span> <span>→</span></a>
+      <a href="#venues"><span>Royal Venues</span> <span>→</span></a>
       <a href="#weddings"><span>Weddings</span> <span>→</span></a>
+      <a href="#estimator"><span>Estimator</span> <span>→</span></a>
       <a href="#gallery"><span>Gallery</span> <span>→</span></a>
-      <a href="#testimonials"><span>Testimonials</span> <span>→</span></a>
       <a href="#contact"><span>Contact Us</span> <span>→</span></a>
     </div>
 
@@ -128,8 +134,8 @@
             <span>Plan Your Event</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
-          <a href="#weddings" class="btn btn-glass">
-            <span>Explore Our Celebrations</span>
+          <a href="#estimator" class="btn btn-glass">
+            <span>Estimate Celebration Investment</span>
           </a>
         </div>
       </div>
@@ -216,6 +222,25 @@
     </section>
 
     <!-- ==========================================================================
+       ROYAL VENUES SHOWCASE SECTION
+       ========================================================================== -->
+    <section class="venues-section" id="venues">
+      <div class="container">
+        <div style="text-align:center;" class="reveal-on-scroll">
+          <span class="section-tag-lbl">EXCLUSIVE ACCESS</span>
+          <h2 class="section-title">Royal Palaces & Global Destinations</h2>
+          <p class="section-subtitle" style="margin:16px auto 0;">
+            Direct relationships with India’s most iconic heritage palaces, private estates, and luxury international villas.
+          </p>
+        </div>
+
+        <div class="venues-cards-grid" id="venues-cards-container">
+          <!-- Rendered dynamically by js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
        SERVICES SECTION
        ========================================================================== -->
     <section class="services-section" id="services">
@@ -251,6 +276,72 @@
 
         <div class="portfolio-editorial-grid" id="portfolio-grid-container">
           <!-- Rendered dynamically by js/main.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       CELEBRATION INVESTMENT CALCULATOR ESTIMATOR
+       ========================================================================== -->
+    <section class="estimator-section" id="estimator">
+      <div class="container">
+        <div style="text-align:center; margin-bottom:48px;" class="reveal-on-scroll">
+          <span class="section-tag-lbl">INTERACTIVE ESTIMATOR</span>
+          <h2 class="section-title">Calculate Celebration Investment</h2>
+          <p class="section-subtitle" style="margin:16px auto 0;">
+            Select your target guest count, duration, and production tier to receive a instant high-level budget breakdown.
+          </p>
+        </div>
+
+        <div class="estimator-box-grid reveal-scale">
+          <div>
+            <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:600; color:var(--text-primary); margin-bottom:24px;">
+              Configure Your Event Parameters
+            </h3>
+
+            <div class="form-group-item">
+              <label for="calc-guests" class="form-label-txt">Guest Count</label>
+              <select id="calc-guests" class="form-control-input">
+                <option value="150">150 Guests (Intimate Royal)</option>
+                <option value="250" selected>250 Guests (Signature Celebration)</option>
+                <option value="450">450 Guests (Grand Palatial Affair)</option>
+                <option value="600">600+ Guests (Royal Heritage Gala)</option>
+              </select>
+            </div>
+
+            <div class="form-group-item">
+              <label for="calc-days" class="form-label-txt">Event Duration</label>
+              <select id="calc-days" class="form-control-input">
+                <option value="2">2 Days (Mehendi + Wedding/Reception)</option>
+                <option value="3" selected>3 Days (Haldi, Sangeet & Pheras)</option>
+                <option value="4">4 Days (Multi-Day Heritage Extravaganza)</option>
+              </select>
+            </div>
+
+            <div class="form-group-item">
+              <label for="calc-tier" class="form-label-txt">Production & Decor Tier</label>
+              <select id="calc-tier" class="form-control-input">
+                <option value="0.85">Signature Luxury (Curated Local Artisans)</option>
+                <option value="1.0" selected>Royale Bespoke (Dutch Florals & 3D Stage)</option>
+                <option value="1.35">Palace Imperiale (Celebrity Artists & Charters)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="estimator-result-card">
+            <span class="royal-badge" style="background:rgba(197,164,109,0.15); color:var(--color-gold-light); border-color:var(--color-gold); margin-bottom:16px;">
+              ESTIMATED INVESTMENT RANGE
+            </span>
+            <div style="font-family:var(--font-serif); font-size:clamp(2.2rem, 4vw, 3.4rem); font-weight:700; color:var(--color-gold-light); margin:12px 0;" id="calc-result-val">
+              ₹35 Lakhs – ₹55 Lakhs
+            </div>
+            <p style="font-size:0.85rem; color:rgba(247,243,234,0.75); line-height:1.6; margin-bottom:28px;">
+              Includes complete venue production, 3D floral scenography, technical stage sound/lighting, guest concierge, and day-of execution.
+            </p>
+            <a href="#contact" class="btn btn-gold" style="width:100%;">
+              <span>Reserve Private Consultation</span>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -367,6 +458,25 @@
               We absorb all technical, operational, and guest logistics so you and your families can immerse yourselves in the joy of the celebration.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+       FAQ ACCORDION SECTION
+       ========================================================================== -->
+    <section class="faq-section" id="faqs">
+      <div class="container">
+        <div style="text-align:center;" class="reveal-on-scroll">
+          <span class="section-tag-lbl">FREQUENTLY ASKED QUESTIONS</span>
+          <h2 class="section-title">Everything You Need To Know</h2>
+          <p class="section-subtitle" style="margin:16px auto 0;">
+            Clear answers on booking lead times, fee structures, and destination logistics.
+          </p>
+        </div>
+
+        <div class="faq-accordion-container" id="faqs-accordion-container">
+          <!-- Rendered dynamically by js/main.js -->
         </div>
       </div>
     </section>
@@ -659,13 +769,13 @@
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
       <span>Home</span>
     </a>
-    <a href="#services" class="mobile-dock-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-      <span>Services</span>
+    <a href="#venues" class="mobile-dock-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"></path></svg>
+      <span>Venues</span>
     </a>
-    <a href="#weddings" class="mobile-dock-btn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l8.78-8.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-      <span>Events</span>
+    <a href="#estimator" class="mobile-dock-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path><path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path></svg>
+      <span>Calculator</span>
     </a>
     <a href="#gallery" class="mobile-dock-btn">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
@@ -708,8 +818,8 @@
           <ul style="display:flex; flex-direction:column; gap:10px; font-size:0.88rem; color:var(--text-muted);">
             <li><a href="#hero" style="color:inherit;">Home</a></li>
             <li><a href="#about" style="color:inherit;">About Blue Rose</a></li>
-            <li><a href="#weddings" style="color:inherit;">Case Studies</a></li>
-            <li><a href="#gallery" style="color:inherit;">Photo Archive</a></li>
+            <li><a href="#venues" style="color:inherit;">Royal Venues</a></li>
+            <li><a href="#estimator" style="color:inherit;">Investment Estimator</a></li>
             <li><a href="#contact" style="color:inherit;">Consultation</a></li>
           </ul>
         </div>
