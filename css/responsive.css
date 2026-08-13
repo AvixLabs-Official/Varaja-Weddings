@@ -123,6 +123,21 @@ body:has(.modal-overlay.active) .mobile-bottom-dock {
   .site-header { height: 72px !important; }
   .mobile-bottom-dock { display: flex !important; }
   
+  .hero-case-study-card {
+    display: none !important;
+  }
+
+  .hero-trust-highlights {
+    gap: 12px !important;
+    font-size: 0.75rem !important;
+    margin-top: 24px !important;
+  }
+
+  .hero-live-availability {
+    font-size: 0.68rem !important;
+    padding: 6px 14px !important;
+  }
+
   .floating-whatsapp-btn {
     bottom: 80px !important;
     right: 16px !important;
