@@ -268,16 +268,22 @@ function renderVenuesGrid() {
     <article class="venue-card-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
       <div class="venue-thumb-wrap">
         <img src="${v.image}" alt="${v.name}" loading="lazy">
-        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.7); color:var(--color-gold-light); border-color:var(--color-gold);">
+        <span class="royal-badge" style="position:absolute; top:16px; left:16px; background:rgba(33,28,24,0.78); color:var(--color-gold-light); border-color:var(--color-gold);">
           ${v.badge}
         </span>
       </div>
       <div class="venue-card-body">
         <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark);">${v.type}</span>
-        <h3 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin:4px 0 8px;">${v.name}</h3>
-        <div style="font-size:0.85rem; color:var(--text-secondary); display:flex; justify-content:space-between;">
-          <span>📍 ${v.location}</span>
-          <span>👥 ${v.capacity}</span>
+        <h3 style="font-family:var(--font-serif); font-size:1.4rem; font-weight:600; color:var(--text-primary); margin:4px 0 12px;">${v.name}</h3>
+        <div style="font-size:0.85rem; color:var(--text-secondary); display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid var(--border-color-light);">
+          <span style="display:inline-flex; align-items:center; gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            <span>${v.location}</span>
+          </span>
+          <span style="display:inline-flex; align-items:center; gap:6px;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+            <span>${v.capacity}</span>
+          </span>
         </div>
       </div>
     </article>

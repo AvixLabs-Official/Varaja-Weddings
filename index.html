@@ -130,10 +130,22 @@
             </div>
 
             <div class="hero-event-type-pills">
-              <button class="hero-type-pill active" onclick="switchHeroEventType('palace', this)">👑 Royal Palaces</button>
-              <button class="hero-type-pill" onclick="switchHeroEventType('beach', this)">🌊 Beach Resorts</button>
-              <button class="hero-type-pill" onclick="switchHeroEventType('heritage', this)">🏰 Heritage Haveli</button>
-              <button class="hero-type-pill" onclick="switchHeroEventType('intimate', this)">✨ Intimate Luxury</button>
+              <button class="hero-type-pill active" onclick="switchHeroEventType('palace', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:-2px; margin-right:4px;"><path d="M2 20h20M4 20V10l4 2 4-4 4 4 4-2v10M12 4v4"></path></svg>
+                <span>Royal Palaces</span>
+              </button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('beach', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:-2px; margin-right:4px;"><path d="M2 20c5 0 5-2 10-2s5 2 10 2M2 16c5 0 5-2 10-2s5 2 10 2M12 4v10M8 8l4-4 4 4"></path></svg>
+                <span>Beach Resorts</span>
+              </button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('heritage', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:-2px; margin-right:4px;"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"></path></svg>
+                <span>Heritage Haveli</span>
+              </button>
+              <button class="hero-type-pill" onclick="switchHeroEventType('intimate', this)">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block; vertical-align:-2px; margin-right:4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                <span>Intimate Luxury</span>
+              </button>
             </div>
 
             <h1 class="hero-main-title-split">
@@ -452,11 +464,23 @@
               Set amidst a 150-year-old historic Rajbari in Kolkata, this multi-day wedding managed by BLUE ROSE PRODUCTION blended authentic Zamindari traditions with high-fashion production design. Over 10,000 fresh tuberose strands, illuminated crystal chandeliers, and classical Shehnai recitals created an unforgettable royal atmosphere.
             </p>
 
-            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-bottom:36px; font-size:0.88rem; color:rgba(247,243,234,0.8);">
-              <div>📍 <strong>Venue:</strong> Taj Bengal & Heritage Rajbari</div>
-              <div>👥 <strong>Guests:</strong> 450 Overseas & VIP Guests</div>
-              <div>🌸 <strong>Decor:</strong> Dutch White Roses & Tuberose</div>
-              <div>🎶 <strong>Music:</strong> Live Classical Sitar & Shehnai</div>
+            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; margin-bottom:36px; font-size:0.88rem; color:rgba(247,243,234,0.85);">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span><strong>Venue:</strong> Taj Bengal & Rajbari</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                <span><strong>Guests:</strong> 450 Overseas VIPs</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg>
+                <span><strong>Decor:</strong> Dutch White Roses</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-light)" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+                <span><strong>Music:</strong> Live Classical Ensemble</span>
+              </div>
             </div>
 
             <button onclick="openCaseStudyModal('ananya-arjun')" class="btn btn-gold">
@@ -745,21 +769,36 @@
             </p>
 
             <div style="display:flex; flex-direction:column; gap:24px;">
-              <div>
-                <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:4px;">WHATSAPP & PHONE</strong>
-                <a href="https://wa.me/919876543210" target="_blank" rel="noopener" style="font-size:1.15rem; font-weight:700; color:var(--text-primary);">+91 98765 43210</a>
+              <div style="display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:36px; height:36px; border-radius:50%; background:var(--bg-secondary); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:2px;">WHATSAPP & PHONE</strong>
+                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener" style="font-size:1.1rem; font-weight:700; color:var(--text-primary);">+91 98765 43210</a>
+                </div>
               </div>
 
-              <div>
-                <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:4px;">EMAIL CONCIERGE</strong>
-                <a href="mailto:concierge@blueroseproduction.com" style="font-size:1.05rem; font-weight:600; color:var(--text-primary);">concierge@blueroseproduction.com</a>
+              <div style="display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:36px; height:36px; border-radius:50%; background:var(--bg-secondary); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:2px;">EMAIL CONCIERGE</strong>
+                  <a href="mailto:concierge@blueroseproduction.com" style="font-size:1.02rem; font-weight:600; color:var(--text-primary);">concierge@blueroseproduction.com</a>
+                </div>
               </div>
 
-              <div>
-                <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:4px;">FLAGSHIP STUDIOS</strong>
-                <div style="font-size:0.92rem; color:var(--text-secondary); line-height:1.6;">
-                  🏢 UB City, Vittal Mallya Road, Bengaluru<br>
-                  🏰 South Extension II, New Delhi, India
+              <div style="display:flex; gap:14px; align-items:flex-start;">
+                <div style="width:36px; height:36px; border-radius:50%; background:var(--bg-secondary); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <strong style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--color-gold-dark); display:block; margin-bottom:4px;">FLAGSHIP STUDIOS</strong>
+                  <div style="font-size:0.9rem; color:var(--text-secondary); line-height:1.6;">
+                    UB City, Vittal Mallya Road, Bengaluru<br>
+                    South Extension II, New Delhi, India
+                  </div>
                 </div>
               </div>
             </div>
