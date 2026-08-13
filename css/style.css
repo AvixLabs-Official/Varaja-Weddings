@@ -1,26 +1,36 @@
 /* ==========================================================================
-   THE KNOT - OFFICIAL LUXURY WEDDING PLANNING PLATFORM
-   Clean, modern, crisp white & blush design system replica of TheKnot.com
+   BLUE ROSE PRODUCTION — LUXURY WEDDING EDITORIAL DESIGN SYSTEM
+   60% Warm Ivory (#F7F3EA) • 25% Deep Espresso (#211C18) • 10% Soft Beige (#E8DED0) • 5% Champagne Gold (#C5A46D)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  /* The Knot Official Color Palette */
-  --knot-coral: #FD5B60;
-  --knot-coral-hover: #E04B50;
-  --knot-coral-light: #FFF0F1;
-  --knot-dark: #1A1A1A;
-  --knot-gray-dark: #333333;
-  --knot-gray: #595959;
-  --knot-gray-light: #767676;
-  --bg-main: #FFFFFF;
-  --bg-blush: #FFF8F6;
-  --bg-card: #FFFFFF;
-  --border-light: #E5E5E5;
-  --border-medium: #CCCCCC;
-  --knot-gold: #D4A359;
-  --knot-green: #2E7D32;
+  /* Editorial Palette Directives */
+  --bg-primary: #F7F3EA;       /* 60% Warm Ivory */
+  --bg-secondary: #E8DED0;     /* 10% Soft Beige */
+  --bg-surface: #FFFFFF;       /* Crisp White */
+  --bg-espresso: #211C18;      /* 25% Deep Espresso */
+  
+  --color-espresso: #211C18;   /* Primary Dark & Text */
+  --color-gold: #C5A46D;       /* 5% Champagne Gold Accent */
+  --color-gold-hover: #B3915B;
+  --color-gold-light: #E0CA9F;
+  --color-text: #211C18;       /* Text */
+  --color-muted: #756D63;      /* Muted Text */
+  --color-white: #FFFFFF;      /* White */
+  --color-green: #2E7D32;
+
+  --border-light: #E3D9CC;
+  --border-gold: rgba(197, 164, 109, 0.35);
+
+  /* Legacy Mapping for backward compatibility */
+  --knot-coral: #211C18;       /* Primary buttons use Deep Espresso */
+  --knot-coral-hover: #C5A46D; /* Hover uses Champagne Gold */
+  --knot-dark: #211C18;
+  --knot-gray-dark: #211C18;
+  --knot-gray: #756D63;
+  --knot-gold: #C5A46D;
 
   /* Typography */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -30,9 +40,9 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 4px 12px rgba(33, 28, 24, 0.05);
+  --shadow-md: 0 8px 24px rgba(33, 28, 24, 0.08);
+  --shadow-lg: 0 12px 36px rgba(33, 28, 24, 0.12);
   --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -50,8 +60,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-main);
-  color: var(--knot-dark);
+  background-color: var(--bg-primary);
+  color: var(--color-text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
@@ -83,29 +93,32 @@ img {
 
 /* Buttons */
 .btn-knot-primary {
-  background-color: var(--knot-coral);
+  background-color: var(--color-espresso);
   color: #FFFFFF;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   padding: 14px 28px;
   border-radius: 30px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   transition: var(--transition);
+  border: 1px solid var(--color-espresso);
 }
 
 .btn-knot-primary:hover {
-  background-color: var(--knot-coral-hover);
+  background-color: var(--color-gold);
+  border-color: var(--color-gold);
+  color: #211C18;
   box-shadow: var(--shadow-sm);
 }
 
 .btn-knot-outline {
   background-color: transparent;
-  color: var(--knot-dark);
-  border: 1.5px solid var(--knot-dark);
+  color: var(--color-espresso);
+  border: 1.5px solid var(--color-espresso);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   padding: 12px 24px;
   border-radius: 30px;
   display: inline-flex;
@@ -115,24 +128,24 @@ img {
 }
 
 .btn-knot-outline:hover {
-  background-color: var(--knot-dark);
+  background-color: var(--color-espresso);
   color: #FFFFFF;
 }
 
 /* Top Announcement Banner */
 .knot-announcement-bar {
-  background-color: var(--knot-blush, #FFF8F6);
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
   padding: 8px 0;
   font-size: 0.8rem;
   text-align: center;
-  color: var(--knot-gray);
+  color: var(--color-muted);
   font-weight: 500;
 }
 
 .knot-announcement-bar a {
-  color: var(--knot-coral);
-  font-weight: 600;
+  color: var(--color-espresso);
+  font-weight: 700;
   text-decoration: underline;
 }
 
@@ -157,20 +170,20 @@ img {
   font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--knot-dark);
+  color: var(--color-espresso);
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
 .knot-brand-logo span {
-  color: var(--knot-coral);
+  color: var(--color-gold);
 }
 
 .knot-search-couples-bar {
   display: flex;
   align-items: center;
-  background: var(--bg-blush);
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: 30px;
   padding: 8px 18px;
@@ -184,7 +197,7 @@ img {
   outline: none;
   font-size: 0.85rem;
   width: 100%;
-  color: var(--knot-dark);
+  color: var(--color-espresso);
 }
 
 .knot-nav-bar {
@@ -201,21 +214,21 @@ img {
 }
 
 .knot-nav-links a {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 600;
-  color: var(--knot-gray-dark);
+  color: var(--color-espresso);
   white-space: nowrap;
   transition: var(--transition);
 }
 
 .knot-nav-links a:hover,
 .knot-nav-links a.active {
-  color: var(--knot-coral);
+  color: var(--color-gold);
 }
 
-/* Ultra-Premium Dual Stage Hero Section */
+/* Ultra-Premium Dual Stage Hero Section (Warm Ivory 60%) */
 .knot-hero-section {
-  background-color: var(--bg-blush);
+  background-color: var(--bg-primary);
   padding: 64px 0 80px;
   border-bottom: 1px solid var(--border-light);
 }
@@ -232,13 +245,13 @@ img {
   align-items: center;
   gap: 8px;
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   padding: 6px 16px;
   border-radius: 30px;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--knot-dark);
+  color: var(--color-espresso);
   margin-bottom: 20px;
   box-shadow: var(--shadow-sm);
 }
@@ -246,16 +259,16 @@ img {
 .knot-live-dot {
   width: 8px;
   height: 8px;
-  background-color: var(--knot-coral);
+  background-color: var(--color-gold);
   border-radius: 50%;
-  box-shadow: 0 0 0 4px rgba(253, 91, 96, 0.2);
+  box-shadow: 0 0 0 4px rgba(197, 164, 109, 0.25);
   animation: knotPulse 2s infinite;
 }
 
 @keyframes knotPulse {
-  0% { box-shadow: 0 0 0 0 rgba(253, 91, 96, 0.6); }
-  70% { box-shadow: 0 0 0 8px rgba(253, 91, 96, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(253, 91, 96, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(197, 164, 109, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(197, 164, 109, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(197, 164, 109, 0); }
 }
 
 .knot-hero-title {
@@ -263,51 +276,15 @@ img {
   font-size: clamp(2.6rem, 4.5vw, 3.8rem);
   font-weight: 700;
   line-height: 1.12;
-  color: var(--knot-dark);
+  color: var(--color-espresso);
   margin-bottom: 20px;
 }
 
 .knot-hero-sub {
   font-size: 1.05rem;
-  color: var(--knot-gray);
+  color: var(--color-muted);
   margin-bottom: 32px;
   line-height: 1.6;
-}
-
-.knot-search-widget-box {
-  background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-radius: 40px;
-  padding: 8px 10px 8px 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 32px;
-}
-
-.knot-widget-input-group {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex: 1;
-}
-
-.knot-widget-input-group select,
-.knot-widget-input-group input {
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
-  color: var(--knot-dark);
-  background: transparent;
-  width: 100%;
-  font-weight: 500;
-}
-
-.knot-widget-divider {
-  width: 1px;
-  height: 28px;
-  background: var(--border-light);
 }
 
 .knot-hero-trust-bar {
@@ -315,7 +292,7 @@ img {
   align-items: center;
   gap: 24px;
   font-size: 0.8rem;
-  color: var(--knot-gray);
+  color: var(--color-muted);
   flex-wrap: wrap;
 }
 
@@ -345,14 +322,14 @@ img {
 }
 
 .knot-top-pill.dark {
-  background: var(--knot-dark);
+  background: var(--color-espresso);
   color: #FFFFFF;
 }
 
 .knot-top-pill.coral {
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  color: var(--knot-coral);
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold);
 }
 
 .knot-arch-frame {
@@ -365,7 +342,7 @@ img {
   border-bottom-right-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  outline: 4px solid rgba(212, 163, 89, 0.25);
+  outline: 4px solid var(--border-gold);
   outline-offset: 4px;
 }
 
@@ -381,9 +358,9 @@ img {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(26, 26, 26, 0.82);
+  background: rgba(33, 28, 24, 0.88);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--color-gold);
   padding: 6px 12px;
   border-radius: 30px;
   display: flex;
@@ -406,7 +383,7 @@ img {
 .knot-thumb-dot:hover,
 .knot-thumb-dot.active {
   opacity: 1;
-  border-color: var(--knot-coral);
+  border-color: var(--color-gold);
   transform: scale(1.1);
 }
 
@@ -416,9 +393,9 @@ img {
   object-fit: cover;
 }
 
-/* Marquee Ticker Tape Ribbon */
+/* Marquee Ticker Tape Ribbon (25% Deep Espresso) */
 .knot-ticker-tape {
-  background: var(--knot-dark);
+  background: var(--color-espresso);
   color: #FFFFFF;
   padding: 12px 0;
   overflow: hidden;
@@ -431,7 +408,7 @@ img {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--knot-gold);
+  color: var(--color-gold-light);
 }
 
 @keyframes knotTicker {
@@ -439,7 +416,7 @@ img {
   100% { transform: translateX(-50%); }
 }
 
-/* Suite Features Grid (4 Core Portals) */
+/* Agency Capabilities Section */
 .knot-suite-portals-section {
   padding: 80px 0;
   background: #FFFFFF;
@@ -452,7 +429,7 @@ img {
 }
 
 .knot-portal-card {
-  background: var(--bg-blush);
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   padding: 32px 24px;
@@ -465,7 +442,7 @@ img {
 
 .knot-portal-card:hover {
   transform: translateY(-6px);
-  border-color: var(--knot-coral);
+  border-color: var(--color-gold);
   box-shadow: var(--shadow-md);
 }
 
@@ -474,12 +451,12 @@ img {
   height: 64px;
   border-radius: 50%;
   background: #FFFFFF;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-gold);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  color: var(--knot-coral);
+  color: var(--color-gold);
 }
 
 .knot-portal-title {
@@ -487,157 +464,21 @@ img {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 8px;
-  color: var(--knot-dark);
+  color: var(--color-espresso);
 }
 
 .knot-portal-desc {
   font-size: 0.88rem;
-  color: var(--knot-gray);
+  color: var(--color-muted);
   margin-bottom: 20px;
   line-height: 1.5;
 }
 
-/* Checklist Section */
-.knot-checklist-section {
-  padding: 80px 0;
-  background: var(--bg-blush);
-  border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
-}
-
-.knot-section-header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-
-.knot-section-tag {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--knot-coral);
-  display: block;
-  margin-bottom: 8px;
-}
-
-.knot-section-title {
-  font-family: var(--font-serif);
-  font-size: 2.6rem;
-  font-weight: 700;
-  color: var(--knot-dark);
-}
-
-.knot-checklist-box {
-  background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 40px;
-  box-shadow: var(--shadow-sm);
-}
-
-.knot-progress-wrap {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 36px;
-  background: var(--bg-blush);
-  padding: 16px 24px;
-  border-radius: 30px;
-}
-
-.knot-progress-bar {
-  flex: 1;
-  height: 10px;
-  background: var(--border-light);
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.knot-progress-fill {
-  height: 100%;
-  background: var(--knot-coral);
-  width: 35%;
-  transition: width 0.4s ease;
-}
-
-.knot-timeframe-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-.knot-task-card {
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 20px 24px;
-}
-
-.knot-task-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-light);
-  font-size: 0.9rem;
-}
-
-.knot-task-row:last-child {
-  border-bottom: none;
-}
-
-.knot-checkbox {
-  width: 18px;
-  height: 18px;
-  accent-color: var(--knot-coral);
-  cursor: pointer;
-}
-
-/* Budget Advisor Section */
-.knot-budget-section {
-  padding: 80px 0;
-  background: #FFFFFF;
-  border-bottom: 1px solid var(--border-light);
-}
-
-.knot-budget-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  align-items: flex-start;
-  margin-top: 40px;
-}
-
-.knot-budget-input-card {
-  background: var(--bg-blush);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 28px;
-  margin-bottom: 24px;
-}
-
-.knot-budget-cat-row {
-  background: #FFFFFF;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-sm);
-  padding: 16px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-/* Vendor Marketplace Section */
+/* Royal Venues Section (10% Soft Beige) */
 .knot-vendor-section {
   padding: 80px 0;
-  background: var(--bg-blush);
+  background: var(--bg-secondary);
   border-bottom: 1px solid var(--border-light);
-}
-
-.knot-vendor-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  margin-top: 40px;
 }
 
 .knot-vendor-card {
@@ -652,6 +493,7 @@ img {
 
 .knot-vendor-card:hover {
   transform: translateY(-6px);
+  border-color: var(--color-gold);
   box-shadow: var(--shadow-md);
 }
 
@@ -679,6 +521,137 @@ img {
   flex-grow: 1;
 }
 
+/* Checklist Section (60% Warm Ivory) */
+.knot-checklist-section {
+  padding: 80px 0;
+  background: var(--bg-primary);
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.knot-section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.knot-section-tag {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.knot-section-title {
+  font-family: var(--font-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--color-espresso);
+}
+
+.knot-checklist-box {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-sm);
+}
+
+.knot-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 36px;
+  background: var(--bg-primary);
+  padding: 16px 24px;
+  border-radius: 30px;
+  border: 1px solid var(--border-light);
+}
+
+.knot-progress-bar {
+  flex: 1;
+  height: 10px;
+  background: var(--border-light);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.knot-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-espresso), var(--color-gold));
+  width: 35%;
+  transition: width 0.4s ease;
+}
+
+.knot-timeframe-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.knot-task-card {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  background: var(--bg-primary);
+}
+
+.knot-task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+.knot-task-row:last-child {
+  border-bottom: none;
+}
+
+.knot-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-gold);
+  cursor: pointer;
+}
+
+/* Budget Advisor Section */
+.knot-budget-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.knot-budget-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: flex-start;
+  margin-top: 40px;
+}
+
+.knot-budget-input-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.knot-budget-cat-row {
+  background: #FFFFFF;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
 /* Registry Section */
 .knot-registry-section {
   padding: 80px 0;
@@ -694,7 +667,7 @@ img {
 }
 
 .knot-registry-card {
-  background: #FFFFFF;
+  background: var(--bg-primary);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   overflow: hidden;
@@ -706,7 +679,7 @@ img {
 .knot-registry-card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-sm);
-  border-color: var(--knot-coral);
+  border-color: var(--color-gold);
 }
 
 .knot-registry-img {
@@ -730,7 +703,7 @@ img {
 /* Real Weddings Inspiration Section */
 .knot-real-weddings-section {
   padding: 80px 0;
-  background: var(--bg-blush);
+  background: var(--bg-secondary);
 }
 
 .knot-real-grid {
@@ -750,6 +723,7 @@ img {
 
 .knot-real-card:hover {
   transform: translateY(-6px);
+  border-color: var(--color-gold);
   box-shadow: var(--shadow-md);
 }
 
@@ -773,9 +747,9 @@ img {
   padding: 20px 24px;
 }
 
-/* Footer */
+/* Footer (25% Deep Espresso) */
 .knot-footer {
-  background-color: var(--knot-dark);
+  background-color: var(--color-espresso);
   color: #FFFFFF;
   padding: 80px 0 40px;
 }
@@ -808,7 +782,7 @@ img {
 }
 
 .knot-footer-col a:hover {
-  color: var(--knot-coral);
+  color: var(--color-gold-light);
 }
 
 .knot-footer-bottom {
