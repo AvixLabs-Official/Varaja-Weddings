@@ -103,10 +103,18 @@
           </div>
         </div>
 
-        <!-- Right Hero Stage (Clean Portrait Showcase Image) -->
+        <!-- Right Hero Stage (Clean Portrait Showcase Image with Auto-Slideshow) -->
         <div class="knot-hero-right-stage">
           <div class="hero-clean-portrait-card">
-            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="BLUE ROSE PRODUCTION Wedding Celebration">
+            <img id="hero-slideshow-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="BLUE ROSE PRODUCTION Wedding Celebration">
+
+            <div class="hero-slideshow-dots" id="hero-slideshow-dots">
+              <span class="hero-dot active" onclick="setHeroSlide(0)"></span>
+              <span class="hero-dot" onclick="setHeroSlide(1)"></span>
+              <span class="hero-dot" onclick="setHeroSlide(2)"></span>
+              <span class="hero-dot" onclick="setHeroSlide(3)"></span>
+              <span class="hero-dot" onclick="setHeroSlide(4)"></span>
+            </div>
           </div>
         </div>
       </div>

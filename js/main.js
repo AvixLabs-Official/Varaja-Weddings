@@ -4,6 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroSlideshow();
   renderServicesGrid();
   renderWeddingsGrid();
   renderGalleryGrid();
@@ -11,6 +12,62 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initMobileMenu();
 });
+
+/* --------------------------------------------------------------------------
+   HERO AUTOMATIC IMAGE SLIDESHOW (5 High-Res Photos, 4s interval)
+   -------------------------------------------------------------------------- */
+const HERO_SLIDESHOW_IMAGES = [
+  "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
+  "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
+];
+
+let currentHeroIndex = 0;
+let heroTimer = null;
+
+function initHeroSlideshow() {
+  const imgEl = document.getElementById('hero-slideshow-img');
+  if (!imgEl) return;
+
+  // Start automatic timer cycling every 4 seconds
+  heroTimer = setInterval(() => {
+    currentHeroIndex = (currentHeroIndex + 1) % HERO_SLIDESHOW_IMAGES.length;
+    updateHeroSlide(currentHeroIndex);
+  }, 4000);
+}
+
+function setHeroSlide(idx) {
+  currentHeroIndex = idx;
+  updateHeroSlide(currentHeroIndex);
+
+  // Reset timer on manual dot click
+  if (heroTimer) {
+    clearInterval(heroTimer);
+    heroTimer = setInterval(() => {
+      currentHeroIndex = (currentHeroIndex + 1) % HERO_SLIDESHOW_IMAGES.length;
+      updateHeroSlide(currentHeroIndex);
+    }, 4000);
+  }
+}
+
+function updateHeroSlide(idx) {
+  const imgEl = document.getElementById('hero-slideshow-img');
+  const dots = document.querySelectorAll('.hero-dot');
+  if (!imgEl) return;
+
+  imgEl.style.opacity = '0';
+  setTimeout(() => {
+    imgEl.src = HERO_SLIDESHOW_IMAGES[idx];
+    imgEl.style.opacity = '1';
+  }, 300);
+
+  dots.forEach((dot, i) => {
+    if (i === idx) dot.classList.add('active');
+    else dot.classList.remove('active');
+  });
+}
 
 /* Render Services Grid */
 function renderServicesGrid() {
