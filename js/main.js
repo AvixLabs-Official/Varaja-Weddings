@@ -6,10 +6,12 @@
 let activeGalleryCategory = 'All';
 let currentTestimonialIndex = 0;
 
+// Initialize components on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileDrawer();
   initStatsCounter();
+  renderScenographyStudio();
   renderServicesGrid();
   renderPortfolioGrid();
   renderVenuesGrid();
@@ -195,7 +197,81 @@ function renderServicesGrid() {
         <h3 class="service-card-title">${service.title}</h3>
         <p class="service-card-desc">${service.description}</p>
         
-        <div class="service-deliverables-list">
+let currentScenographyIndex = 0;
+let activeHotspotIndex = 0;
+
+/* --------------------------------------------------------------------------
+   3D SPATIAL SCENOGRAPHY STUDIO
+   -------------------------------------------------------------------------- */
+function renderScenographyStudio() {
+  const controlsContainer = document.getElementById('scenography-controls');
+  const canvasBox = document.getElementById('scenography-canvas-box');
+  const specsBar = document.getElementById('scenography-specs-bar');
+  if (!canvasBox || !VARAJA_DATA?.scenographyViews) return;
+
+  const currentView = VARAJA_DATA.scenographyViews[currentScenographyIndex];
+  if (!currentView) return;
+
+  // Controls Buttons
+  if (controlsContainer) {
+    controlsContainer.innerHTML = VARAJA_DATA.scenographyViews.map((view, idx) => `
+      <button class="scenography-view-btn ${idx === currentScenographyIndex ? 'active' : ''}" onclick="switchScenographyView(${idx})">
+        <div>
+          <strong style="display:block; font-size:0.95rem; color:#FFF;">${view.title}</strong>
+          <span style="font-size:0.78rem; opacity:0.8;">📍 ${view.location}</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    `).join('');
+  }
+
+  // Active Hotspot
+  const activeHotspot = currentView.hotspots[activeHotspotIndex] || currentView.hotspots[0];
+
+  // Canvas View HTML
+  canvasBox.innerHTML = `
+    <img src="${currentView.image}" alt="${currentView.title}">
+    
+    ${currentView.hotspots.map((hs, hIdx) => `
+      <button class="scenography-hotspot-pin" style="top:${hs.top}; left:${hs.left};" onclick="selectHotspot(${hIdx})" title="${hs.label}">
+        ${hIdx + 1}
+      </button>
+    `).join('')}
+
+    <div class="scenography-hotspot-card">
+      <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold); margin-bottom:4px;">
+        SPATIAL ARCHITECTURE DETAILS (${activeHotspotIndex + 1}/${currentView.hotspots.length})
+      </div>
+      <h4 style="font-family:var(--font-serif); font-size:1.25rem; font-weight:600; color:#FFF; margin-bottom:6px;">
+        ${activeHotspot.label}
+      </h4>
+      <p style="font-size:0.85rem; color:rgba(247,243,234,0.8); margin:0; line-height:1.5;">
+        ${activeHotspot.desc}
+      </p>
+    </div>
+  `;
+
+  // Specs Bar
+  if (specsBar) {
+    specsBar.innerHTML = `
+      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">STAGE SPAN</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.span}</strong></div>
+      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">CLEAR HEIGHT</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.height}</strong></div>
+      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">FLORAL SCENOGRAPHY</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.floral}</strong></div>
+      <div><span style="color:var(--text-muted); display:block; font-size:0.72rem; text-transform:uppercase;">GUEST CAPACITY</span><strong style="color:var(--color-gold-light); font-size:0.95rem;">${currentView.specs.capacity}</strong></div>
+    `;
+  }
+}
+
+function switchScenographyView(idx) {
+  currentScenographyIndex = idx;
+  activeHotspotIndex = 0;
+  renderScenographyStudio();
+}
+
+function selectHotspot(hIdx) {
+  activeHotspotIndex = hIdx;
+  renderScenographyStudio();
+}
           ${service.features.map(f => `
             <div class="service-deliverable-item">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2.5" style="flex-shrink:0; margin-top:3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>

@@ -1,6 +1,6 @@
 /**
  * BLUE ROSE PRODUCTION - Master Data Store
- * Includes Categorized Services, Portfolio Projects, Venues, FAQs, and Budget Estimator Data
+ * Includes Categorized Services, Portfolio Projects, Royal Venues, FAQs, and 3D Scenography Data
  */
 
 const VARAJA_DATA = {
@@ -21,6 +21,43 @@ const VARAJA_DATA = {
       weddingsCompleted: 150
     }
   },
+
+  scenographyViews: [
+    {
+      id: "mandap-3d",
+      title: "Royal Floating Mandap",
+      location: "Lake Pichola, Udaipur",
+      specs: { span: "45 ft x 45 ft", height: "20 ft", floral: "Dutch White Roses & Tuberose", capacity: "400 Guests" },
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+      hotspots: [
+        { top: "30%", left: "50%", label: "Floating Floral Canopy", desc: "10,000+ hand-strung Dutch white roses and fragrant tuberose strands with hidden misting." },
+        { top: "65%", left: "28%", label: "Teak Carved Pillars", desc: "Traditional Rajasthani carved teak pillars wrapped in gold leaf foil." },
+        { top: "75%", left: "72%", label: "Sunken Royal Baithak", desc: "Custom velvet seating with handwoven brass urli floral centerpieces." }
+      ]
+    },
+    {
+      id: "sangeet-3d",
+      title: "Concert Sangeet Stage",
+      location: "Fairmont, Jaipur",
+      specs: { span: "60 ft x 40 ft", height: "24 ft", floral: "Exotic Orchid Sculptures", capacity: "600 Guests" },
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
+      hotspots: [
+        { top: "35%", left: "50%", label: "Crystal Chandelier Rig", desc: "Warm 2700K DMX-programmed crystal chandeliers synchronized to live performances." },
+        { top: "55%", left: "40%", label: "360° Concert Stage", desc: "Glass acrylic elevated stage with LED underlighting and confetti launchers." }
+      ]
+    },
+    {
+      id: "rajbari-3d",
+      title: "Zamindari Candlelit Courtyard",
+      location: "Rajbari, Kolkata",
+      specs: { span: "80 ft x 50 ft", height: "18 ft", floral: "Marigold & Jasmine Strands", capacity: "450 Guests" },
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+      hotspots: [
+        { top: "45%", left: "30%", label: "Historic Colonnade Lighting", desc: "Warm ambient uplighting highlighting 150-year-old terracotta arches." },
+        { top: "70%", left: "60%", label: "Silver Thali Banquet Setup", desc: "Low heritage dining tables set with solid silver thalis and wax diyas." }
+      ]
+    }
+  ],
 
   serviceCategories: [
     "All Offerings",

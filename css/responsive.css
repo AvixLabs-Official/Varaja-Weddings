@@ -118,6 +118,21 @@ body:has(.modal-overlay.active) .mobile-bottom-dock {
     top: -20px !important;
     padding: 10px 16px !important;
   }
+
+  .scenography-stage-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .scenography-canvas-box {
+    height: 380px !important;
+  }
+
+  .scenography-specs-bar {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
 }
 
 /* ==========================================================================
