@@ -1,16 +1,14 @@
 /**
- * THE KNOT - Official Interactive Orchestrator
- * Full replica of The Knot Wedding Planning suite
+ * THE KNOT - Master Interactive Orchestrator (Couple Planning & Guest RSVP Suite)
  */
 
-let activeVendorCat = 'All Vendors';
 let currentTotalBudget = 35000;
 
 document.addEventListener('DOMContentLoaded', () => {
   renderPortalsGrid();
   renderChecklist();
   renderBudgetCalculator();
-  renderVendorsGrid();
+  renderGuestsGrid();
   renderRegistryGrid();
   renderRealWeddingsGrid();
 });
@@ -121,64 +119,41 @@ function updateBudgetTotal(val) {
 }
 
 /* --------------------------------------------------------------------------
-   4. RENDER VENDOR MARKETPLACE
+   4. RENDER GUESTS & RSVP MANAGER SUITE
    -------------------------------------------------------------------------- */
-function renderVendorsGrid() {
-  const container = document.getElementById('knot-vendors-container');
-  const tabsContainer = document.getElementById('knot-vendor-tabs');
-  if (!container || !THEKNOT_DATA?.vendors) return;
+function renderGuestsGrid() {
+  const container = document.getElementById('knot-guests-table-body');
+  if (!container || !THEKNOT_DATA?.guestList) return;
 
-  if (tabsContainer) {
-    tabsContainer.innerHTML = THEKNOT_DATA.vendorCategories.map(cat => `
-      <button class="btn-knot-outline ${cat === activeVendorCat ? 'active' : ''}" style="padding:8px 18px; font-size:0.8rem; ${cat === activeVendorCat ? 'background:var(--knot-dark); color:#FFF;' : ''}" onclick="filterVendorCat('${cat}')">
-        ${cat}
-      </button>
-    `).join('');
-  }
-
-  const filtered = activeVendorCat === 'All Vendors'
-    ? THEKNOT_DATA.vendors
-    : THEKNOT_DATA.vendors.filter(v => v.category === activeVendorCat);
-
-  container.innerHTML = filtered.map(v => `
-    <article class="knot-vendor-card">
-      <div class="knot-vendor-img">
-        <img src="${v.image}" alt="${v.name}">
-        <span style="position:absolute; top:12px; left:12px; background:rgba(26,26,26,0.85); color:#FFF; font-size:0.68rem; font-weight:700; padding:4px 10px; border-radius:20px; letter-spacing:0.05em;">
-          ${v.badge}
+  container.innerHTML = THEKNOT_DATA.guestList.map(g => `
+    <tr style="border-bottom:1px solid var(--border-light);">
+      <td style="padding:16px 20px; font-weight:600; color:var(--knot-dark);">${g.name}</td>
+      <td style="padding:16px 20px; color:var(--knot-gray);">${g.party}</td>
+      <td style="padding:16px 20px;">
+        <span style="padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; ${g.rsvpStatus === 'Attending' ? 'background:#E8F5E9; color:#2E7D32;' : 'background:#FFF3E0; color:#E65100;'}">
+          ${g.rsvpStatus}
         </span>
-      </div>
-      <div class="knot-vendor-body">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-          <span style="font-size:0.75rem; font-weight:700; text-transform:uppercase; color:var(--knot-coral);">${v.category}</span>
-          <span style="font-size:0.8rem; font-weight:700; color:var(--knot-dark); display:inline-flex; align-items:center; gap:3px;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#FD5B60" stroke="#FD5B60"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-            <span>${v.rating} (${v.reviews})</span>
-          </span>
-        </div>
-
-        <h3 style="font-family:var(--font-serif); font-size:1.35rem; font-weight:700; color:var(--knot-dark); margin-bottom:4px;">${v.name}</h3>
-        <span style="font-size:0.82rem; color:var(--knot-gray); margin-bottom:10px;">📍 ${v.location}</span>
-        <p style="font-size:0.85rem; color:var(--knot-gray); line-height:1.5; margin-bottom:20px; flex-grow:1;">${v.desc}</p>
-
-        <div style="display:flex; justify-content:space-between; align-items:center; padding-top:14px; border-top:1px solid var(--border-light);">
-          <strong style="font-family:var(--font-serif); font-size:1.15rem; color:var(--knot-dark);">${v.price}</strong>
-          <button onclick="contactVendorModal('${v.name}')" class="btn-knot-primary" style="padding:8px 18px; font-size:0.78rem;">
-            <span>Contact Vendor</span>
-          </button>
-        </div>
-      </div>
-    </article>
+      </td>
+      <td style="padding:16px 20px; color:var(--knot-gray);">${g.meal}</td>
+      <td style="padding:16px 20px; font-weight:600; color:var(--knot-dark);">${g.table}</td>
+    </tr>
   `).join('');
 }
 
-function filterVendorCat(cat) {
-  activeVendorCat = cat;
-  renderVendorsGrid();
-}
-
-function contactVendorModal(name) {
-  alert(`Thank you for reaching out to ${name}! A representative from The Knot vendor team will connect with you shortly.`);
+function addNewGuestPrompt() {
+  const name = prompt("Enter guest full name:");
+  if (name) {
+    THEKNOT_DATA.guestList.push({
+      id: "g" + (THEKNOT_DATA.guestList.length + 1),
+      name: name,
+      party: "Party of 2",
+      rsvpStatus: "Attending",
+      meal: "Chef Special",
+      table: "Table " + (THEKNOT_DATA.guestList.length + 1)
+    });
+    renderGuestsGrid();
+    alert(`Guest "${name}" added to your interactive RSVP manager!`);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -236,7 +211,7 @@ function renderRealWeddingsGrid() {
 }
 
 /* --------------------------------------------------------------------------
-   7. HERO PHOTO SWITCHER & SEARCH TRIGGER
+   7. HERO PHOTO SWITCHER
    -------------------------------------------------------------------------- */
 const HERO_PHOTOS = [
   "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
@@ -260,9 +235,4 @@ function switchHeroPhoto(idx) {
     if (i === idx) d.classList.add('active');
     else d.classList.remove('active');
   });
-}
-
-function triggerHeroVendorSearch() {
-  const cat = document.getElementById('hero-vendor-category-select')?.value || 'All Vendors';
-  filterVendorCat(cat);
 }

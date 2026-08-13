@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Knot — Free Online Wedding Planner, Vendors, Websites & Registry</title>
-  <meta name="description" content="Use our planning checklist, read our budgeting tips, find top-rated local wedding venues, build a free couple website, and manage your newlywed cash fund.">
+  <title>The Knot — Free Online Wedding Planner, Couples Websites & Registry</title>
+  <meta name="description" content="Use our planning checklist, budget advisor, build a free couple website, manage guest RSVPs, and create your newlywed cash fund.">
   
   <!-- CSS Stylesheets -->
   <link rel="stylesheet" href="css/style.css">
@@ -16,7 +16,7 @@
      ANNOUNCEMENT BAR
      ========================================================================== -->
   <div class="knot-announcement-bar">
-    <span>Give your guests more contribution options with <a href="#registry">Venmo Newlywed Cash Funds & Registry Stores ▸</a></span>
+    <span>Give your guests effortless contribution options with <a href="#registry">Venmo Newlywed Cash Funds & Registry Stores ▸</a></span>
   </div>
 
   <!-- ==========================================================================
@@ -38,11 +38,11 @@
 
         <!-- Actions -->
         <div style="display:flex; align-items:center; gap:16px;">
-          <a href="#vendors" class="btn-knot-outline" style="padding:8px 18px; font-size:0.8rem;">
-            <span>Are you a vendor?</span>
+          <a href="#guests" class="btn-knot-outline" style="padding:8px 18px; font-size:0.8rem;">
+            <span>Guest Portal</span>
           </a>
           <a href="#checklist" class="btn-knot-primary" style="padding:10px 22px; font-size:0.85rem;">
-            <span>Get Started</span>
+            <span>Get Started Free</span>
           </a>
         </div>
       </div>
@@ -52,21 +52,18 @@
         <ul class="knot-nav-links">
           <li><a href="#checklist" class="active">Planning Checklist</a></li>
           <li><a href="#budget">Budget Advisor</a></li>
-          <li><a href="#vendors">Vendors Marketplace</a></li>
+          <li><a href="#guests">Guests & RSVPs</a></li>
           <li><a href="#registry">Registry & Cash Funds</a></li>
           <li><a href="#real-weddings">Real Weddings</a></li>
           <li><a href="#checklist">Wedding Website</a></li>
-          <li><a href="#vendors">Attire & Rings</a></li>
+          <li><a href="#checklist">Attire & Rings</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <!-- ==========================================================================
-     HERO SECTION WITH VENDOR SEARCH WIDGET
-     ========================================================================== -->
-  <!-- ==========================================================================
-     ULTRA-PREMIUM HERO SECTION (DUAL STAGE EDITORIAL SPLIT)
+     HERO SECTION (COUPLE PLANNING FOCUS)
      ========================================================================== -->
   <section class="knot-hero-section" id="hero">
     <div class="container">
@@ -79,11 +76,11 @@
           </div>
 
           <h1 class="knot-hero-title">
-            Your Dream Wedding, <br><span style="color:var(--knot-coral);">Orchestrated to Perfection.</span>
+            Your Dream Celebration, <br><span style="color:var(--knot-coral);">Orchestrated to Perfection.</span>
           </h1>
 
           <p class="knot-hero-sub">
-            Discover 300,000+ top-rated local venues, manage your Newlywed Cash Fund, build a free couple website, and track every item on your checklist with The Knot.
+            Organize your 12-month timeline, manage guest RSVPs, build your Newlywed Cash Fund, and track your wedding budget with The Knot.
           </p>
 
           <!-- Action CTA Buttons Bar -->
@@ -91,8 +88,8 @@
             <a href="#checklist" class="btn-knot-primary" style="padding:14px 32px; font-size:0.95rem;">
               <span>Start Planning Free</span>
             </a>
-            <a href="#vendors" class="btn-knot-outline" style="padding:14px 28px; font-size:0.95rem;">
-              <span>Explore Vendors</span>
+            <a href="#registry" class="btn-knot-outline" style="padding:14px 28px; font-size:0.95rem;">
+              <span>Explore Registry</span>
             </a>
           </div>
 
@@ -108,12 +105,12 @@
             </span>
             <span style="display:inline-flex; align-items:center; gap:6px;">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--knot-coral)" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-              <span><strong>300,000+</strong> Verified Vendors</span>
+              <span><strong>12-Month</strong> Countdown Guide</span>
             </span>
           </div>
         </div>
 
-        <!-- Right Showcase Stage (Arch Frame + Photo Switcher Dots) -->
+        <!-- Right Stage Arched Photo Showcase -->
         <div class="knot-hero-right-stage">
           <div class="knot-arch-container">
             <div class="knot-arch-top-bar">
@@ -131,17 +128,17 @@
               <img id="hero-arch-img" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85" alt="The Knot Wedding Planning">
 
               <div class="knot-photo-thumbs-bar">
-                <div class="knot-thumb-dot active" onclick="switchHeroPhoto(0)" title="Udaipur Palace">
-                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=100&q=70" alt="Udaipur">
+                <div class="knot-thumb-dot active" onclick="switchHeroPhoto(0)" title="Palace Mandap">
+                  <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=100&q=70" alt="Mandap">
                 </div>
-                <div class="knot-thumb-dot" onclick="switchHeroPhoto(1)" title="Goa Beachfront">
-                  <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=100&q=70" alt="Goa">
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(1)" title="Beachfront Vows">
+                  <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=100&q=70" alt="Beachfront">
                 </div>
-                <div class="knot-thumb-dot" onclick="switchHeroPhoto(2)" title="Kolkata Rajbari">
-                  <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=100&q=70" alt="Kolkata">
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(2)" title="Rajbari Courtyard">
+                  <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=100&q=70" alt="Courtyard">
                 </div>
-                <div class="knot-thumb-dot" onclick="switchHeroPhoto(3)" title="Jaipur Sangeet">
-                  <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=100&q=70" alt="Jaipur">
+                <div class="knot-thumb-dot" onclick="switchHeroPhoto(3)" title="Sangeet Gala">
+                  <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=100&q=70" alt="Sangeet">
                 </div>
               </div>
             </div>
@@ -154,8 +151,8 @@
   <!-- Marquee Ticker Tape Ribbon -->
   <div class="knot-ticker-tape">
     <div class="knot-ticker-track">
-      <span>RECEPTION VENUES • PHOTOGRAPHERS • WEDDING PLANNERS • CATERERS • FLORISTS & DECOR • DJS & LIVE MUSIC • BRIDAL SALONS • BRIDAL MAKEUP • </span>
-      <span>RECEPTION VENUES • PHOTOGRAPHERS • WEDDING PLANNERS • CATERERS • FLORISTS & DECOR • DJS & LIVE MUSIC • BRIDAL SALONS • BRIDAL MAKEUP • </span>
+      <span>PLANNING CHECKLIST • BUDGET ADVISOR • FREE WEDDING WEBSITE • GUESTS & RSVPS • NEWLYWED CASH FUND • GIFT REGISTRY • ATTIRE & RINGS • REAL WEDDINGS • </span>
+      <span>PLANNING CHECKLIST • BUDGET ADVISOR • FREE WEDDING WEBSITE • GUESTS & RSVPS • NEWLYWED CASH FUND • GIFT REGISTRY • ATTIRE & RINGS • REAL WEDDINGS • </span>
     </div>
   </div>
 
@@ -230,13 +227,13 @@
         <div style="background:var(--bg-blush); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:40px; text-align:center;">
           <span class="knot-section-tag">THE KNOT GUARANTEE</span>
           <h3 style="font-family:var(--font-serif); font-size:1.8rem; font-weight:700; color:var(--knot-dark); margin-bottom:12px;">
-            No Hidden Fees
+            100% Free Suite
           </h3>
           <p style="font-size:0.9rem; color:var(--knot-gray); line-height:1.6; margin-bottom:24px;">
-            All vendor listings and planning tools on The Knot are 100% free for couples to search, manage, and book with complete financial clarity.
+            All planning tools, budget calculators, and RSVP management suites on The Knot are 100% free for couples with complete financial clarity.
           </p>
-          <a href="#vendors" class="btn-knot-primary" style="width:100%; justify-content:center;">
-            <span>Explore Vendor Pricing</span>
+          <a href="#registry" class="btn-knot-primary" style="width:100%; justify-content:center;">
+            <span>Build Cash Registry</span>
           </a>
         </div>
       </div>
@@ -244,22 +241,35 @@
   </section>
 
   <!-- ==========================================================================
-     VENDOR MARKETPLACE SECTION
+     GUESTS & RSVP MANAGEMENT SUITE (#guests)
      ========================================================================== -->
-  <section class="knot-vendor-section" id="vendors">
+  <section class="knot-vendor-section" id="guests" style="background:#FFFFFF;">
     <div class="container">
-      <div class="knot-section-header">
-        <span class="knot-section-tag">VENDOR MARKETPLACE</span>
-        <h2 class="knot-section-title">Explore Top-Rated Local Vendors</h2>
-        <p style="color:var(--knot-gray); margin-top:8px;">Connect with verified reception venues, photographers, florists, and planners.</p>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:32px;">
+        <div>
+          <span class="knot-section-tag">GUEST LIST MANAGER</span>
+          <h2 class="knot-section-title">Guests & Online RSVP Tracker</h2>
+        </div>
+        <button onclick="addNewGuestPrompt()" class="btn-knot-primary" style="padding:10px 24px; font-size:0.85rem;">
+          <span>+ Add New Guest</span>
+        </button>
       </div>
 
-      <div style="display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:32px;" id="knot-vendor-tabs">
-        <!-- Rendered dynamically by js/main.js -->
-      </div>
-
-      <div class="knot-vendor-grid" id="knot-vendors-container">
-        <!-- Rendered dynamically by js/main.js -->
+      <div style="background:var(--bg-blush); border:1px solid var(--border-light); border-radius:var(--radius-md); overflow-x:auto;">
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.9rem;">
+          <thead>
+            <tr style="border-bottom:2px solid var(--border-light); background:#FFFFFF; color:var(--knot-dark); font-size:0.8rem; text-transform:uppercase; letter-spacing:0.08em;">
+              <th style="padding:16px 20px;">Guest Name</th>
+              <th style="padding:16px 20px;">Party Size</th>
+              <th style="padding:16px 20px;">RSVP Status</th>
+              <th style="padding:16px 20px;">Meal Choice</th>
+              <th style="padding:16px 20px;">Table Assignment</th>
+            </tr>
+          </thead>
+          <tbody id="knot-guests-table-body">
+            <!-- Rendered dynamically by js/main.js -->
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -289,7 +299,7 @@
       <div class="knot-section-header">
         <span class="knot-section-tag">REAL INSPIRATION</span>
         <h2 class="knot-section-title">Real Wedding Photos & Ideas</h2>
-        <p style="color:var(--knot-gray); margin-top:8px;">Browse real weddings created by couples and local planners on The Knot.</p>
+        <p style="color:var(--knot-gray); margin-top:8px;">Browse real weddings created by couples on The Knot.</p>
       </div>
 
       <div class="knot-real-grid" id="knot-real-container">
@@ -309,14 +319,14 @@
             the knot <span style="color:var(--knot-coral);">.</span>
           </a>
           <p style="font-size:0.85rem; color:rgba(255,255,255,0.7); line-height:1.6; max-width:320px;">
-            The Knot is the ultimate all-in-one wedding planning resource. Find local vendors, create a free website, manage your guest list, and set up your registry.
+            The Knot is the ultimate all-in-one wedding planning resource. Create a free website, manage your guest list & RSVPs, track your checklist, and set up your cash registry.
           </p>
         </div>
 
         <div class="knot-footer-col">
-          <h4>Planning Tools</h4>
+          <h4>Planning Suite</h4>
           <ul>
-            <li><a href="#checklist">Checklist</a></li>
+            <li><a href="#checklist">12-Month Checklist</a></li>
             <li><a href="#budget">Budget Advisor</a></li>
             <li><a href="#checklist">Wedding Website</a></li>
             <li><a href="#checklist">Style Quiz</a></li>
@@ -324,22 +334,22 @@
         </div>
 
         <div class="knot-footer-col">
-          <h4>Vendors</h4>
+          <h4>Guests & RSVPs</h4>
           <ul>
-            <li><a href="#vendors">Reception Venues</a></li>
-            <li><a href="#vendors">Photographers</a></li>
-            <li><a href="#vendors">Wedding Planners</a></li>
-            <li><a href="#vendors">Catering</a></li>
+            <li><a href="#guests">Guest Address Collection</a></li>
+            <li><a href="#guests">RSVP Tracker</a></li>
+            <li><a href="#guests">Meal Choice Selection</a></li>
+            <li><a href="#guests">Seating Chart Builder</a></li>
           </ul>
         </div>
 
         <div class="knot-footer-col">
           <h4>Registry & Paper</h4>
           <ul>
-            <li><a href="#registry">Newlywed Fund</a></li>
-            <li><a href="#registry">Honeymoon Cash</a></li>
-            <li><a href="#registry">Invitations</a></li>
+            <li><a href="#registry">Newlywed Cash Fund</a></li>
+            <li><a href="#registry">Honeymoon Registry</a></li>
             <li><a href="#registry">Save the Dates</a></li>
+            <li><a href="#registry">Thank-You Cards</a></li>
           </ul>
         </div>
 
@@ -349,7 +359,7 @@
             <li><a href="#">About Us</a></li>
             <li><a href="#">Careers</a></li>
             <li><a href="#">Help Center</a></li>
-            <li><a href="#">Are you a Vendor?</a></li>
+            <li><a href="#">Contact Support</a></li>
           </ul>
         </div>
       </div>
