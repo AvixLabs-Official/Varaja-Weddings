@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, './')));
 // In-Memory Storage for Consultation Enquiries
 const enquiriesStore = [];
 
-// API Endpoint for Wedding Consultation Inquiry
+// API Endpoint for Event & Wedding Consultation Inquiry
 app.post('/api/inquiry', (req, res) => {
   try {
     const { name, phone, email, date, location, eventType, budget, message } = req.body;
@@ -28,24 +28,24 @@ app.post('/api/inquiry', (req, res) => {
     }
 
     const newEnquiry = {
-      id: 'VARAJA-' + Date.now().toString(36).toUpperCase(),
+      id: 'BRP-' + Date.now().toString(36).toUpperCase(),
       name,
       phone,
       email,
       date: date || 'TBD',
       location: location || 'TBD',
-      eventType: eventType || 'Complete Wedding Planning',
+      eventType: eventType || 'Complete Event & Wedding Planning',
       budget: budget || 'Undisclosed',
       message: message || '',
       submittedAt: new Date().toISOString()
     };
 
     enquiriesStore.unshift(newEnquiry);
-    console.log(`[VARAJA WEDDINGS] New Consultation Request Received from ${name} (${email})`);
+    console.log(`[BLUE ROSE PRODUCTION] New Consultation Request Received from ${name} (${email})`);
 
     return res.status(200).json({
       success: true,
-      message: `Thank you, ${name}! Your consultation request has been received. Our luxury wedding concierge will get back to you within 12 hours.`,
+      message: `Thank you, ${name}! Your consultation request has been received. Our luxury event concierge will contact you within 12 hours.`,
       enquiryId: newEnquiry.id
     });
   } catch (error) {
@@ -63,5 +63,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`✨ VARAJA Luxury Weddings Server running at http://localhost:${PORT}`);
+  console.log(`✨ BLUE ROSE PRODUCTION Server running at http://localhost:${PORT}`);
 });

@@ -1,6 +1,6 @@
 /* ==========================================================================
-   VARAJA LUXURY WEDDINGS & EVENTS - Master Editorial Design System
-   Color Palette: Warm Ivory (#FAF8F5), Champagne (#F4EFE6), Obsidian (#121316), Gold (#C5A059)
+   BLUE ROSE PRODUCTION - Master Luxury Event & Wedding Design System
+   Color Palette: Sapphire Blue (#1E3A8A, #2563EB), Champagne (#F4EFE6), Obsidian (#0F172A), Gold (#C5A059)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
@@ -10,16 +10,19 @@
   --bg-primary: #FAF8F5;
   --bg-surface: #FFFFFF;
   --bg-champagne: #F4EFE6;
-  --bg-dark: #121316;
-  --bg-dark-surface: #1B1D22;
+  --bg-dark: #0F172A;
+  --bg-dark-surface: #1E293B;
   
   --color-gold: #C5A059;
   --color-gold-light: #E4C88E;
   --color-gold-dark: #8C6D2D;
   --color-gold-glow: rgba(197, 160, 89, 0.25);
+
+  --color-blue-rose: #2563EB;
+  --color-blue-dark: #1E3A8A;
   
-  --text-primary: #1A1C20;
-  --text-secondary: #5A5D66;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
   --text-muted: #8C8F99;
   --text-light: #FAF8F5;
   
@@ -32,9 +35,9 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Shadows & Radius */
-  --shadow-sm: 0 4px 16px rgba(18, 19, 22, 0.04);
-  --shadow-md: 0 12px 36px rgba(18, 19, 22, 0.08);
-  --shadow-lg: 0 24px 60px rgba(18, 19, 22, 0.14);
+  --shadow-sm: 0 4px 16px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 12px 36px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.14);
   --shadow-gold: 0 10px 30px rgba(197, 160, 89, 0.25);
 
   --radius-sm: 8px;
@@ -107,6 +110,13 @@ button, input, select, textarea {
   display: inline-block;
 }
 
+.blue-rose-text {
+  background: linear-gradient(135deg, #60A5FA 0%, #2563EB 50%, #1E3A8A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
 .section-tag-lbl {
   font-family: var(--font-sans);
   font-size: 0.75rem;
@@ -143,6 +153,51 @@ button, input, select, textarea {
   max-width: 680px;
   margin-top: 16px;
   line-height: 1.7;
+}
+
+/* Logo Styling */
+.brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-rose-emblem {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 100%);
+  border: 1.5px solid var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(30, 58, 138, 0.3);
+  transition: var(--transition);
+}
+
+.brand-logo-wrap:hover .brand-rose-emblem {
+  transform: rotate(15deg) scale(1.05);
+  border-color: var(--color-gold-light);
+}
+
+.brand-logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.brand-logo-sub {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-gold-dark);
+  display: block;
+  margin-top: 3px;
 }
 
 /* Buttons System */
@@ -182,7 +237,7 @@ button, input, select, textarea {
 }
 
 .btn-dark:hover {
-  background-color: #252830;
+  background-color: #1E293B;
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
 }
@@ -190,7 +245,7 @@ button, input, select, textarea {
 .btn-outline-gold {
   background-color: transparent;
   border-color: var(--color-gold);
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
 }
 
 .btn-outline-gold:hover {
@@ -263,30 +318,6 @@ button, input, select, textarea {
   justify-content: space-between;
 }
 
-.brand-logo-wrap {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.brand-logo-text {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  color: var(--text-primary);
-}
-
-.brand-logo-sub {
-  font-family: var(--font-sans);
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-  display: block;
-}
-
 .nav-links-desktop {
   display: flex;
   align-items: center;
@@ -347,7 +378,7 @@ button, input, select, textarea {
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.7);
+  background-color: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(8px);
   z-index: 1050;
   opacity: 0;
@@ -419,7 +450,7 @@ button, input, select, textarea {
 }
 
 .mobile-drawer-links a:hover {
-  color: var(--color-gold);
+  color: var(--color-gold-dark);
 }
 
 /* Auto-hide Site Header when Mobile Drawer is open */
@@ -466,7 +497,7 @@ body:has(.modal-overlay.active) .site-header {
 .hero-overlay-gradient {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(18, 19, 22, 0.7) 0%, rgba(18, 19, 22, 0.5) 50%, rgba(18, 19, 22, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.5) 50%, rgba(15, 23, 42, 0.9) 100%);
 }
 
 .hero-content-box {
@@ -610,8 +641,8 @@ body:has(.modal-overlay.active) .site-header {
   position: absolute;
   bottom: -20px;
   right: -20px;
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   background-color: var(--bg-dark);
   color: var(--color-gold);
@@ -622,6 +653,7 @@ body:has(.modal-overlay.active) .site-header {
   justify-content: center;
   text-align: center;
   box-shadow: var(--shadow-md);
+  padding: 8px;
 }
 
 /* Services Section */
@@ -746,7 +778,7 @@ body:has(.modal-overlay.active) .site-header {
 .project-overlay-content {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(18, 19, 22, 0.9) 100%);
+  background: linear-gradient(180deg, transparent 40%, rgba(15, 23, 42, 0.92) 100%);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
@@ -910,7 +942,7 @@ body:has(.modal-overlay.active) .site-header {
 }
 
 .google-reviews-card {
-  background: linear-gradient(135deg, #1B1D22 0%, #121316 100%);
+  background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
   color: #FFFFFF;
   border-radius: var(--radius-lg);
   padding: 48px 56px;
@@ -1165,7 +1197,7 @@ body:has(.modal-overlay.active) .site-header {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(18, 19, 22, 0.85);
+  background-color: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(12px);
   z-index: 2000;
   display: flex;

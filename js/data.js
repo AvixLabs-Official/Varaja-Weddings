@@ -1,15 +1,17 @@
 /**
- * VARAJA LUXURY WEDDINGS & EVENTS - Data Store
+ * BLUE ROSE PRODUCTION - Data Store
+ * Premium Event Management & Luxury Wedding Planning
  */
 
 const VARAJA_DATA = {
   brand: {
-    name: "VARAJA",
-    tagline: "Luxury Weddings & Royal Event Management",
-    location: "India • Worldwide Destination Weddings",
+    name: "BLUE ROSE PRODUCTION",
+    shortName: "BLUE ROSE",
+    tagline: "Bespoke Event Management & Luxury Weddings",
+    location: "India • Worldwide Destination Events",
     phone: "+91 98765 43210",
     whatsapp: "+91 98765 43210",
-    email: "concierge@varajaweddings.com",
+    email: "concierge@blueroseproduction.com",
     address: "UB City, Vittal Mallya Road, Bengaluru & South Extension II, New Delhi, India",
     stats: {
       couples: 250,
@@ -23,8 +25,8 @@ const VARAJA_DATA = {
   services: [
     {
       id: "complete-planning",
-      title: "Complete Wedding Planning",
-      subtitle: "End-to-End Curation & Execution",
+      title: "Complete Event & Wedding Planning",
+      subtitle: "End-to-End Curation & Production",
       description: "Comprehensive management from visual concepting, venue sourcing, budget allocation, and vendor selection to day-of seamless execution.",
       image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
       features: [
@@ -36,9 +38,9 @@ const VARAJA_DATA = {
     },
     {
       id: "decor-styling",
-      title: "Wedding Decor & Styling",
+      title: "Event Decor & Floral Styling",
       subtitle: "Architectural Florals & Scenography",
-      description: "Bespoke production design, bespoke mandap scenography, floral installations, ambient lighting, and editorial tabletop styling.",
+      description: "Bespoke production design, custom stage & mandap scenography, floral sculptures, ambient lighting, and editorial styling.",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
       features: [
         "Bespoke 3D Decor Renderings & Spatial Layouts",
@@ -62,9 +64,9 @@ const VARAJA_DATA = {
     },
     {
       id: "photography-video",
-      title: "Photography & Videography",
+      title: "Photography & Cinematography",
       subtitle: "Cinematic Storytelling & Editorial Portraits",
-      description: "Partnering with award-winning wedding cinematographers and editorial fashion photographers to capture every emotion in high art.",
+      description: "Partnering with award-winning event cinematographers and editorial fashion photographers to capture every emotion in high art.",
       image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
       features: [
         "4K Drone Cinematography & Same-Day Edit Teasers",
@@ -101,7 +103,7 @@ const VARAJA_DATA = {
     },
     {
       id: "destination-weddings",
-      title: "Destination Weddings",
+      title: "Destination Events & Weddings",
       subtitle: "Palaces in Rajasthan to Beaches of Goa & Bali",
       description: "Specialized logistics and cultural planning for destination celebrations in Rajasthan, Goa, Kerala, Italy, Thailand, and Dubai.",
       image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
@@ -114,7 +116,7 @@ const VARAJA_DATA = {
     },
     {
       id: "corporate-social",
-      title: "Corporate & Social Galas",
+      title: "Corporate Galas & Social Events",
       subtitle: "Anniversaries, Milestones & High-Net Events",
       description: "High-octane anniversary galas, milestone birthdays, corporate summits, and private luxury dinners designed with sophisticated grandeur.",
       image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
@@ -144,14 +146,14 @@ const VARAJA_DATA = {
         "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
         "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85"
       ],
-      story: "Set amidst the architectural grandeur of a 150-year-old Rajbari in Kolkata, Ananya & Arjun's celebration was a poetic tribute to classic Bengali heritage. VARAJA orchestrated a 3-day royal affair featuring fragrant marigold mandaps, traditional Shehnai recitals, authentic Zamindari cuisine curated by celebrity chefs, and a candlelit lakeside reception.",
+      story: "Set amidst the architectural grandeur of a 150-year-old Rajbari in Kolkata, Ananya & Arjun's celebration was a poetic tribute to classic Bengali heritage. BLUE ROSE PRODUCTION orchestrated a 3-day royal affair featuring fragrant marigold mandaps, traditional Shehnai recitals, authentic Zamindari cuisine curated by celebrity chefs, and a candlelit lakeside reception.",
       highlights: [
         "Custom Rajbari restoration with 10,000+ tuberose blooms",
         "Authentic 9-course Royal Bengali feast served on silver thalis",
         "Live Sitar & Shehnai ensemble by classical maestros",
         "Seamless management of 450 VIP guests with zero delays"
       ],
-      testimonialQuote: "VARAJA brought our dream royal Bengali wedding to life with unmatched grace and perfection. Every detail was extraordinary!"
+      testimonialQuote: "BLUE ROSE PRODUCTION brought our dream royal Bengali wedding to life with unmatched grace and perfection. Every detail was extraordinary!"
     },
     {
       id: "rohan-meera",
@@ -175,7 +177,7 @@ const VARAJA_DATA = {
         "Performance by Bollywood playback singers & Sufi troupes",
         "Full royal procession with decorated elephants & vintage cars"
       ],
-      testimonialQuote: "Our guests are still talking about how magical Udaipur felt under VARAJA’s leadership. Pure perfection!"
+      testimonialQuote: "Our guests are still talking about how magical Udaipur felt under BLUE ROSE PRODUCTION’s leadership. Pure perfection!"
     },
     {
       id: "sid-aisha",
@@ -221,7 +223,7 @@ const VARAJA_DATA = {
         "Luxury gift hampers with custom brass keepsakes for every guest",
         "24-Hour live chaat counters and international dessert bar"
       ],
-      testimonialQuote: "VARAJA executed a massive 600-guest wedding seamlessly. They handled everything with warmth and extreme professionalism!"
+      testimonialQuote: "BLUE ROSE PRODUCTION executed a massive 600-guest wedding seamlessly. They handled everything with warmth and extreme professionalism!"
     },
     {
       id: "vikram-devika",
@@ -244,7 +246,7 @@ const VARAJA_DATA = {
         "Custom heirloom brass favors crafted by local Jodhpur artisans",
         "Personalized butler service for every guest room"
       ],
-      testimonialQuote: "Intimate, warm, and utterly magical. VARAJA turned our vision into an unforgettable memory."
+      testimonialQuote: "Intimate, warm, and utterly magical. BLUE ROSE PRODUCTION turned our vision into an unforgettable memory."
     },
     {
       id: "aditya-pooja",
@@ -275,7 +277,7 @@ const VARAJA_DATA = {
     {
       number: "01",
       title: "Personalized Planning",
-      description: "No templates or cookie-cutter packages. Every detail, color palette, and experience is tailored specifically around your love story and heritage."
+      description: "No templates or cookie-cutter packages. Every detail, color palette, and experience is tailored specifically around your vision and story."
     },
     {
       number: "02",
@@ -300,7 +302,7 @@ const VARAJA_DATA = {
     {
       number: "06",
       title: "Stress-Free Experience",
-      description: "You and your family remain honored guests at your own wedding while VARAJA carries the entire operational and creative weight."
+      description: "You and your family remain honored guests while BLUE ROSE PRODUCTION carries the entire operational and creative weight."
     }
   ],
 
@@ -310,7 +312,7 @@ const VARAJA_DATA = {
       coupleName: "Ananya & Arjun Roy",
       location: "Kolkata • Royal Rajbari Wedding",
       rating: 5,
-      quote: "VARAJA made our wedding look like it belonged on the pages of Vogue. The coordination between our 450 guests, international artists, and venue staff was flawless. They handled every detail with extreme grace!",
+      quote: "BLUE ROSE PRODUCTION made our wedding look like it belonged on the pages of Vogue. The coordination between our 450 guests, international artists, and venue staff was flawless. They handled every detail with extreme grace!",
       date: "February 2026",
       avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80"
     },
@@ -319,7 +321,7 @@ const VARAJA_DATA = {
       coupleName: "Meera & Rohan Singhania",
       location: "Udaipur • City Palace Celebration",
       rating: 5,
-      quote: "Planning a destination palace wedding from London seemed daunting until we met the VARAJA team. They took care of everything from boat charters to 3D decor setups. We could simply relax and enjoy our special days.",
+      quote: "Planning a destination palace wedding from London seemed daunting until we met the BLUE ROSE PRODUCTION team. They took care of everything from boat charters to 3D decor setups. We could simply relax and enjoy our special days.",
       date: "January 2026",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
     },
@@ -328,7 +330,7 @@ const VARAJA_DATA = {
       coupleName: "Aisha & Siddharth Malhotra",
       location: "Goa • St. Regis Beachfront",
       rating: 5,
-      quote: "The aesthetic sensitivity VARAJA possesses is unmatched. The beach mandap design was breathtaking, and their guest hospitality team took personal care of all our family members coming from across the world.",
+      quote: "The aesthetic sensitivity BLUE ROSE PRODUCTION possesses is unmatched. The beach mandap design was breathtaking, and their guest hospitality team took personal care of all our family members coming from across the world.",
       date: "November 2025",
       avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=200&q=80"
     },
@@ -337,7 +339,7 @@ const VARAJA_DATA = {
       coupleName: "Rhea & Kabir Kapoor",
       location: "Jaipur • Fairmont & Jai Mahal",
       rating: 5,
-      quote: "Managing a 600-person Punjabi wedding requires high energy and razor-sharp organization. VARAJA delivered both in abundance! Our Sangeet night was the talk of the town.",
+      quote: "Managing a 600-person Punjabi wedding requires high energy and razor-sharp organization. BLUE ROSE PRODUCTION delivered both in abundance! Our Sangeet night was the talk of the town.",
       date: "December 2025",
       avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=200&q=80"
     },
@@ -346,7 +348,7 @@ const VARAJA_DATA = {
       coupleName: "Devika & Vikram Rathore",
       location: "Jodhpur • Heritage Haveli",
       rating: 5,
-      quote: "If you want a wedding that feels high-end, deeply personal, and completely stress-free, VARAJA is the only team to trust in India. Truly world-class event creators.",
+      quote: "If you want an event that feels high-end, deeply personal, and completely stress-free, BLUE ROSE PRODUCTION is the only team to trust in India. Truly world-class event creators.",
       date: "October 2025",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80"
     }
@@ -369,7 +371,7 @@ const VARAJA_DATA = {
       step: "01",
       name: "Let's Talk",
       title: "Discovery & Vision Alignment",
-      desc: "We begin with an in-depth consultation to understand your love story, aesthetic preferences, family traditions, guest headcount, and target budget."
+      desc: "We begin with an in-depth consultation to understand your event vision, aesthetic preferences, family traditions, guest headcount, and target budget."
     },
     {
       step: "02",
@@ -387,7 +389,7 @@ const VARAJA_DATA = {
       step: "04",
       name: "Celebrate",
       title: "Flawless Execution & Hospitality",
-      desc: "Our 20+ member on-site production team manages logistics, artists, and guest concierge so you and your family can immerse in your celebration."
+      desc: "Our 20+ member on-site production team manages logistics, artists, and guest concierge so you and your guests can enjoy your day."
     }
   ]
 };
