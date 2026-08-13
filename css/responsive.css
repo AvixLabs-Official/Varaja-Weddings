@@ -1,106 +1,113 @@
 /* ==========================================================================
-   THE KNOT - RESPONSIVE BREAKPOINTS
+   BLUE ROSE PRODUCTION — RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 
-@media (max-width: 992px) {
-  .knot-portals-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .knot-budget-grid {
-    grid-template-columns: 1fr !important;
-    gap: 32px !important;
-  }
-
-  .knot-vendor-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .knot-registry-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
-  .knot-real-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 20px !important;
-  }
-
+@media (max-width: 1024px) {
   .knot-hero-grid {
-    grid-template-columns: 1fr !important;
-    gap: 40px !important;
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 
-  .jharokha-arch-wrapper {
-    height: 420px !important;
+  .hero-clean-portrait-card {
+    height: 420px;
   }
 
-  .knot-footer-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: 32px !important;
+  .services-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .weddings-grid-3col,
+  .reviews-grid-3col {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid-4col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .about-grid-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .knot-nav-links {
+    gap: 16px;
+  }
+
+  .knot-nav-links a {
+    font-size: 0.82rem;
   }
 }
 
 @media (max-width: 768px) {
-  .knot-search-couples-bar {
-    display: none !important;
+  .mobile-menu-toggle {
+    display: block;
+    cursor: pointer;
+    background: transparent;
+    padding: 6px;
+  }
+
+  .knot-nav-inline {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md);
+    padding: 20px 24px;
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .knot-nav-inline.mobile-active {
+    display: flex;
+  }
+
+  .knot-nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .knot-nav-links a {
+    font-size: 0.95rem;
+    display: block;
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .header-action-wrap {
+    display: none;
   }
 
   .knot-hero-title {
-    font-size: 2.4rem !important;
+    font-size: 2.2rem;
   }
 
-  .knot-search-widget-box {
-    flex-direction: column !important;
-    border-radius: 24px !important;
-    padding: 16px !important;
-    gap: 12px !important;
+  .services-grid-4col,
+  .gallery-grid-4col {
+    grid-template-columns: 1fr;
   }
 
-  .knot-widget-divider {
-    display: none !important;
+  .form-grid-2col {
+    grid-template-columns: 1fr;
   }
 
-  .knot-widget-input-group {
-    width: 100% !important;
-    border-bottom: 1px solid var(--border-light);
-    padding-bottom: 10px;
-  }
-
-  .btn-knot-primary {
-    width: 100% !important;
-    justify-content: center !important;
-  }
-
-  .knot-portals-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .knot-timeframe-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .knot-vendor-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .knot-registry-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .knot-real-grid {
-    grid-template-columns: 1fr !important;
+  .agency-contact-card {
+    padding: 24px 20px;
   }
 
   .knot-footer-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: 1fr;
+    gap: 32px;
   }
 
   .knot-footer-bottom {
-    flex-direction: column !important;
-    gap: 16px !important;
+    flex-direction: column;
+    gap: 10px;
     text-align: center;
   }
 }
