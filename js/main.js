@@ -114,29 +114,52 @@ function animateCounters() {
   });
 }
 
+let activeServiceCategory = 'All Offerings';
+
 /* --------------------------------------------------------------------------
-   4. RENDER SERVICES GRID
+   4. RENDER SERVICES GRID WITH CATEGORY TABS
    -------------------------------------------------------------------------- */
 function renderServicesGrid() {
   const container = document.getElementById('services-cards-container');
+  const tabsContainer = document.getElementById('service-category-tabs');
   if (!container || !VARAJA_DATA?.services) return;
 
-  container.innerHTML = VARAJA_DATA.services.map((service, idx) => `
-    <article class="service-card-item reveal-on-scroll stagger-delay-${(idx % 4) + 1}">
+  const categories = VARAJA_DATA.serviceCategories || ['All Offerings'];
+
+  if (tabsContainer) {
+    tabsContainer.innerHTML = categories.map(cat => `
+      <button class="service-cat-btn ${cat === activeServiceCategory ? 'active' : ''}" onclick="filterServices('${cat}')">
+        ${cat}
+      </button>
+    `).join('');
+  }
+
+  const filtered = activeServiceCategory === 'All Offerings'
+    ? VARAJA_DATA.services
+    : VARAJA_DATA.services.filter(s => s.category === activeServiceCategory);
+
+  container.innerHTML = filtered.map((service, idx) => `
+    <article class="service-card-item reveal-on-scroll stagger-delay-${(idx % 3) + 1}">
+      <span class="service-card-num-badge">${service.number}</span>
       <div class="service-img-wrap">
         <img src="${service.image}" alt="${service.title}" loading="lazy">
       </div>
       <div class="service-card-body">
-        <span class="royal-badge" style="margin-bottom:12px;">LUXURY SERVICE</span>
+        <span class="service-card-subtitle">${service.subtitle}</span>
         <h3 class="service-card-title">${service.title}</h3>
         <p class="service-card-desc">${service.description}</p>
         
-        <ul style="margin-bottom:20px; font-size:0.82rem; color:var(--text-secondary); line-height:1.7;">
-          ${service.features.map(f => `<li style="display:flex; align-items:center; gap:8px; margin-bottom:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> <span>${f}</span></li>`).join('')}
-        </ul>
+        <div class="service-deliverables-list">
+          ${service.features.map(f => `
+            <div class="service-deliverable-item">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-dark)" stroke-width="2.5" style="flex-shrink:0; margin-top:3px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>${f}</span>
+            </div>
+          `).join('')}
+        </div>
 
-        <a href="#contact" class="btn btn-outline-gold" style="padding:10px 20px; font-size:0.75rem; margin-top:auto; align-self:flex-start;">
-          <span>Inquire Service</span>
+        <a href="#contact" onclick="preselectService('${service.title}')" class="btn btn-outline-gold" style="padding:12px 20px; font-size:0.75rem; margin-top:auto; align-self:stretch; justify-content:center;">
+          <span>Inquire This Service</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -144,6 +167,23 @@ function renderServicesGrid() {
   `).join('');
 
   initScrollAnimations();
+}
+
+function filterServices(cat) {
+  activeServiceCategory = cat;
+  renderServicesGrid();
+}
+
+function preselectService(serviceTitle) {
+  const eventSelect = document.getElementById('enquiry-event');
+  if (eventSelect) {
+    for (let i = 0; i < eventSelect.options.length; i++) {
+      if (eventSelect.options[i].text.toLowerCase().includes(serviceTitle.toLowerCase()) || serviceTitle.toLowerCase().includes(eventSelect.options[i].text.toLowerCase())) {
+        eventSelect.selectedIndex = i;
+        break;
+      }
+    }
+  }
 }
 
 /* --------------------------------------------------------------------------

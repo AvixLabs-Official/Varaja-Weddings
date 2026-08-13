@@ -1,6 +1,6 @@
 /**
  * BLUE ROSE PRODUCTION - Master Data Store
- * Includes Venues, FAQs, and Budget Estimator Data
+ * Includes Categorized Services, Venues, FAQs, and Budget Estimator Data
  */
 
 const VARAJA_DATA = {
@@ -21,6 +21,137 @@ const VARAJA_DATA = {
       weddingsCompleted: 150
     }
   },
+
+  serviceCategories: [
+    "All Offerings",
+    "Royal Weddings",
+    "Decor & Scenography",
+    "Hospitality & Concierge",
+    "Destination & Galas"
+  ],
+
+  services: [
+    {
+      id: "complete-planning",
+      number: "01",
+      category: "Royal Weddings",
+      title: "Complete Wedding & Event Planning",
+      subtitle: "End-to-End Creative Curation & Production",
+      description: "Comprehensive management from visual concepting, venue sourcing, budget allocation, and vendor selection to day-of seamless execution.",
+      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "Full Budget Management & Contract SLA Audit",
+        "Master Multi-Day Timeline & Run-of-Show Schedules",
+        "Exclusive Artist & Live Entertainment Curation",
+        "On-site Concierge Lead Team of 20+ Specialists"
+      ]
+    },
+    {
+      id: "decor-styling",
+      number: "02",
+      category: "Decor & Scenography",
+      title: "Event Decor & Floral Scenography",
+      subtitle: "Architectural Florals & Spatial Styling",
+      description: "Bespoke production design, custom stage & mandap scenography, floral sculptures, ambient lighting, and editorial styling.",
+      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "Bespoke 3D Decor Renderings & Spatial Layouts",
+        "Exotic Dutch Floral Sourcing & Master Sculpting",
+        "Custom Furniture, Drapery & Architectural Lighting",
+        "Theme Conceptualization across Multi-Day Events"
+      ]
+    },
+    {
+      id: "venue-vendor",
+      number: "03",
+      category: "Royal Weddings",
+      title: "Palace Venue & Vendor Management",
+      subtitle: "Curated Heritage Palaces & Elite Artisans",
+      description: "Direct access to India’s most coveted heritage palaces, luxury beachfront resorts, celebrated caterers, and renowned artisans.",
+      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "Private Access to Royal Palaces & Estates",
+        "Net Pricing Vendor Contract Audit",
+        "Celebrity Chef & Custom Menu Tasting Curation",
+        "Technical Stage, Sound & Lighting Management"
+      ]
+    },
+    {
+      id: "photography-video",
+      number: "04",
+      category: "Decor & Scenography",
+      title: "Photography & Cinematography",
+      subtitle: "Cinematic Storytelling & Editorial Framing",
+      description: "Partnering with award-winning event cinematographers and editorial fashion photographers to capture every emotion in high art.",
+      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "4K Drone Cinematography & Same-Day Teasers",
+        "Editorial Couples Portraits & High Fashion Framing",
+        "Fine-Art Printed Italian Leather Bound Albums",
+        "Private Client Cloud Media Archive Access"
+      ]
+    },
+    {
+      id: "guest-concierge",
+      number: "05",
+      category: "Hospitality & Concierge",
+      title: "White-Glove Guest Concierge",
+      subtitle: "Airport VIP Transfers & Hospitality Desk",
+      description: "Warm Indian hospitality managed with military precision — luxury fleet transfers, personalized welcome hampers, and 24/7 guest helpdesk.",
+      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "Airport VIP Meet & Greet with Chauffeur Fleet",
+        "Custom Mobile Guest Portal & Rooming Manifests",
+        "Personalized Welcome Gift Hampers & Keepsakes",
+        "24/7 On-call Hospitality Desk at Host Hotels"
+      ]
+    },
+    {
+      id: "bridal-groom",
+      number: "06",
+      category: "Hospitality & Concierge",
+      title: "Couture Styling & Trousseau",
+      subtitle: "Bridal Wardrobe & Makeup Masterclass",
+      description: "Personal styling consultations with India’s leading couturiers, makeup masterclasses, hair trial management, and trousseau packaging.",
+      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "VIP Access to Top Indian Fashion Houses",
+        "Celebrity Makeup Artist Bookings",
+        "Heirloom Jewelry Security & Logistics",
+        "On-Call Wardrobe Stylist & Draping Masters"
+      ]
+    },
+    {
+      id: "destination-weddings",
+      number: "07",
+      category: "Destination & Galas",
+      title: "Destination Weddings & Logistics",
+      subtitle: "Rajasthan Palaces to Beaches of Goa & Italy",
+      description: "Specialized logistics and cultural planning for destination celebrations in Rajasthan, Goa, Kerala, Italy, Thailand, and Dubai.",
+      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "Flight Charters & Inter-City Fleet Coordination",
+        "Cross-Border Customs & Permission Clearances",
+        "Destination Scouting & Weather Contingency Plans",
+        "Global Sourcing for Specialized Ingredients & Artists"
+      ]
+    },
+    {
+      id: "corporate-social",
+      number: "08",
+      category: "Destination & Galas",
+      title: "Corporate Galas & High-Net Events",
+      subtitle: "Milestones, Summits & Private Galas",
+      description: "High-octane anniversary galas, milestone birthdays, corporate summits, and private luxury dinners designed with sophisticated grandeur.",
+      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
+      features: [
+        "High-Profile VIP Guest Protocol & Security",
+        "Custom Multi-Course Culinary Tasting Menus",
+        "Immersive Visual Projection Mapping & Lighting",
+        "Exclusive Symphony & Musical Performances"
+      ]
+    }
+  ],
 
   venues: [
     {
@@ -76,113 +207,6 @@ const VARAJA_DATA = {
       capacity: "100 – 350 Guests",
       image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=85",
       badge: "GLOBAL DESTINATION"
-    }
-  ],
-
-  services: [
-    {
-      id: "complete-planning",
-      title: "Complete Event & Wedding Planning",
-      subtitle: "End-to-End Curation & Production",
-      description: "Comprehensive management from visual concepting, venue sourcing, budget allocation, and vendor selection to day-of seamless execution.",
-      image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Full Budget Management & Contract Negotiation",
-        "Comprehensive Timeline & Run-of-Show Schedules",
-        "Exclusive Artist & Entertainment Curation",
-        "On-site Concierge Team of 15+ Specialists"
-      ]
-    },
-    {
-      id: "decor-styling",
-      title: "Event Decor & Floral Styling",
-      subtitle: "Architectural Florals & Scenography",
-      description: "Bespoke production design, custom stage & mandap scenography, floral sculptures, ambient lighting, and editorial styling.",
-      image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Bespoke 3D Decor Renderings & Spatial Layouts",
-        "Exotic Floral Sourcing & Master Sculpting",
-        "Custom Furniture, Drapery & Architectural Lighting",
-        "Theme Conceptualization across Multi-Day Events"
-      ]
-    },
-    {
-      id: "venue-vendor",
-      title: "Venue & Vendor Management",
-      subtitle: "Curated Palaces, Forts & Elite Artisans",
-      description: "Direct access to India’s most coveted heritage palaces, luxury beachfront resorts, celebrated caterers, and renowned artisans.",
-      image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Private Access to Royal Palaces & Private Estates",
-        "Contract Negotiation & Logistics Audit",
-        "Celebrity Chef & Gastronomy Menu Curation",
-        "Technical Production & Stage Sound Management"
-      ]
-    },
-    {
-      id: "photography-video",
-      title: "Photography & Cinematography",
-      subtitle: "Cinematic Storytelling & Editorial Portraits",
-      description: "Partnering with award-winning event cinematographers and editorial fashion photographers to capture every emotion in high art.",
-      image: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "4K Drone Cinematography & Same-Day Edit Teasers",
-        "Editorial Couples Portraits & High Fashion Framing",
-        "Fine-Art Printed Leather Bound Albums",
-        "Private Client Cloud Archive Access"
-      ]
-    },
-    {
-      id: "bridal-groom",
-      title: "Bridal & Groom Styling",
-      subtitle: "Couture Selection & Trousseau Curation",
-      description: "Personal styling consultations with India’s leading couturiers, makeup masterclasses, hair trial management, and trousseau packaging.",
-      image: "https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "VIP Access to Top Indian Fashion Houses",
-        "Celebrity Makeup Artist & Hair Master Bookings",
-        "Jewelry Curation & Heirloom Security",
-        "On-Call Wardrobe Stylist & Draping Masters"
-      ]
-    },
-    {
-      id: "guest-concierge",
-      title: "Guest Concierge & Hospitality",
-      subtitle: "White-Glove Airport Arrivals & Logistics",
-      description: "Warm Indian hospitality managed with military precision — luxury fleet transfers, personalized welcome hampers, and 24/7 guest helpdesk.",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Airport VIP Meet & Greet with Chauffeur Fleet",
-        "Custom Mobile Guest App & Rooming Manifests",
-        "Personalized Welcome Gift Hampers & Keepsakes",
-        "24/7 Guest Relations Desk at Host Hotels"
-      ]
-    },
-    {
-      id: "destination-weddings",
-      title: "Destination Events & Weddings",
-      subtitle: "Palaces in Rajasthan to Beaches of Goa & Bali",
-      description: "Specialized logistics and cultural planning for destination celebrations in Rajasthan, Goa, Kerala, Italy, Thailand, and Dubai.",
-      image: "https://images.unsplash.com/photo-1545232979-fbf422502396?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Flight Charters & Inter-City Fleet Coordination",
-        "Cross-Border Customs & Permission Clearances",
-        "Destination Scouting & Climate Contingency Plans",
-        "Global Sourcing for Specialized Ingredients & Artists"
-      ]
-    },
-    {
-      id: "corporate-social",
-      title: "Corporate Galas & Social Events",
-      subtitle: "Anniversaries, Milestones & High-Net Events",
-      description: "High-octane anniversary galas, milestone birthdays, corporate summits, and private luxury dinners designed with sophisticated grandeur.",
-      image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85",
-      features: [
-        "Curated High-Profile Guest Security & Protocol",
-        "Custom Multi-Course Culinary Tasting Menus",
-        "Immersive Visual Projection Mapping & Lighting",
-        "Exclusive Musical Acts & Symphony Performances"
-      ]
     }
   ],
 
@@ -330,39 +354,6 @@ const VARAJA_DATA = {
     }
   ],
 
-  whyChooseUs: [
-    {
-      number: "01",
-      title: "Personalized Planning",
-      description: "No templates or cookie-cutter packages. Every detail, color palette, and experience is tailored specifically around your vision and story."
-    },
-    {
-      number: "02",
-      title: "Attention to Every Detail",
-      description: "From custom monograms and guest room hampers to precision micro-timelines, we obsess over every touchpoint so nothing is left to chance."
-    },
-    {
-      number: "03",
-      title: "Trusted Vendor Network",
-      description: "Direct partnerships with India's premier palatial venues, celebrity chefs, top couture stylists, and master floral architects."
-    },
-    {
-      number: "04",
-      title: "Seamless Execution",
-      description: "Our on-site team of 20+ seasoned event managers, guest concierges, and technical directors execute your multi-day events with military precision."
-    },
-    {
-      number: "05",
-      title: "Transparent Communication",
-      description: "Real-time budget tracking, live vendor dashboards, and clear contract audits ensure complete peace of mind with zero hidden surprises."
-    },
-    {
-      number: "06",
-      title: "Stress-Free Experience",
-      description: "You and your family remain honored guests while BLUE ROSE PRODUCTION carries the entire operational and creative weight."
-    }
-  ],
-
   faqs: [
     {
       q: "How far in advance should we book BLUE ROSE PRODUCTION?",
@@ -440,32 +431,5 @@ const VARAJA_DATA = {
     { id: "g7", category: "Haldi", title: "Traditional Brass Urli Floral Haldi", location: "Udaipur", image: "https://images.unsplash.com/photo-1544077960-604201fe74bc?auto=format&fit=crop&w=1200&q=85" },
     { id: "g8", category: "Reception", title: "Oceanfront Starlight Banquet Table", location: "Goa", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85" },
     { id: "g9", category: "Corporate", title: "High-Net Luxury Brand Summit Gala", location: "Bengaluru", image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85" }
-  ],
-
-  processSteps: [
-    {
-      step: "01",
-      name: "Let's Talk",
-      title: "Discovery & Vision Alignment",
-      desc: "We begin with an in-depth consultation to understand your event vision, aesthetic preferences, family traditions, guest headcount, and target budget."
-    },
-    {
-      step: "02",
-      name: "Plan",
-      title: "Concept, Venues & Master Timeline",
-      desc: "We present curated palace/resort options, negotiate venue contracts, build the financial master plan, and establish precision event timelines."
-    },
-    {
-      step: "03",
-      name: "Design",
-      title: "Scenography & Production Design",
-      desc: "Our design studio creates 3D visual renderings for mandaps, floral installations, menu tastings, artist bookings, and guest hospitality logistics."
-    },
-    {
-      step: "04",
-      name: "Celebrate",
-      title: "Flawless Execution & Hospitality",
-      desc: "Our 20+ member on-site production team manages logistics, artists, and guest concierge so you and your guests can enjoy your day."
-    }
   ]
 };
