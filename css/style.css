@@ -349,26 +349,6 @@ button, input, select, textarea {
   gap: 16px;
 }
 
-.ambient-audio-btn {
-  background: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  padding: 8px 14px;
-  border-radius: 30px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.ambient-audio-btn:hover {
-  border-color: var(--color-gold);
-  background-color: #FFFFFF;
-}
-
 .mobile-hamburger-btn {
   width: 44px;
   height: 44px;

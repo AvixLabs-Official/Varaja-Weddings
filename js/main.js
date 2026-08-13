@@ -5,8 +5,6 @@
 
 let activeGalleryCategory = 'All';
 let currentTestimonialIndex = 0;
-let isAudioPlaying = false;
-let audioInstance = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
@@ -24,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. STICKY HEADER & AMBIENT AUDIO TOGGLE
+   1. STICKY HEADER
    -------------------------------------------------------------------------- */
 function initStickyHeader() {
   const header = document.getElementById('main-header');
@@ -37,21 +35,6 @@ function initStickyHeader() {
       header.classList.remove('scrolled');
     }
   });
-}
-
-function toggleAmbientAudio() {
-  const btn = document.getElementById('ambient-music-btn');
-  const statusTxt = document.getElementById('ambient-audio-status');
-
-  if (!isAudioPlaying) {
-    isAudioPlaying = true;
-    if (statusTxt) statusTxt.textContent = '🎵 Shehnai Soundscape (Active)';
-    if (btn) btn.style.borderColor = 'var(--color-gold)';
-  } else {
-    isAudioPlaying = false;
-    if (statusTxt) statusTxt.textContent = '🎵 Play Shehnai Soundscape';
-    if (btn) btn.style.borderColor = '';
-  }
 }
 
 /* --------------------------------------------------------------------------
